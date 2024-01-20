@@ -20,12 +20,12 @@ OStudios is an animation studio simulator in Venezuela, developed by David Davil
 3. Set the initial parameters and run the simulation.
 
 ## Usage
-[!TIP]
-Follow the detailed instructions in the documentation to understand and efficiently use the simulator, focusing on fundamental operating system concepts.
+> [!TIP]
+> Follow the detailed instructions in the documentation to understand and efficiently use the simulator, focusing on fundamental operating system concepts.
 
 ## License
-[!WARNING]
-This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for details.
+> [!WARNING]
+> This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
@@ -57,12 +57,12 @@ OStudios es un simulador de estudios de animación en Venezuela, desarrollado po
 3. Configura los parámetros iniciales y ejecuta la simulación.
 
 ## Uso
-[!TIP]
-Sigue las instrucciones detalladas en la documentación para comprender y utilizar eficientemente el simulador, centrándote en los conceptos fundamentales de sistemas operativos.
+> [!TIP]
+> Sigue las instrucciones detalladas en la documentación para comprender y utilizar eficientemente el simulador, centrándote en los conceptos fundamentales de sistemas operativos.
 
 ## Licencia
-[!WARNING]
-Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
+> [!WARNING]
+> Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
 
 ## Contacto
 
