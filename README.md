@@ -29,10 +29,16 @@ OStudios is an animation studio simulator in Venezuela, developed by David Davil
 
 ## Contact
 
-For questions or suggestions related to operating systems aspects, contact us at [davila.dmo@gmail.com](mailto:davila.dmo@gmail.com) [sorrentinorolando@gmail.com](mailto:sorrentinorolando@gmail.com).
+For questions or suggestions related to operating systems aspects, contact us at [davila.dmo@gmail.com](mailto:davila.dmo@gmail.com) or [sorrentinorolando@gmail.com](mailto:sorrentinorolando@gmail.com).
+
+
+
 
 
 --------------------------------------------------------------------------------
+
+
+
 
 
 # OStudios: Simulador de Estudios de Animación en Venezuela
@@ -66,4 +72,4 @@ OStudios es un simulador de estudios de animación en Venezuela, desarrollado po
 
 ## Contacto
 
-Para preguntas o sugerencias relacionadas con los aspectos de sistemas operativos, contáctanos en [davila.dmo@gmail.com](mailto:davila.dmo@gmail.com) [sorrentinorolando@gmail.com](mailto:sorrentinorolando@gmail.com).
+Para preguntas o sugerencias relacionadas con los aspectos de sistemas operativos, contáctanos en [davila.dmo@gmail.com](mailto:davila.dmo@gmail.com) o en [sorrentinorolando@gmail.com](mailto:sorrentinorolando@gmail.com).
