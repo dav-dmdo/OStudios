@@ -15,7 +15,7 @@ OStudios is an animation studio simulator in Venezuela, developed by David Davil
 
 ## Installation
 
-1. Clone this repository: `git clone https://github.com/tuusuario/ostudios.git`.
+1. Clone this repository: `git clone https://github.com/youruser/ostudios.git`.
 2. Open the project in your preferred Java development environment.
 3. Set the initial parameters and run the simulation.
 
