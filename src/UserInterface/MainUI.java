@@ -35,13 +35,37 @@ public class MainUI extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         deliveryDaysInput = new javax.swing.JTextPane();
         setConfiguration = new javax.swing.JButton();
-        chasis_label3 = new javax.swing.JLabel();
+        infoLabel = new javax.swing.JLabel();
         dayDuration_label = new javax.swing.JLabel();
-        dayDuration_label1 = new javax.swing.JLabel();
-        Lambog_label = new javax.swing.JLabel();
-        chasis_label4 = new javax.swing.JLabel();
-        Maserati_label = new javax.swing.JLabel();
-        chasis_label = new javax.swing.JLabel();
+        deliveryDays_label = new javax.swing.JLabel();
+        NickConfig_label = new javax.swing.JLabel();
+        NickMaximumWorkers_label = new javax.swing.JLabel();
+        CNConfig_label = new javax.swing.JLabel();
+        CNMaximumWorkers_label = new javax.swing.JLabel();
+        screenwriters_label = new javax.swing.JLabel();
+        screenwritersNick = new javax.swing.JSpinner();
+        scenarioDesigners_label = new javax.swing.JLabel();
+        scenarioDesignersNick = new javax.swing.JSpinner();
+        animators_label = new javax.swing.JLabel();
+        animatorsNick = new javax.swing.JSpinner();
+        voiceActors_label = new javax.swing.JLabel();
+        voiceActorsNick = new javax.swing.JSpinner();
+        plotTwistWriters_label = new javax.swing.JLabel();
+        plotTwistWritersNick = new javax.swing.JSpinner();
+        assemblers_label = new javax.swing.JLabel();
+        assemblersNick = new javax.swing.JSpinner();
+        screenwriters_label1 = new javax.swing.JLabel();
+        scenarioDesigners_label1 = new javax.swing.JLabel();
+        animators_label1 = new javax.swing.JLabel();
+        voiceActors_label1 = new javax.swing.JLabel();
+        plotTwistWriters_label1 = new javax.swing.JLabel();
+        assemblers_label2 = new javax.swing.JLabel();
+        screenwritersCN = new javax.swing.JSpinner();
+        scenarioDesignersCN = new javax.swing.JSpinner();
+        animatorsCN = new javax.swing.JSpinner();
+        voiceActorsCN = new javax.swing.JSpinner();
+        plotTwistWritersCN = new javax.swing.JSpinner();
+        assemblersCN = new javax.swing.JSpinner();
         NickelodeonTab = new javax.swing.JPanel();
         Nickelodeon_label = new javax.swing.JLabel();
         CartoonNetworkTab = new javax.swing.JPanel();
@@ -93,12 +117,12 @@ public class MainUI extends javax.swing.JFrame {
         });
         ConfigurationTab.add(setConfiguration, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 260, 50));
 
-        chasis_label3.setBackground(new java.awt.Color(102, 102, 102));
-        chasis_label3.setFont(new java.awt.Font("Microsoft YaHei", 1, 10)); // NOI18N
-        chasis_label3.setForeground(new java.awt.Color(255, 255, 153));
-        chasis_label3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chasis_label3.setText("You have to press the button to set the configuration");
-        ConfigurationTab.add(chasis_label3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 280, 30));
+        infoLabel.setBackground(new java.awt.Color(102, 102, 102));
+        infoLabel.setFont(new java.awt.Font("Microsoft YaHei", 1, 10)); // NOI18N
+        infoLabel.setForeground(new java.awt.Color(255, 255, 153));
+        infoLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        infoLabel.setText("You have to press the button to set the configuration");
+        ConfigurationTab.add(infoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 280, 30));
 
         dayDuration_label.setBackground(new java.awt.Color(102, 102, 102));
         dayDuration_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
@@ -107,40 +131,172 @@ public class MainUI extends javax.swing.JFrame {
         dayDuration_label.setText("Day Duration (seconds)");
         ConfigurationTab.add(dayDuration_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 170, 30));
 
-        dayDuration_label1.setBackground(new java.awt.Color(102, 102, 102));
-        dayDuration_label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        dayDuration_label1.setForeground(new java.awt.Color(255, 255, 255));
-        dayDuration_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        dayDuration_label1.setText("Days to Deliver");
-        ConfigurationTab.add(dayDuration_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 110, 30));
+        deliveryDays_label.setBackground(new java.awt.Color(102, 102, 102));
+        deliveryDays_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        deliveryDays_label.setForeground(new java.awt.Color(255, 255, 255));
+        deliveryDays_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deliveryDays_label.setText("Days to Deliver");
+        ConfigurationTab.add(deliveryDays_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 110, 30));
 
-        Lambog_label.setBackground(new java.awt.Color(102, 102, 102));
-        Lambog_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        Lambog_label.setForeground(new java.awt.Color(255, 255, 255));
-        Lambog_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Lambog_label.setText("NICKELODEON");
-        ConfigurationTab.add(Lambog_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 210, 60));
+        NickConfig_label.setBackground(new java.awt.Color(102, 102, 102));
+        NickConfig_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        NickConfig_label.setForeground(new java.awt.Color(255, 255, 255));
+        NickConfig_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NickConfig_label.setText("NICKELODEON");
+        ConfigurationTab.add(NickConfig_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 210, 60));
 
-        chasis_label4.setBackground(new java.awt.Color(102, 102, 102));
-        chasis_label4.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        chasis_label4.setForeground(new java.awt.Color(255, 255, 153));
-        chasis_label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        chasis_label4.setText("MAXIMUM 20 WORKERS");
-        ConfigurationTab.add(chasis_label4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 180, 30));
+        NickMaximumWorkers_label.setBackground(new java.awt.Color(102, 102, 102));
+        NickMaximumWorkers_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        NickMaximumWorkers_label.setForeground(new java.awt.Color(255, 255, 153));
+        NickMaximumWorkers_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NickMaximumWorkers_label.setText("MAXIMUM 20 WORKERS");
+        ConfigurationTab.add(NickMaximumWorkers_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 180, 30));
 
-        Maserati_label.setBackground(new java.awt.Color(102, 102, 102));
-        Maserati_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        Maserati_label.setForeground(new java.awt.Color(255, 255, 255));
-        Maserati_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Maserati_label.setText("CARTOON NETWORK");
-        ConfigurationTab.add(Maserati_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 270, 60));
+        CNConfig_label.setBackground(new java.awt.Color(102, 102, 102));
+        CNConfig_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        CNConfig_label.setForeground(new java.awt.Color(255, 255, 255));
+        CNConfig_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CNConfig_label.setText("CARTOON NETWORK");
+        ConfigurationTab.add(CNConfig_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 270, 60));
 
-        chasis_label.setBackground(new java.awt.Color(102, 102, 102));
-        chasis_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        chasis_label.setForeground(new java.awt.Color(255, 255, 153));
-        chasis_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        chasis_label.setText("MAXIMUM 12 WORKERS");
-        ConfigurationTab.add(chasis_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 150, 170, 30));
+        CNMaximumWorkers_label.setBackground(new java.awt.Color(102, 102, 102));
+        CNMaximumWorkers_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        CNMaximumWorkers_label.setForeground(new java.awt.Color(255, 255, 153));
+        CNMaximumWorkers_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CNMaximumWorkers_label.setText("MAXIMUM 12 WORKERS");
+        ConfigurationTab.add(CNMaximumWorkers_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 150, 170, 30));
+
+        screenwriters_label.setBackground(new java.awt.Color(102, 102, 102));
+        screenwriters_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        screenwriters_label.setForeground(new java.awt.Color(255, 255, 255));
+        screenwriters_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        screenwriters_label.setText("Screenwriters");
+        ConfigurationTab.add(screenwriters_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 90, 30));
+
+        screenwritersNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        screenwritersNick.setModel(new javax.swing.SpinnerNumberModel(1, 1, 13, 1));
+        ConfigurationTab.add(screenwritersNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, 30));
+
+        scenarioDesigners_label.setBackground(new java.awt.Color(102, 102, 102));
+        scenarioDesigners_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        scenarioDesigners_label.setForeground(new java.awt.Color(255, 255, 255));
+        scenarioDesigners_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scenarioDesigners_label.setText("Scenario Designers");
+        ConfigurationTab.add(scenarioDesigners_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 120, 30));
+
+        scenarioDesignersNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        scenarioDesignersNick.setModel(new javax.swing.SpinnerNumberModel(1, 1, 13, 1));
+        ConfigurationTab.add(scenarioDesignersNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, -1, 30));
+
+        animators_label.setBackground(new java.awt.Color(102, 102, 102));
+        animators_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        animators_label.setForeground(new java.awt.Color(255, 255, 255));
+        animators_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        animators_label.setText("Character Animators");
+        ConfigurationTab.add(animators_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 130, 30));
+
+        animatorsNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        animatorsNick.setModel(new javax.swing.SpinnerNumberModel(1, 1, 13, 1));
+        ConfigurationTab.add(animatorsNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, -1, 30));
+
+        voiceActors_label.setBackground(new java.awt.Color(102, 102, 102));
+        voiceActors_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        voiceActors_label.setForeground(new java.awt.Color(255, 255, 255));
+        voiceActors_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        voiceActors_label.setText("Voice Actors");
+        ConfigurationTab.add(voiceActors_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 80, 30));
+
+        voiceActorsNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        voiceActorsNick.setModel(new javax.swing.SpinnerNumberModel(1, 1, 13, 1));
+        ConfigurationTab.add(voiceActorsNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, -1, 30));
+
+        plotTwistWriters_label.setBackground(new java.awt.Color(102, 102, 102));
+        plotTwistWriters_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        plotTwistWriters_label.setForeground(new java.awt.Color(255, 255, 255));
+        plotTwistWriters_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        plotTwistWriters_label.setText("PlotTwist Writers");
+        ConfigurationTab.add(plotTwistWriters_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 110, 30));
+
+        plotTwistWritersNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        plotTwistWritersNick.setModel(new javax.swing.SpinnerNumberModel(1, 1, 13, 1));
+        ConfigurationTab.add(plotTwistWritersNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, -1, 30));
+
+        assemblers_label.setBackground(new java.awt.Color(102, 102, 102));
+        assemblers_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        assemblers_label.setForeground(new java.awt.Color(255, 255, 255));
+        assemblers_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        assemblers_label.setText("Assemblers");
+        ConfigurationTab.add(assemblers_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, 80, 30));
+
+        assemblersNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        assemblersNick.setModel(new javax.swing.SpinnerNumberModel(1, 1, 13, 1));
+        ConfigurationTab.add(assemblersNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, -1, 30));
+
+        screenwriters_label1.setBackground(new java.awt.Color(102, 102, 102));
+        screenwriters_label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        screenwriters_label1.setForeground(new java.awt.Color(255, 255, 255));
+        screenwriters_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        screenwriters_label1.setText("Screenwriters");
+        ConfigurationTab.add(screenwriters_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 190, 90, 30));
+
+        scenarioDesigners_label1.setBackground(new java.awt.Color(102, 102, 102));
+        scenarioDesigners_label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        scenarioDesigners_label1.setForeground(new java.awt.Color(255, 255, 255));
+        scenarioDesigners_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scenarioDesigners_label1.setText("Scenario Designers");
+        ConfigurationTab.add(scenarioDesigners_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 120, 30));
+
+        animators_label1.setBackground(new java.awt.Color(102, 102, 102));
+        animators_label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        animators_label1.setForeground(new java.awt.Color(255, 255, 255));
+        animators_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        animators_label1.setText("Character Animators");
+        ConfigurationTab.add(animators_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 130, 30));
+
+        voiceActors_label1.setBackground(new java.awt.Color(102, 102, 102));
+        voiceActors_label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        voiceActors_label1.setForeground(new java.awt.Color(255, 255, 255));
+        voiceActors_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        voiceActors_label1.setText("Voice Actors");
+        ConfigurationTab.add(voiceActors_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 340, 80, 30));
+
+        plotTwistWriters_label1.setBackground(new java.awt.Color(102, 102, 102));
+        plotTwistWriters_label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        plotTwistWriters_label1.setForeground(new java.awt.Color(255, 255, 255));
+        plotTwistWriters_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        plotTwistWriters_label1.setText("PlotTwist Writers");
+        ConfigurationTab.add(plotTwistWriters_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 390, 110, 30));
+
+        assemblers_label2.setBackground(new java.awt.Color(102, 102, 102));
+        assemblers_label2.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        assemblers_label2.setForeground(new java.awt.Color(255, 255, 255));
+        assemblers_label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        assemblers_label2.setText("Assemblers");
+        ConfigurationTab.add(assemblers_label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 440, 70, 30));
+
+        screenwritersCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        screenwritersCN.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+        ConfigurationTab.add(screenwritersCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 190, -1, 30));
+
+        scenarioDesignersCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        scenarioDesignersCN.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+        ConfigurationTab.add(scenarioDesignersCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 240, -1, 30));
+
+        animatorsCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        animatorsCN.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+        ConfigurationTab.add(animatorsCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 290, -1, 30));
+
+        voiceActorsCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        voiceActorsCN.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+        ConfigurationTab.add(voiceActorsCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 340, -1, 30));
+
+        plotTwistWritersCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        plotTwistWritersCN.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+        ConfigurationTab.add(plotTwistWritersCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 390, -1, 30));
+
+        assemblersCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        assemblersCN.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+        ConfigurationTab.add(assemblersCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 440, -1, 30));
 
         Tabs.addTab("Configuration", ConfigurationTab);
 
@@ -209,25 +365,49 @@ public class MainUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CNConfig_label;
+    private javax.swing.JLabel CNMaximumWorkers_label;
     private javax.swing.JLabel CN_label;
     private javax.swing.JPanel CartoonNetworkTab;
     private javax.swing.JLabel Config_label;
     private javax.swing.JPanel ConfigurationTab;
     private javax.swing.JLabel General_label;
-    private javax.swing.JLabel Lambog_label;
-    private javax.swing.JLabel Maserati_label;
+    private javax.swing.JLabel NickConfig_label;
+    private javax.swing.JLabel NickMaximumWorkers_label;
     private javax.swing.JPanel NickelodeonTab;
     private javax.swing.JLabel Nickelodeon_label;
     private javax.swing.JTabbedPane Tabs;
-    private javax.swing.JLabel chasis_label;
-    private javax.swing.JLabel chasis_label3;
-    private javax.swing.JLabel chasis_label4;
+    private javax.swing.JSpinner animatorsCN;
+    private javax.swing.JSpinner animatorsNick;
+    private javax.swing.JLabel animators_label;
+    private javax.swing.JLabel animators_label1;
+    private javax.swing.JSpinner assemblersCN;
+    private javax.swing.JSpinner assemblersNick;
+    private javax.swing.JLabel assemblers_label;
+    private javax.swing.JLabel assemblers_label2;
     private javax.swing.JTextPane dayDurationInput;
     private javax.swing.JLabel dayDuration_label;
-    private javax.swing.JLabel dayDuration_label1;
     private javax.swing.JTextPane deliveryDaysInput;
+    private javax.swing.JLabel deliveryDays_label;
+    private javax.swing.JLabel infoLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSpinner plotTwistWritersCN;
+    private javax.swing.JSpinner plotTwistWritersNick;
+    private javax.swing.JLabel plotTwistWriters_label;
+    private javax.swing.JLabel plotTwistWriters_label1;
+    private javax.swing.JSpinner scenarioDesignersCN;
+    private javax.swing.JSpinner scenarioDesignersNick;
+    private javax.swing.JLabel scenarioDesigners_label;
+    private javax.swing.JLabel scenarioDesigners_label1;
+    private javax.swing.JSpinner screenwritersCN;
+    private javax.swing.JSpinner screenwritersNick;
+    private javax.swing.JLabel screenwriters_label;
+    private javax.swing.JLabel screenwriters_label1;
     private javax.swing.JButton setConfiguration;
+    private javax.swing.JSpinner voiceActorsCN;
+    private javax.swing.JSpinner voiceActorsNick;
+    private javax.swing.JLabel voiceActors_label;
+    private javax.swing.JLabel voiceActors_label1;
     // End of variables declaration//GEN-END:variables
 }
