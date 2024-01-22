@@ -49,10 +49,9 @@ public class ReadFile {
     }
 
     /**
-     * Lee un archivo de texto línea por línea y lo convierte en un string
+     * Reads a text file line by line and converts it to a string
      *
-     * @param path (Dirección donde se encuentra el archivo de texto a leer)
-     * @return String que contiene la información del archivo de texto
+     * @return String containing the information of the text file
      */
     public String readTxt() {
         String line;
@@ -86,5 +85,52 @@ public class ReadFile {
             JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e);
         }
         return null;
+    }
+
+    public void setStudioConfig(String[] studioParameters, Config config, int studio) {
+
+        switch (studio) {
+            case 0 -> {
+                config.getNickParameters().setInitialScreenwriters(Integer.parseInt(studioParameters[2]));
+                config.getNickParameters().setInitialScenarioDesigners(Integer.parseInt(studioParameters[4]));
+                config.getNickParameters().setInitialAnimators(Integer.parseInt(studioParameters[6]));
+                config.getNickParameters().setInitialVoiceActors(Integer.parseInt(studioParameters[8]));
+                config.getNickParameters().setInitialPlotTwistWriters(Integer.parseInt(studioParameters[10]));
+                config.getNickParameters().setInitialAssemblers(Integer.parseInt(studioParameters[12]));
+            }
+
+            case 1 -> {
+                config.getCNParameters().setInitialScreenwriters(Integer.parseInt(studioParameters[2]));
+                config.getCNParameters().setInitialScenarioDesigners(Integer.parseInt(studioParameters[4]));
+                config.getCNParameters().setInitialAnimators(Integer.parseInt(studioParameters[6]));
+                config.getCNParameters().setInitialVoiceActors(Integer.parseInt(studioParameters[8]));
+                config.getCNParameters().setInitialPlotTwistWriters(Integer.parseInt(studioParameters[10]));
+                config.getCNParameters().setInitialAssemblers(Integer.parseInt(studioParameters[12]));
+            }
+
+            default -> {
+            }
+
+        }
+
+    }
+
+    public void readConfig(String txt, Config config) {
+
+        String[] configs = txt.split("~");
+        String[] general = configs[1].split("\n");
+
+        //General config
+        config.setDayDuration(Integer.parseInt(general[2]));
+        config.setDeliveryDays(Integer.parseInt(general[4]));
+
+        //Nickelodeon config
+        String[] nickParameters = configs[2].split("\n");
+        setStudioConfig(nickParameters, config, 0);
+
+        //Cartoon Network config
+        String[] cnParameters = configs[3].split("\n");
+        setStudioConfig(cnParameters, config, 1);
+
     }
 }

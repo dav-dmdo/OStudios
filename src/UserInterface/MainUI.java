@@ -1,10 +1,14 @@
 package UserInterface;
 
+import Config.Config;
+
 /**
  *
  * @author Rolando
  */
 public class MainUI extends javax.swing.JFrame {
+
+    private Config config;
 
     /**
      * Creates new form MainUI
@@ -16,6 +20,19 @@ public class MainUI extends javax.swing.JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
 
+        UIFunctions window = new UIFunctions();
+
+        config = new Config();
+
+        window.loadFile(getConfig());
+    }
+
+    public Config getConfig() {
+        return config;
+    }
+
+    public void setConfig(Config config) {
+        this.config = config;
     }
 
     /**

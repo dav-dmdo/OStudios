@@ -12,13 +12,13 @@ public class UIFunctions {
 
     public void loadFile(Config config) {
         try {
-            ReadFile nfile = new ReadFile();
-            String txt = nfile.readTxt();
-//            nfile.readConfig(txt, config);
+            ReadFile fileToRead = new ReadFile();
+            String txt = fileToRead.readTxt();
+            fileToRead.readConfig(txt, config);
             JOptionPane.showMessageDialog(null, "Config loaded succesfully!");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error");
+            JOptionPane.showMessageDialog(null, "An error has occurred: " + e);
         }
     }
 }

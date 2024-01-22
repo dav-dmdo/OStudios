@@ -18,6 +18,13 @@ public class Config {
         this.deliveryDays = deliveryDays;
     }
 
+    public Config() {
+        this.NickParameters = new InitialParameters();
+        this.CNParameters = new InitialParameters();
+        this.dayDuration = 1000;
+        this.deliveryDays = 30;
+    }
+
     //Getters and Setters
     public InitialParameters getNickParameters() {
         return NickParameters;
