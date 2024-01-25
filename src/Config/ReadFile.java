@@ -68,7 +68,7 @@ public class ReadFile {
                 while ((line = br.readLine()) != null) {
                     if (!line.isEmpty()) {
                         if (line.contains("General") || line.contains("Nickelodeon") || line.contains("CartoonNetwork")) {
-                            txt += "~" + "\n";
+                            txt += "~\n";
 
                         } else {
                             txt += line + "\n";
@@ -82,7 +82,7 @@ public class ReadFile {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e);
+            JOptionPane.showMessageDialog(null, "An error occurred reading the file: " + e);
         }
         return null;
     }

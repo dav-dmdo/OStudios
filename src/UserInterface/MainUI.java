@@ -10,7 +10,8 @@ import javax.swing.JOptionPane;
  */
 public class MainUI extends javax.swing.JFrame {
 
-    private Config config;
+    private Config config = new Config();
+    private UIFunctions functions = new UIFunctions();
 
     /**
      * Creates new form MainUI
@@ -22,20 +23,26 @@ public class MainUI extends javax.swing.JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
 
-        UIFunctions window = new UIFunctions();
+        getFunctions().setInitialSettings(config, screenwritersNick, scenarioDesignersNick, animatorsNick, voiceActorsNick, plotTwistWritersNick, assemblersNick, screenwritersCN, scenarioDesignersCN, animatorsCN, voiceActorsCN, plotTwistWritersCN, assemblersCN, dayDurationInput, deliveryDaysInput);
 
-        Config newConfig = new Config();
-        setConfig(newConfig);
+        getConfig().printStudioParameters();
 
-        window.loadFile(getConfig());
     }
 
-    public Config getConfig() {
+    public final Config getConfig() {
         return config;
     }
 
-    public void setConfig(Config config) {
+    public final void setConfig(Config config) {
         this.config = config;
+    }
+
+    public final UIFunctions getFunctions() {
+        return functions;
+    }
+
+    public void setFunctions(UIFunctions functions) {
+        this.functions = functions;
     }
 
     /**
@@ -379,11 +386,13 @@ public class MainUI extends javax.swing.JFrame {
                 throw new Exception();
             }
 
+            configString = getFunctions().generateConfigString("Nickelodeon", configString, screenwritersNickelodeon, scenarioNickelodeon, animatorsNickelodeon, voiceActorsNickelodeon, plotTwistWritersNickelodeon, assemblersNickelodeon);
+            configString = getFunctions().generateConfigString("CartoonNetwork", configString, screenwritersCartoonNetwork, scenarioCartoonNetwork, animatorsCartoonNetwork, voiceActorsCartoonNetwork, plotTwistWritersCartoonNetwork, assemblersCartoonNetwork);
+
             ReadFile file = new ReadFile();
             file.printTxt(configString);
 
             String newConfig = file.readTxt();
-            System.out.println(newConfig);
             file.readConfig(newConfig, config);
 
         } catch (Exception e) {
