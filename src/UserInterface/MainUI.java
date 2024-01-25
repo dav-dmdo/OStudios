@@ -1,6 +1,8 @@
 package UserInterface;
 
 import Config.Config;
+import Config.ReadFile;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,7 +24,8 @@ public class MainUI extends javax.swing.JFrame {
 
         UIFunctions window = new UIFunctions();
 
-        config = new Config();
+        Config newConfig = new Config();
+        setConfig(newConfig);
 
         window.loadFile(getConfig());
     }
@@ -344,6 +347,48 @@ public class MainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setConfigurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setConfigurationActionPerformed
+        String configString = "General\ndayDuration\n";
+
+        try {
+            int dayDuration = Integer.parseInt(dayDurationInput.getText()) * 1000;
+            int deliveryDays = Integer.parseInt(deliveryDaysInput.getText());
+
+            configString += Integer.toString(dayDuration) + "\ndeliveryDays\n" + Integer.toString(deliveryDays) + "\n";
+
+            //Nickelodeon workers
+            Integer screenwritersNickelodeon = (Integer) screenwritersNick.getValue();
+            Integer scenarioNickelodeon = (Integer) scenarioDesignersNick.getValue();
+            Integer animatorsNickelodeon = (Integer) animatorsNick.getValue();
+            Integer voiceActorsNickelodeon = (Integer) voiceActorsNick.getValue();
+            Integer plotTwistWritersNickelodeon = (Integer) plotTwistWritersNick.getValue();
+            Integer assemblersNickelodeon = (Integer) assemblersNick.getValue();
+
+            int totalWorkersNick = screenwritersNickelodeon + scenarioNickelodeon + animatorsNickelodeon + voiceActorsNickelodeon + plotTwistWritersNickelodeon + assemblersNickelodeon;
+
+            //Cartoon Network Workers
+            Integer screenwritersCartoonNetwork = (Integer) screenwritersCN.getValue();
+            Integer scenarioCartoonNetwork = (Integer) scenarioDesignersCN.getValue();
+            Integer animatorsCartoonNetwork = (Integer) animatorsCN.getValue();
+            Integer voiceActorsCartoonNetwork = (Integer) voiceActorsCN.getValue();
+            Integer plotTwistWritersCartoonNetwork = (Integer) plotTwistWritersCN.getValue();
+            Integer assemblersCartoonNetwork = (Integer) assemblersCN.getValue();
+
+            int totalWorkersCN = screenwritersCartoonNetwork + scenarioCartoonNetwork + animatorsCartoonNetwork + voiceActorsCartoonNetwork + plotTwistWritersCartoonNetwork + assemblersCartoonNetwork;
+
+            if ((totalWorkersNick > 20) || (totalWorkersCN > 12)) {
+                throw new Exception();
+            }
+
+            ReadFile file = new ReadFile();
+            file.printTxt(configString);
+
+            String newConfig = file.readTxt();
+            System.out.println(newConfig);
+            file.readConfig(newConfig, config);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "You have to enter a number");
+        }
 
     }//GEN-LAST:event_setConfigurationActionPerformed
 

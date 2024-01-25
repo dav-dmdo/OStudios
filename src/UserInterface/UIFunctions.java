@@ -21,4 +21,9 @@ public class UIFunctions {
             JOptionPane.showMessageDialog(null, "An error has occurred: " + e);
         }
     }
+
+    public void generateConfigString(String studio, String configString, int screenwriters, int scenarioDesigners, int animators, int voiceActors, int plotTwistWriters, int assemblers) {
+//        configString += "\n" + studio + "\nchasis\n" + ;
+
+    }
 }
