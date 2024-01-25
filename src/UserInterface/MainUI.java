@@ -116,13 +116,13 @@ public class MainUI extends javax.swing.JFrame {
         ConfigurationTab.add(General_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 140, 40));
 
         dayDurationInput.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
-        dayDurationInput.setForeground(new java.awt.Color(255, 255, 255));
+        dayDurationInput.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(dayDurationInput);
 
         ConfigurationTab.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 120, -1));
 
         deliveryDaysInput.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
-        deliveryDaysInput.setForeground(new java.awt.Color(255, 255, 255));
+        deliveryDaysInput.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(deliveryDaysInput);
 
         ConfigurationTab.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 120, -1));
