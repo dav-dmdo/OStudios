@@ -96,6 +96,71 @@ public class MainUI extends javax.swing.JFrame {
         assemblersCN = new javax.swing.JSpinner();
         NickelodeonTab = new javax.swing.JPanel();
         Nickelodeon_label = new javax.swing.JLabel();
+        animationsN_label = new javax.swing.JLabel();
+        NickelodeonAnimations = new javax.swing.JLabel();
+        maxAnimationsN = new javax.swing.JLabel();
+        maxScenariosN = new javax.swing.JLabel();
+        scenariosN_label = new javax.swing.JLabel();
+        NickelodeonScenarios = new javax.swing.JLabel();
+        maxScriptsN = new javax.swing.JLabel();
+        NickelodeonScripts = new javax.swing.JLabel();
+        scriptsN_label = new javax.swing.JLabel();
+        episodePartsNick_title = new javax.swing.JLabel();
+        startL = new javax.swing.JButton();
+        dubsN_label = new javax.swing.JLabel();
+        NickelodeonDubbings = new javax.swing.JLabel();
+        maxDubbingsN = new javax.swing.JLabel();
+        plotTwistsN_label = new javax.swing.JLabel();
+        NickelodeonPlotTwists = new javax.swing.JLabel();
+        maxPlotTwistsN = new javax.swing.JLabel();
+        directorNick_title = new javax.swing.JLabel();
+        directorStatusNick_label = new javax.swing.JLabel();
+        directorStatusNick = new javax.swing.JLabel();
+        projectManagerNick_title = new javax.swing.JLabel();
+        managerStatusNickelodeon = new javax.swing.JLabel();
+        managerStatusN_label = new javax.swing.JLabel();
+        managerFaultsN_label = new javax.swing.JLabel();
+        faultsQtyNickelodeon = new javax.swing.JLabel();
+        managerDiscounted_label = new javax.swing.JLabel();
+        managerSalaryDiscountNickelodeon = new javax.swing.JLabel();
+        plotTwistEpisodesN_label = new javax.swing.JLabel();
+        standardEpisodesN_label = new javax.swing.JLabel();
+        plotTwistEpisodesNick = new javax.swing.JLabel();
+        standarEpisodesNick = new javax.swing.JLabel();
+        episodesProducedNick_title = new javax.swing.JLabel();
+        DayLeftLamborghini1 = new javax.swing.JLabel();
+        daysLeftLLamborghini = new javax.swing.JLabel();
+        earningsNick = new javax.swing.JLabel();
+        earningsNick_label = new javax.swing.JLabel();
+        costsNick_label = new javax.swing.JLabel();
+        costsNick = new javax.swing.JLabel();
+        utilityNick = new javax.swing.JLabel();
+        utilityNick_label = new javax.swing.JFormattedTextField();
+        scenarioDesignersNickelodeon = new javax.swing.JLabel();
+        chas13 = new javax.swing.JLabel();
+        chas14 = new javax.swing.JLabel();
+        voiceActorsNickelodeon = new javax.swing.JLabel();
+        chas15 = new javax.swing.JLabel();
+        plotTwistWritersNickelodeon = new javax.swing.JLabel();
+        screenwritersNickelodeon = new javax.swing.JLabel();
+        chas16 = new javax.swing.JLabel();
+        assemblersNickelodeon = new javax.swing.JLabel();
+        wm_label5 = new javax.swing.JLabel();
+        chas17 = new javax.swing.JLabel();
+        chas18 = new javax.swing.JLabel();
+        animatorsNickelodeon = new javax.swing.JLabel();
+        screenwritersPlusNick = new javax.swing.JButton();
+        scenarioDesignersPlusNick = new javax.swing.JButton();
+        animatorsPlusNick = new javax.swing.JButton();
+        screenwritersMinNick = new javax.swing.JButton();
+        scenarioDesignersMinNick = new javax.swing.JButton();
+        animatorsMinNick = new javax.swing.JButton();
+        voiceActorsPlusNick = new javax.swing.JButton();
+        voiceActorsMinNick = new javax.swing.JButton();
+        plotTwistWritersMinNick = new javax.swing.JButton();
+        plotTwistWritersPlusNick = new javax.swing.JButton();
+        assemblersMinNick = new javax.swing.JButton();
+        assemblerPlusNick = new javax.swing.JButton();
         CartoonNetworkTab = new javax.swing.JPanel();
         CN_label = new javax.swing.JLabel();
 
@@ -336,6 +401,431 @@ public class MainUI extends javax.swing.JFrame {
         Nickelodeon_label.setText("NICKELODEON");
         NickelodeonTab.add(Nickelodeon_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 290, 60));
 
+        animationsN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        animationsN_label.setForeground(new java.awt.Color(255, 255, 255));
+        animationsN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        animationsN_label.setText("Animations:");
+        NickelodeonTab.add(animationsN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 120, 40));
+
+        NickelodeonAnimations.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        NickelodeonAnimations.setForeground(new java.awt.Color(255, 255, 255));
+        NickelodeonAnimations.setText("0");
+        NickelodeonTab.add(NickelodeonAnimations, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 40, 40));
+
+        maxAnimationsN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        maxAnimationsN.setForeground(new java.awt.Color(255, 255, 255));
+        maxAnimationsN.setText("/ 55");
+        NickelodeonTab.add(maxAnimationsN, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 40, 40));
+
+        maxScenariosN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        maxScenariosN.setForeground(new java.awt.Color(255, 255, 255));
+        maxScenariosN.setText("/ 20");
+        NickelodeonTab.add(maxScenariosN, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 40, 40));
+
+        scenariosN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        scenariosN_label.setForeground(new java.awt.Color(255, 255, 255));
+        scenariosN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        scenariosN_label.setText("Scenarios:");
+        NickelodeonTab.add(scenariosN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 110, 40));
+
+        NickelodeonScenarios.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        NickelodeonScenarios.setForeground(new java.awt.Color(255, 255, 255));
+        NickelodeonScenarios.setText("0");
+        NickelodeonTab.add(NickelodeonScenarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 40, 40));
+
+        maxScriptsN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        maxScriptsN.setForeground(new java.awt.Color(255, 255, 255));
+        maxScriptsN.setText("/ 25");
+        NickelodeonTab.add(maxScriptsN, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 40, 40));
+
+        NickelodeonScripts.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        NickelodeonScripts.setForeground(new java.awt.Color(255, 255, 255));
+        NickelodeonScripts.setText("0");
+        NickelodeonTab.add(NickelodeonScripts, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 40, 40));
+
+        scriptsN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        scriptsN_label.setForeground(new java.awt.Color(255, 255, 255));
+        scriptsN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        scriptsN_label.setText("Scripts:");
+        NickelodeonTab.add(scriptsN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 70, 40));
+
+        episodePartsNick_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        episodePartsNick_title.setForeground(new java.awt.Color(255, 255, 153));
+        episodePartsNick_title.setText("EPISODE PARTS");
+        NickelodeonTab.add(episodePartsNick_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 200, 40));
+
+        startL.setBackground(new java.awt.Color(255, 255, 153));
+        startL.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        startL.setForeground(new java.awt.Color(51, 51, 51));
+        startL.setText("Start");
+        startL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startLActionPerformed(evt);
+            }
+        });
+        NickelodeonTab.add(startL, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 130, 40));
+
+        dubsN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        dubsN_label.setForeground(new java.awt.Color(255, 255, 255));
+        dubsN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        dubsN_label.setText("Dubbings:");
+        NickelodeonTab.add(dubsN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 110, 40));
+
+        NickelodeonDubbings.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        NickelodeonDubbings.setForeground(new java.awt.Color(255, 255, 255));
+        NickelodeonDubbings.setText("0");
+        NickelodeonTab.add(NickelodeonDubbings, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 40, 40));
+
+        maxDubbingsN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        maxDubbingsN.setForeground(new java.awt.Color(255, 255, 255));
+        maxDubbingsN.setText("/ 35");
+        NickelodeonTab.add(maxDubbingsN, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 40, 40));
+
+        plotTwistsN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        plotTwistsN_label.setForeground(new java.awt.Color(255, 255, 255));
+        plotTwistsN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        plotTwistsN_label.setText("PlotTwists:");
+        NickelodeonTab.add(plotTwistsN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 110, 40));
+
+        NickelodeonPlotTwists.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        NickelodeonPlotTwists.setForeground(new java.awt.Color(255, 255, 255));
+        NickelodeonPlotTwists.setText("0");
+        NickelodeonTab.add(NickelodeonPlotTwists, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 40, 40));
+
+        maxPlotTwistsN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        maxPlotTwistsN.setForeground(new java.awt.Color(255, 255, 255));
+        maxPlotTwistsN.setText("/ 10");
+        NickelodeonTab.add(maxPlotTwistsN, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 40, 40));
+
+        directorNick_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        directorNick_title.setForeground(new java.awt.Color(255, 255, 153));
+        directorNick_title.setText("DIRECTOR");
+        NickelodeonTab.add(directorNick_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 140, 40));
+
+        directorStatusNick_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        directorStatusNick_label.setForeground(new java.awt.Color(255, 255, 255));
+        directorStatusNick_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        directorStatusNick_label.setText("Status:");
+        NickelodeonTab.add(directorStatusNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 100, 40));
+
+        directorStatusNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        directorStatusNick.setForeground(new java.awt.Color(255, 255, 255));
+        directorStatusNick.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        directorStatusNick.setText("Working");
+        NickelodeonTab.add(directorStatusNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 160, 40));
+
+        projectManagerNick_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        projectManagerNick_title.setForeground(new java.awt.Color(255, 255, 153));
+        projectManagerNick_title.setText("PROJECT MANAGER");
+        NickelodeonTab.add(projectManagerNick_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 260, 40));
+
+        managerStatusNickelodeon.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        managerStatusNickelodeon.setForeground(new java.awt.Color(255, 255, 255));
+        managerStatusNickelodeon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        managerStatusNickelodeon.setText("Nothing");
+        NickelodeonTab.add(managerStatusNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 250, 40));
+
+        managerStatusN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        managerStatusN_label.setForeground(new java.awt.Color(255, 255, 255));
+        managerStatusN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        managerStatusN_label.setText("Status:");
+        NickelodeonTab.add(managerStatusN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 100, 40));
+
+        managerFaultsN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        managerFaultsN_label.setForeground(new java.awt.Color(255, 255, 255));
+        managerFaultsN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        managerFaultsN_label.setText("Faults:");
+        NickelodeonTab.add(managerFaultsN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 100, 40));
+
+        faultsQtyNickelodeon.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        faultsQtyNickelodeon.setForeground(new java.awt.Color(255, 255, 255));
+        faultsQtyNickelodeon.setText("0");
+        NickelodeonTab.add(faultsQtyNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 40, 40));
+
+        managerDiscounted_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        managerDiscounted_label.setForeground(new java.awt.Color(255, 255, 255));
+        managerDiscounted_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        managerDiscounted_label.setText("Discounted:");
+        NickelodeonTab.add(managerDiscounted_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 120, 40));
+
+        managerSalaryDiscountNickelodeon.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        managerSalaryDiscountNickelodeon.setForeground(new java.awt.Color(255, 255, 255));
+        managerSalaryDiscountNickelodeon.setText("0");
+        NickelodeonTab.add(managerSalaryDiscountNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 120, 40));
+
+        plotTwistEpisodesN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        plotTwistEpisodesN_label.setForeground(new java.awt.Color(255, 255, 255));
+        plotTwistEpisodesN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        plotTwistEpisodesN_label.setText("With PlotTwists:");
+        NickelodeonTab.add(plotTwistEpisodesN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 170, 40));
+
+        standardEpisodesN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        standardEpisodesN_label.setForeground(new java.awt.Color(255, 255, 255));
+        standardEpisodesN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        standardEpisodesN_label.setText("Standard:");
+        NickelodeonTab.add(standardEpisodesN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 100, 40));
+
+        plotTwistEpisodesNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        plotTwistEpisodesNick.setForeground(new java.awt.Color(255, 255, 255));
+        plotTwistEpisodesNick.setText("0");
+        NickelodeonTab.add(plotTwistEpisodesNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, 40, 40));
+
+        standarEpisodesNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        standarEpisodesNick.setForeground(new java.awt.Color(255, 255, 255));
+        standarEpisodesNick.setText("0");
+        NickelodeonTab.add(standarEpisodesNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 40, 40));
+
+        episodesProducedNick_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        episodesProducedNick_title.setForeground(new java.awt.Color(255, 255, 153));
+        episodesProducedNick_title.setText("EPISODES PRODUCED");
+        NickelodeonTab.add(episodesProducedNick_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 270, 40));
+
+        DayLeftLamborghini1.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        DayLeftLamborghini1.setForeground(new java.awt.Color(255, 255, 153));
+        DayLeftLamborghini1.setText("DAYS LEFT:");
+        NickelodeonTab.add(DayLeftLamborghini1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 150, 40));
+
+        daysLeftLLamborghini.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        daysLeftLLamborghini.setForeground(new java.awt.Color(255, 255, 153));
+        daysLeftLLamborghini.setText("0");
+        NickelodeonTab.add(daysLeftLLamborghini, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, 50, 40));
+
+        earningsNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        earningsNick.setForeground(new java.awt.Color(255, 255, 153));
+        earningsNick.setText("0");
+        NickelodeonTab.add(earningsNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 210, 40));
+
+        earningsNick_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        earningsNick_label.setForeground(new java.awt.Color(255, 255, 153));
+        earningsNick_label.setText("EARNINGS: ");
+        NickelodeonTab.add(earningsNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 150, 40));
+
+        costsNick_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        costsNick_label.setForeground(new java.awt.Color(255, 255, 153));
+        costsNick_label.setText("COSTS:");
+        NickelodeonTab.add(costsNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 100, 40));
+
+        costsNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        costsNick.setForeground(new java.awt.Color(255, 255, 153));
+        costsNick.setText("0");
+        NickelodeonTab.add(costsNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 510, 220, 40));
+
+        utilityNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        utilityNick.setForeground(new java.awt.Color(255, 255, 153));
+        utilityNick.setText("0");
+        NickelodeonTab.add(utilityNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 500, 220, 50));
+
+        utilityNick_label.setEditable(false);
+        utilityNick_label.setBackground(new java.awt.Color(255, 255, 153));
+        utilityNick_label.setForeground(new java.awt.Color(51, 51, 51));
+        utilityNick_label.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        utilityNick_label.setText("TOTAL PROFIT:");
+        utilityNick_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        NickelodeonTab.add(utilityNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, 210, 50));
+
+        scenarioDesignersNickelodeon.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        scenarioDesignersNickelodeon.setForeground(new java.awt.Color(255, 255, 255));
+        scenarioDesignersNickelodeon.setText("0");
+        NickelodeonTab.add(scenarioDesignersNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 120, 40, 40));
+
+        chas13.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        chas13.setForeground(new java.awt.Color(255, 255, 255));
+        chas13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        chas13.setText("Animators:");
+        NickelodeonTab.add(chas13, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, 130, 40));
+
+        chas14.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        chas14.setForeground(new java.awt.Color(255, 255, 255));
+        chas14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        chas14.setText("Voice Actors:");
+        NickelodeonTab.add(chas14, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 130, 40));
+
+        voiceActorsNickelodeon.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        voiceActorsNickelodeon.setForeground(new java.awt.Color(255, 255, 255));
+        voiceActorsNickelodeon.setText("0");
+        NickelodeonTab.add(voiceActorsNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 200, 40, 40));
+
+        chas15.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        chas15.setForeground(new java.awt.Color(255, 255, 255));
+        chas15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        chas15.setText("PlotTwist Writers:");
+        NickelodeonTab.add(chas15, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, 170, 40));
+
+        plotTwistWritersNickelodeon.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        plotTwistWritersNickelodeon.setForeground(new java.awt.Color(255, 255, 255));
+        plotTwistWritersNickelodeon.setText("0");
+        NickelodeonTab.add(plotTwistWritersNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 240, 40, 40));
+
+        screenwritersNickelodeon.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        screenwritersNickelodeon.setForeground(new java.awt.Color(255, 255, 255));
+        screenwritersNickelodeon.setText("0");
+        NickelodeonTab.add(screenwritersNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 80, 40, 40));
+
+        chas16.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        chas16.setForeground(new java.awt.Color(255, 255, 255));
+        chas16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        chas16.setText("Assemblers:");
+        NickelodeonTab.add(chas16, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, 120, 40));
+
+        assemblersNickelodeon.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        assemblersNickelodeon.setForeground(new java.awt.Color(255, 255, 255));
+        assemblersNickelodeon.setText("0");
+        NickelodeonTab.add(assemblersNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 280, 40, 40));
+
+        wm_label5.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        wm_label5.setForeground(new java.awt.Color(255, 255, 153));
+        wm_label5.setText("WORKERS");
+        NickelodeonTab.add(wm_label5, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 140, 40));
+
+        chas17.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        chas17.setForeground(new java.awt.Color(255, 255, 255));
+        chas17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        chas17.setText("Screenwriters:");
+        NickelodeonTab.add(chas17, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 160, 40));
+
+        chas18.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        chas18.setForeground(new java.awt.Color(255, 255, 255));
+        chas18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        chas18.setText("Scenario Designers:");
+        NickelodeonTab.add(chas18, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 190, 40));
+
+        animatorsNickelodeon.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        animatorsNickelodeon.setForeground(new java.awt.Color(255, 255, 255));
+        animatorsNickelodeon.setText("0");
+        NickelodeonTab.add(animatorsNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 160, 40, 40));
+
+        screenwritersPlusNick.setBackground(new java.awt.Color(255, 255, 153));
+        screenwritersPlusNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        screenwritersPlusNick.setForeground(new java.awt.Color(51, 51, 51));
+        screenwritersPlusNick.setText("+");
+        screenwritersPlusNick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                screenwritersPlusNickActionPerformed(evt);
+            }
+        });
+        NickelodeonTab.add(screenwritersPlusNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 90, 50, 20));
+
+        scenarioDesignersPlusNick.setBackground(new java.awt.Color(255, 255, 153));
+        scenarioDesignersPlusNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        scenarioDesignersPlusNick.setForeground(new java.awt.Color(51, 51, 51));
+        scenarioDesignersPlusNick.setText("+");
+        scenarioDesignersPlusNick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scenarioDesignersPlusNickActionPerformed(evt);
+            }
+        });
+        NickelodeonTab.add(scenarioDesignersPlusNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 130, 50, 20));
+
+        animatorsPlusNick.setBackground(new java.awt.Color(255, 255, 153));
+        animatorsPlusNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        animatorsPlusNick.setForeground(new java.awt.Color(51, 51, 51));
+        animatorsPlusNick.setText("+");
+        animatorsPlusNick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                animatorsPlusNickActionPerformed(evt);
+            }
+        });
+        NickelodeonTab.add(animatorsPlusNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 170, 50, 20));
+
+        screenwritersMinNick.setBackground(new java.awt.Color(255, 255, 153));
+        screenwritersMinNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        screenwritersMinNick.setForeground(new java.awt.Color(51, 51, 51));
+        screenwritersMinNick.setText("-");
+        screenwritersMinNick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                screenwritersMinNickActionPerformed(evt);
+            }
+        });
+        NickelodeonTab.add(screenwritersMinNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 90, 50, 20));
+
+        scenarioDesignersMinNick.setBackground(new java.awt.Color(255, 255, 153));
+        scenarioDesignersMinNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        scenarioDesignersMinNick.setForeground(new java.awt.Color(51, 51, 51));
+        scenarioDesignersMinNick.setText("-");
+        scenarioDesignersMinNick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scenarioDesignersMinNickActionPerformed(evt);
+            }
+        });
+        NickelodeonTab.add(scenarioDesignersMinNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 130, 50, 20));
+
+        animatorsMinNick.setBackground(new java.awt.Color(255, 255, 153));
+        animatorsMinNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        animatorsMinNick.setForeground(new java.awt.Color(51, 51, 51));
+        animatorsMinNick.setText("-");
+        animatorsMinNick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                animatorsMinNickActionPerformed(evt);
+            }
+        });
+        NickelodeonTab.add(animatorsMinNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 170, 50, 20));
+
+        voiceActorsPlusNick.setBackground(new java.awt.Color(255, 255, 153));
+        voiceActorsPlusNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        voiceActorsPlusNick.setForeground(new java.awt.Color(51, 51, 51));
+        voiceActorsPlusNick.setText("+");
+        voiceActorsPlusNick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voiceActorsPlusNickActionPerformed(evt);
+            }
+        });
+        NickelodeonTab.add(voiceActorsPlusNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 210, 50, 20));
+
+        voiceActorsMinNick.setBackground(new java.awt.Color(255, 255, 153));
+        voiceActorsMinNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        voiceActorsMinNick.setForeground(new java.awt.Color(51, 51, 51));
+        voiceActorsMinNick.setText("-");
+        voiceActorsMinNick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voiceActorsMinNickActionPerformed(evt);
+            }
+        });
+        NickelodeonTab.add(voiceActorsMinNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 210, 50, 20));
+
+        plotTwistWritersMinNick.setBackground(new java.awt.Color(255, 255, 153));
+        plotTwistWritersMinNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        plotTwistWritersMinNick.setForeground(new java.awt.Color(51, 51, 51));
+        plotTwistWritersMinNick.setText("-");
+        plotTwistWritersMinNick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plotTwistWritersMinNickActionPerformed(evt);
+            }
+        });
+        NickelodeonTab.add(plotTwistWritersMinNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 250, 50, 20));
+
+        plotTwistWritersPlusNick.setBackground(new java.awt.Color(255, 255, 153));
+        plotTwistWritersPlusNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        plotTwistWritersPlusNick.setForeground(new java.awt.Color(51, 51, 51));
+        plotTwistWritersPlusNick.setText("+");
+        plotTwistWritersPlusNick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plotTwistWritersPlusNickActionPerformed(evt);
+            }
+        });
+        NickelodeonTab.add(plotTwistWritersPlusNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 250, 50, 20));
+
+        assemblersMinNick.setBackground(new java.awt.Color(255, 255, 153));
+        assemblersMinNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        assemblersMinNick.setForeground(new java.awt.Color(51, 51, 51));
+        assemblersMinNick.setText("-");
+        assemblersMinNick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assemblersMinNickActionPerformed(evt);
+            }
+        });
+        NickelodeonTab.add(assemblersMinNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 290, 50, 20));
+
+        assemblerPlusNick.setBackground(new java.awt.Color(255, 255, 153));
+        assemblerPlusNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        assemblerPlusNick.setForeground(new java.awt.Color(51, 51, 51));
+        assemblerPlusNick.setText("+");
+        assemblerPlusNick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assemblerPlusNickActionPerformed(evt);
+            }
+        });
+        NickelodeonTab.add(assemblerPlusNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 290, 50, 20));
+
         Tabs.addTab("Nickelodeon", NickelodeonTab);
 
         CartoonNetworkTab.setBackground(new java.awt.Color(51, 51, 51));
@@ -348,7 +838,7 @@ public class MainUI extends javax.swing.JFrame {
 
         Tabs.addTab("Cartoon Network", CartoonNetworkTab);
 
-        getContentPane().add(Tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 560));
+        getContentPane().add(Tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -401,6 +891,58 @@ public class MainUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_setConfigurationActionPerformed
 
+    private void startLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startLActionPerformed
+
+    }//GEN-LAST:event_startLActionPerformed
+
+    private void screenwritersPlusNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_screenwritersPlusNickActionPerformed
+
+    }//GEN-LAST:event_screenwritersPlusNickActionPerformed
+
+    private void scenarioDesignersPlusNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scenarioDesignersPlusNickActionPerformed
+
+    }//GEN-LAST:event_scenarioDesignersPlusNickActionPerformed
+
+    private void animatorsPlusNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_animatorsPlusNickActionPerformed
+
+    }//GEN-LAST:event_animatorsPlusNickActionPerformed
+
+    private void screenwritersMinNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_screenwritersMinNickActionPerformed
+
+    }//GEN-LAST:event_screenwritersMinNickActionPerformed
+
+    private void scenarioDesignersMinNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scenarioDesignersMinNickActionPerformed
+
+    }//GEN-LAST:event_scenarioDesignersMinNickActionPerformed
+
+    private void animatorsMinNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_animatorsMinNickActionPerformed
+
+    }//GEN-LAST:event_animatorsMinNickActionPerformed
+
+    private void voiceActorsPlusNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voiceActorsPlusNickActionPerformed
+
+    }//GEN-LAST:event_voiceActorsPlusNickActionPerformed
+
+    private void voiceActorsMinNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voiceActorsMinNickActionPerformed
+
+    }//GEN-LAST:event_voiceActorsMinNickActionPerformed
+
+    private void plotTwistWritersMinNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plotTwistWritersMinNickActionPerformed
+
+    }//GEN-LAST:event_plotTwistWritersMinNickActionPerformed
+
+    private void plotTwistWritersPlusNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plotTwistWritersPlusNickActionPerformed
+
+    }//GEN-LAST:event_plotTwistWritersPlusNickActionPerformed
+
+    private void assemblersMinNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assemblersMinNickActionPerformed
+
+    }//GEN-LAST:event_assemblersMinNickActionPerformed
+
+    private void assemblerPlusNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assemblerPlusNickActionPerformed
+
+    }//GEN-LAST:event_assemblerPlusNickActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -443,43 +985,108 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JPanel CartoonNetworkTab;
     private javax.swing.JLabel Config_label;
     private javax.swing.JPanel ConfigurationTab;
+    private javax.swing.JLabel DayLeftLamborghini1;
     private javax.swing.JLabel General_label;
     private javax.swing.JLabel NickConfig_label;
     private javax.swing.JLabel NickMaximumWorkers_label;
+    private javax.swing.JLabel NickelodeonAnimations;
+    private javax.swing.JLabel NickelodeonDubbings;
+    private javax.swing.JLabel NickelodeonPlotTwists;
+    private javax.swing.JLabel NickelodeonScenarios;
+    private javax.swing.JLabel NickelodeonScripts;
     private javax.swing.JPanel NickelodeonTab;
     private javax.swing.JLabel Nickelodeon_label;
     private javax.swing.JTabbedPane Tabs;
+    private javax.swing.JLabel animationsN_label;
     private javax.swing.JSpinner animatorsCN;
+    private javax.swing.JButton animatorsMinNick;
     private javax.swing.JSpinner animatorsNick;
+    private javax.swing.JLabel animatorsNickelodeon;
+    private javax.swing.JButton animatorsPlusNick;
     private javax.swing.JLabel animators_label;
     private javax.swing.JLabel animators_label1;
+    private javax.swing.JButton assemblerPlusNick;
     private javax.swing.JSpinner assemblersCN;
+    private javax.swing.JButton assemblersMinNick;
     private javax.swing.JSpinner assemblersNick;
+    private javax.swing.JLabel assemblersNickelodeon;
     private javax.swing.JLabel assemblers_label;
     private javax.swing.JLabel assemblers_label2;
+    private javax.swing.JLabel chas13;
+    private javax.swing.JLabel chas14;
+    private javax.swing.JLabel chas15;
+    private javax.swing.JLabel chas16;
+    private javax.swing.JLabel chas17;
+    private javax.swing.JLabel chas18;
+    private javax.swing.JLabel costsNick;
+    private javax.swing.JLabel costsNick_label;
     private javax.swing.JTextPane dayDurationInput;
     private javax.swing.JLabel dayDuration_label;
+    private javax.swing.JLabel daysLeftLLamborghini;
     private javax.swing.JTextPane deliveryDaysInput;
     private javax.swing.JLabel deliveryDays_label;
+    private javax.swing.JLabel directorNick_title;
+    private javax.swing.JLabel directorStatusNick;
+    private javax.swing.JLabel directorStatusNick_label;
+    private javax.swing.JLabel dubsN_label;
+    private javax.swing.JLabel earningsNick;
+    private javax.swing.JLabel earningsNick_label;
+    private javax.swing.JLabel episodePartsNick_title;
+    private javax.swing.JLabel episodesProducedNick_title;
+    private javax.swing.JLabel faultsQtyNickelodeon;
     private javax.swing.JLabel infoLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel managerDiscounted_label;
+    private javax.swing.JLabel managerFaultsN_label;
+    private javax.swing.JLabel managerSalaryDiscountNickelodeon;
+    private javax.swing.JLabel managerStatusN_label;
+    private javax.swing.JLabel managerStatusNickelodeon;
+    private javax.swing.JLabel maxAnimationsN;
+    private javax.swing.JLabel maxDubbingsN;
+    private javax.swing.JLabel maxPlotTwistsN;
+    private javax.swing.JLabel maxScenariosN;
+    private javax.swing.JLabel maxScriptsN;
+    private javax.swing.JLabel plotTwistEpisodesN_label;
+    private javax.swing.JLabel plotTwistEpisodesNick;
     private javax.swing.JSpinner plotTwistWritersCN;
+    private javax.swing.JButton plotTwistWritersMinNick;
     private javax.swing.JSpinner plotTwistWritersNick;
+    private javax.swing.JLabel plotTwistWritersNickelodeon;
+    private javax.swing.JButton plotTwistWritersPlusNick;
     private javax.swing.JLabel plotTwistWriters_label;
     private javax.swing.JLabel plotTwistWriters_label1;
+    private javax.swing.JLabel plotTwistsN_label;
+    private javax.swing.JLabel projectManagerNick_title;
     private javax.swing.JSpinner scenarioDesignersCN;
+    private javax.swing.JButton scenarioDesignersMinNick;
     private javax.swing.JSpinner scenarioDesignersNick;
+    private javax.swing.JLabel scenarioDesignersNickelodeon;
+    private javax.swing.JButton scenarioDesignersPlusNick;
     private javax.swing.JLabel scenarioDesigners_label;
     private javax.swing.JLabel scenarioDesigners_label1;
+    private javax.swing.JLabel scenariosN_label;
     private javax.swing.JSpinner screenwritersCN;
+    private javax.swing.JButton screenwritersMinNick;
     private javax.swing.JSpinner screenwritersNick;
+    private javax.swing.JLabel screenwritersNickelodeon;
+    private javax.swing.JButton screenwritersPlusNick;
     private javax.swing.JLabel screenwriters_label;
     private javax.swing.JLabel screenwriters_label1;
+    private javax.swing.JLabel scriptsN_label;
     private javax.swing.JButton setConfiguration;
+    private javax.swing.JLabel standarEpisodesNick;
+    private javax.swing.JLabel standardEpisodesN_label;
+    private javax.swing.JButton startL;
+    private javax.swing.JLabel utilityNick;
+    private javax.swing.JFormattedTextField utilityNick_label;
     private javax.swing.JSpinner voiceActorsCN;
+    private javax.swing.JButton voiceActorsMinNick;
     private javax.swing.JSpinner voiceActorsNick;
+    private javax.swing.JLabel voiceActorsNickelodeon;
+    private javax.swing.JButton voiceActorsPlusNick;
     private javax.swing.JLabel voiceActors_label;
     private javax.swing.JLabel voiceActors_label1;
+    private javax.swing.JLabel wm_label5;
     // End of variables declaration//GEN-END:variables
 }
