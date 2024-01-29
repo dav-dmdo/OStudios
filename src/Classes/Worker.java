@@ -16,7 +16,14 @@ public class Worker extends Thread{
     
     @Override
     public void run(){
+        while(true){
+            
+        }
         
     }
+    
+    public void work(){
+        
+    } 
     
 }
