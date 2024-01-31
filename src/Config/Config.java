@@ -6,12 +6,12 @@ package Config;
  */
 public class Config {
 
-    private InitialParameters NickParameters;
-    private InitialParameters CNParameters;
+    private Parameters NickParameters;
+    private Parameters CNParameters;
     private int dayDuration;
     private int deliveryDays;
 
-    public Config(InitialParameters NickParameters, InitialParameters CNParameters, int dayDuration, int deliveryDays) {
+    public Config(Parameters NickParameters, Parameters CNParameters, int dayDuration, int deliveryDays) {
         this.NickParameters = NickParameters;
         this.CNParameters = CNParameters;
         this.dayDuration = dayDuration;
@@ -19,8 +19,8 @@ public class Config {
     }
 
     public Config() {
-        this.NickParameters = new InitialParameters();
-        this.CNParameters = new InitialParameters();
+        this.NickParameters = new Parameters();
+        this.CNParameters = new Parameters();
         this.dayDuration = 1000;
         this.deliveryDays = 30;
     }
@@ -33,34 +33,34 @@ public class Config {
         printParameters(CNParameters);
     }
 
-    private void printParameters(InitialParameters parameters) {
+    private void printParameters(Parameters parameters) {
         if (parameters == null) {
             System.out.println("No parameters set.");
             return;
         }
 
-        System.out.println("Initial Screenwriters: " + parameters.getInitialScreenwriters());
-        System.out.println("Initial Scenario Designers: " + parameters.getInitialScenarioDesigners());
-        System.out.println("Initial Animators: " + parameters.getInitialAnimators());
-        System.out.println("Initial Voice Actors: " + parameters.getInitialVoiceActors());
-        System.out.println("Initial Plot Twist Writers: " + parameters.getInitialPlotTwistWriters());
-        System.out.println("Initial Assemblers: " + parameters.getInitialAssemblers());
+        System.out.println("Initial Screenwriters: " + parameters.getScreenwriters());
+        System.out.println("Initial Scenario Designers: " + parameters.getScenarioDesigners());
+        System.out.println("Initial Animators: " + parameters.getAnimators());
+        System.out.println("Initial Voice Actors: " + parameters.getVoiceActors());
+        System.out.println("Initial Plot Twist Writers: " + parameters.getPlotTwistWriters());
+        System.out.println("Initial Assemblers: " + parameters.getAssemblers());
     }
 
     //Getters and Setters
-    public InitialParameters getNickParameters() {
+    public Parameters getNickParameters() {
         return NickParameters;
     }
 
-    public void setNickParameters(InitialParameters NickParameters) {
+    public void setNickParameters(Parameters NickParameters) {
         this.NickParameters = NickParameters;
     }
 
-    public InitialParameters getCNParameters() {
+    public Parameters getCNParameters() {
         return CNParameters;
     }
 
-    public void setCNParameters(InitialParameters CNParameters) {
+    public void setCNParameters(Parameters CNParameters) {
         this.CNParameters = CNParameters;
     }
 

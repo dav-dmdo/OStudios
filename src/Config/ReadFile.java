@@ -91,21 +91,21 @@ public class ReadFile {
 
         switch (studio) {
             case 0 -> {
-                config.getNickParameters().setInitialScreenwriters(Integer.parseInt(studioParameters[2]));
-                config.getNickParameters().setInitialScenarioDesigners(Integer.parseInt(studioParameters[4]));
-                config.getNickParameters().setInitialAnimators(Integer.parseInt(studioParameters[6]));
-                config.getNickParameters().setInitialVoiceActors(Integer.parseInt(studioParameters[8]));
-                config.getNickParameters().setInitialPlotTwistWriters(Integer.parseInt(studioParameters[10]));
-                config.getNickParameters().setInitialAssemblers(Integer.parseInt(studioParameters[12]));
+                config.getNickParameters().setScreenwriters(Integer.parseInt(studioParameters[2]));
+                config.getNickParameters().setScenarioDesigners(Integer.parseInt(studioParameters[4]));
+                config.getNickParameters().setAnimators(Integer.parseInt(studioParameters[6]));
+                config.getNickParameters().setVoiceActors(Integer.parseInt(studioParameters[8]));
+                config.getNickParameters().setPlotTwistWriters(Integer.parseInt(studioParameters[10]));
+                config.getNickParameters().setAssemblers(Integer.parseInt(studioParameters[12]));
             }
 
             case 1 -> {
-                config.getCNParameters().setInitialScreenwriters(Integer.parseInt(studioParameters[2]));
-                config.getCNParameters().setInitialScenarioDesigners(Integer.parseInt(studioParameters[4]));
-                config.getCNParameters().setInitialAnimators(Integer.parseInt(studioParameters[6]));
-                config.getCNParameters().setInitialVoiceActors(Integer.parseInt(studioParameters[8]));
-                config.getCNParameters().setInitialPlotTwistWriters(Integer.parseInt(studioParameters[10]));
-                config.getCNParameters().setInitialAssemblers(Integer.parseInt(studioParameters[12]));
+                config.getCNParameters().setScreenwriters(Integer.parseInt(studioParameters[2]));
+                config.getCNParameters().setScenarioDesigners(Integer.parseInt(studioParameters[4]));
+                config.getCNParameters().setAnimators(Integer.parseInt(studioParameters[6]));
+                config.getCNParameters().setVoiceActors(Integer.parseInt(studioParameters[8]));
+                config.getCNParameters().setPlotTwistWriters(Integer.parseInt(studioParameters[10]));
+                config.getCNParameters().setAssemblers(Integer.parseInt(studioParameters[12]));
             }
 
             default -> {
