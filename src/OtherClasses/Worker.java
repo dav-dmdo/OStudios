@@ -13,25 +13,30 @@ import java.util.logging.Logger;
  *
  * @author david
  */
-public abstract class Worker extends Thread {
+public class Worker extends Thread {
 
-    private String type;
+    private String typeString;
+    private int typeInt;
     private int salaryPerHour;
     private int productionPerDay;
     private int dayDuration;
     private int productionAccount;
     private int salaryAccount;
     private Semaphore mutex;
+    private Drive drive;
 
-    public Worker(String type, int salaryPerHour, int productionPerDay, int dayDuration, int productionAccount, int salaryAccount, Semaphore mutex) {
-        this.type = type;
+    public Worker(String typeString, int typeInt, int salaryPerHour, int productionPerDay, int dayDuration, int productionAccount, int salaryAccount, Semaphore mutex, Drive drive) {
+        this.typeString = typeString;
+        this.typeInt = typeInt;
         this.salaryPerHour = salaryPerHour;
         this.productionPerDay = productionPerDay;
         this.dayDuration = dayDuration;
-        this.productionAccount = 0;
-        this.salaryAccount = 0;
+        this.productionAccount = productionAccount;
+        this.salaryAccount = salaryAccount;
         this.mutex = mutex;
-    }
+        this.drive = drive;
+    }   
+    
 
     @Override
     public void run() {
@@ -46,28 +51,28 @@ public abstract class Worker extends Thread {
         }
     }
 
-    public abstract void work();
-    
-
-    public void getPaid(){
-        this.salaryAccount += this.salaryPerHour * 24;
+    public void work(){
+        if (this.produce() >= 1){
+            try {
+                this.getMutex().acquire();
+                this.drive.addElement(typeInt);
+                this.getMutex().release();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     };
     
-
-    /**
-     * @return the type
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * @param type the type to set
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
-
+    
+    
+    public void getPaid(){
+        this.setSalaryAccount(this.getSalaryAccount() + this.getSalaryPerHour() * 24);
+    };
+    
+    private int produce(){
+        return this.productionAccount += this.getProductionPerDay();
+    };
+    
     /**
      * @return the salaryPerHour
      */
@@ -150,6 +155,48 @@ public abstract class Worker extends Thread {
      */
     public void setMutex(Semaphore mutex) {
         this.mutex = mutex;
+    }
+
+    /**
+     * @return the typeString
+     */
+    public String getTypeString() {
+        return typeString;
+    }
+
+    /**
+     * @param typeString the typeString to set
+     */
+    public void setTypeString(String typeString) {
+        this.typeString = typeString;
+    }
+
+    /**
+     * @return the typeInt
+     */
+    public int getTypeInt() {
+        return typeInt;
+    }
+
+    /**
+     * @param typeInt the typeInt to set
+     */
+    public void setTypeInt(int typeInt) {
+        this.typeInt = typeInt;
+    }
+
+    /**
+     * @return the drive
+     */
+    public Drive getDrive() {
+        return drive;
+    }
+
+    /**
+     * @param drive the drive to set
+     */
+    public void setDrive(Drive drive) {
+        this.drive = drive;
     }
 
 }
