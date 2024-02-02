@@ -1,6 +1,8 @@
 package Classes;
 
 import Config.Parameters;
+import UserInterface.MainUI;
+
 import java.util.concurrent.Semaphore;
 
 /**
@@ -11,25 +13,31 @@ public class AnimationStudio {
 
     private int plant;
     private int maxWorkersQty;
-    private Parameters studioParams;
     private int dayDurationInMs;
-    private Semaphore mutex;
     private int totalCosts;
-//    private Worker[] workers;
-//    private Director director;
-//    private Drive drive;
+    private Parameters studioParams;
+    private Semaphore mutex;
+    private Worker[] workers;
+    private Drive drive;
+    // private Director director;
+    // private ProjectManager manager;
+    private MainUI userInterface;
 
-    //Constructor with parameters
-    public AnimationStudio(int plant, int maxWorkersQty, Parameters studioParams, int dayDurationInMs) {
+    // Constructor with parameters
+    public AnimationStudio(int plant, int maxWorkersQty, Parameters studioParams, int dayDurationInMs,
+            MainUI userInterface) {
         this.plant = plant;
         this.maxWorkersQty = maxWorkersQty;
         this.studioParams = studioParams;
         this.dayDurationInMs = dayDurationInMs;
         this.mutex = new Semaphore(1);
+        this.drive = new Drive(25, 20, 55, 35, 10, userInterface);
         this.totalCosts = 0;
+        this.userInterface = userInterface;
+        this.workers = new Worker[maxWorkersQty];
     }
 
-    //Getters and Setters
+    // Getters and Setters
     public int getPlant() {
         return plant;
     }

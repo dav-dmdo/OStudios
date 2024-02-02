@@ -1,6 +1,5 @@
 package Classes;
 
-import Classes.Drive;
 import static java.lang.Thread.sleep;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
@@ -15,21 +14,22 @@ public class Worker extends Thread {
     private String typeString;
     private int typeInt;
     private int salaryPerHour;
-    private int productionPerDay;
+    private float productionPerDay;
     private int dayDuration;
-    private int productionAccount;
-    private int salaryAccount;
+    private float productionAccount;
+    private int accumulatedSalary;
     private Semaphore mutex;
     private Drive drive;
 
-    public Worker(String typeString, int typeInt, int salaryPerHour, int productionPerDay, int dayDuration, int productionAccount, int salaryAccount, Semaphore mutex, Drive drive) {
+    public Worker(String typeString, int typeInt, int salaryPerHour, int productionPerDay, int dayDuration,
+            int productionAccount, int salaryAccount, Semaphore mutex, Drive drive) {
         this.typeString = typeString;
         this.typeInt = typeInt;
         this.salaryPerHour = salaryPerHour;
         this.productionPerDay = productionPerDay;
         this.dayDuration = dayDuration;
         this.productionAccount = productionAccount;
-        this.salaryAccount = salaryAccount;
+        this.accumulatedSalary = salaryAccount;
         this.mutex = mutex;
         this.drive = drive;
     }
@@ -48,7 +48,10 @@ public class Worker extends Thread {
     }
 
     public void work() {
-        if (this.produce() >= 1) {
+        produce();
+        getPaid();
+
+        if (getProductionAccount() >= 1) {
             try {
                 getMutex().acquire();
                 getDrive().addElement(typeInt);
@@ -56,15 +59,17 @@ public class Worker extends Thread {
             } catch (InterruptedException ex) {
                 Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+            resetProductionAccount();
         }
     }
 
     public void getPaid() {
-        this.setSalaryAccount(this.getSalaryAccount() + this.getSalaryPerHour() * 24);
+        setAccumulatedSalary(getAccumulatedSalary() + (getSalaryPerHour() * 24));
     }
 
-    private int produce() {
-        return this.productionAccount += this.getProductionPerDay();
+    private void produce() {
+        setProductionAccount(getProductionAccount() + getProductionPerDay());
     }
 
     /**
@@ -84,14 +89,14 @@ public class Worker extends Thread {
     /**
      * @return the productionPerDay
      */
-    public int getProductionPerDay() {
+    public float getProductionPerDay() {
         return productionPerDay;
     }
 
     /**
      * @param productionPerDay the productionPerDay to set
      */
-    public void setProductionPerDay(int productionPerDay) {
+    public void setProductionPerDay(float productionPerDay) {
         this.productionPerDay = productionPerDay;
     }
 
@@ -112,29 +117,33 @@ public class Worker extends Thread {
     /**
      * @return the productionAccount
      */
-    public int getProductionAccount() {
+    public float getProductionAccount() {
         return productionAccount;
     }
 
     /**
      * @param productionAccount the productionAccount to set
      */
-    public void setProductionAccount(int productionAccount) {
+    public void setProductionAccount(float productionAccount) {
         this.productionAccount = productionAccount;
+    }
+
+    public void resetProductionAccount() {
+        setProductionAccount(0);
     }
 
     /**
      * @return the salaryAccount
      */
-    public int getSalaryAccount() {
-        return salaryAccount;
+    public int getAccumulatedSalary() {
+        return accumulatedSalary;
     }
 
     /**
      * @param salaryAccount the salaryAccount to set
      */
-    public void setSalaryAccount(int salaryAccount) {
-        this.salaryAccount = salaryAccount;
+    public void setAccumulatedSalary(int salaryAccount) {
+        this.accumulatedSalary = salaryAccount;
     }
 
     /**

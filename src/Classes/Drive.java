@@ -1,30 +1,26 @@
 package Classes;
 
+import UserInterface.MainUI;
+
 /**
  *
- * @author david
+ * @author David
  */
 public class Drive {
 
-    private int[] chapterElements = {0, 0, 0, 0, 0, 0};
-    private int[] maxChapterElements;
-    private int maxScripts;     //0
-    private int maxScenarios;   //1
-    private int maxAnimations;  //2
-    private int maxVoices;      //3
-    private int maxPlotTwists;  //4
+    private int[] chapterElements;
+    private int[] maxChapterElements; // 4
     private int standardChaptersCounter;
     private int plotTwistChaptersCounter;
+    private MainUI userInterface;
 
-    public Drive(int[] maxChapterElements, int maxScripts, int maxScenarios, int maxAnimations, int maxVoices, int maxPlotTwists) {
-        this.maxChapterElements = new int[]{maxScripts, maxScenarios, maxAnimations, maxVoices, maxPlotTwists};
-        this.maxScripts = maxScripts;
-        this.maxScenarios = maxScenarios;
-        this.maxAnimations = maxAnimations;
-        this.maxVoices = maxVoices;
-        this.maxPlotTwists = maxPlotTwists;
+    public Drive(int maxScripts, int maxScenarios, int maxAnimations, int maxVoices,
+            int maxPlotTwists, MainUI userInterface) {
+        this.chapterElements = new int[] { 0, 0, 0, 0, 0, 0 };
+        this.maxChapterElements = new int[] { maxScripts, maxScenarios, maxAnimations, maxVoices, maxPlotTwists };
         this.standardChaptersCounter = 0;
         this.plotTwistChaptersCounter = 0;
+        this.userInterface = userInterface;
     }
 
     public void addElement(int typeInt) {
@@ -33,16 +29,16 @@ public class Drive {
         }
     }
 
-    private int getAmount(int index) {
+    private int getAmountByWorkerTypeIndex(int index) {
         return this.chapterElements[index];
     }
 
-    private int getMax(int index) {
+    private int getMaxByWorkerTypeIndex(int index) {
         return this.maxChapterElements[index];
     }
 
     private boolean isNotFull(int index) {
-        return this.getAmount(index) < this.getMax(index);
+        return this.getAmountByWorkerTypeIndex(index) < this.getMaxByWorkerTypeIndex(index);
     }
 
     private void increaseChapterElement(int index) {
