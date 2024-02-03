@@ -12,11 +12,17 @@ import javax.swing.JTextPane;
  */
 public class UIFunctions {
 
-    public void setInitialSettings(Config config, JSpinner screenwritersNick, JSpinner scenarioDesignersNick, JSpinner animatorsNick, JSpinner voiceActorsNick, JSpinner plotTwistWritersNick, JSpinner assemblersNick, JSpinner screenwritersCN, JSpinner scenarioDesignersCN, JSpinner animatorsCN, JSpinner voiceActorsCN, JSpinner plotTwistWritersCN, JSpinner assemblersCN, JTextPane dayDurationInput, JTextPane deliveryDaysInput) {
+    public void setInitialSettings(Config config, JSpinner screenwritersNick, JSpinner scenarioDesignersNick,
+            JSpinner animatorsNick, JSpinner voiceActorsNick, JSpinner plotTwistWritersNick, JSpinner assemblersNick,
+            JSpinner screenwritersCN, JSpinner scenarioDesignersCN, JSpinner animatorsCN, JSpinner voiceActorsCN,
+            JSpinner plotTwistWritersCN, JSpinner assemblersCN, JTextPane dayDurationInput,
+            JTextPane deliveryDaysInput) {
 
         loadFile(config);
-        setSpinnersValues(0, config, screenwritersNick, scenarioDesignersNick, animatorsNick, voiceActorsNick, plotTwistWritersNick, assemblersNick);
-        setSpinnersValues(1, config, screenwritersCN, scenarioDesignersCN, animatorsCN, voiceActorsCN, plotTwistWritersCN, assemblersCN);
+        setSpinnersValues(0, config, screenwritersNick, scenarioDesignersNick, animatorsNick, voiceActorsNick,
+                plotTwistWritersNick, assemblersNick);
+        setSpinnersValues(1, config, screenwritersCN, scenarioDesignersCN, animatorsCN, voiceActorsCN,
+                plotTwistWritersCN, assemblersCN);
         setInputValues(dayDurationInput, deliveryDaysInput, config);
     }
 
@@ -38,8 +44,11 @@ public class UIFunctions {
      * printed before in the text file
      *
      */
-    public String generateConfigString(String studioName, String configString, int screenwriters, int scenarioDesigners, int animators, int voiceActors, int plotTwistWriters, int assemblers) {
-        configString += "\n" + studioName + "\nscreenwriters\n" + screenwriters + "\nscenario\n" + scenarioDesigners + "\nanimators\n" + animators + "\nvoice\n" + voiceActors + "\nplottwist\n" + plotTwistWriters + "\nassemblers\n" + assemblers + "\n";
+    public String generateConfigString(String studioName, String configString, int screenwriters, int scenarioDesigners,
+            int animators, int voiceActors, int plotTwistWriters, int assemblers) {
+        configString += "\n" + studioName + "\nscreenwriters\n" + screenwriters + "\nscenario\n" + scenarioDesigners
+                + "\nanimators\n" + animators + "\nvoice\n" + voiceActors + "\nplottwist\n" + plotTwistWriters
+                + "\nassemblers\n" + assemblers + "\n";
 
         return configString;
 
@@ -51,7 +60,8 @@ public class UIFunctions {
 
     }
 
-    public void setSpinnersValues(int studio, Config config, JSpinner screenwriters, JSpinner scenarioDesigners, JSpinner animators, JSpinner voiceActors, JSpinner plotTwistWriters, JSpinner assemblers) {
+    public void setSpinnersValues(int studio, Config config, JSpinner screenwriters, JSpinner scenarioDesigners,
+            JSpinner animators, JSpinner voiceActors, JSpinner plotTwistWriters, JSpinner assemblers) {
 
         switch (studio) {
             case 0 -> {
