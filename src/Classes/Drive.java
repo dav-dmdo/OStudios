@@ -9,28 +9,34 @@ import UserInterface.MainUI;
 public class Drive {
 
     private int[] chapterElements;
-    private int[] maxChapterElements; // 4
+    private int[] maxChapterElements;
     private int standardChaptersCounter;
     private int plotTwistChaptersCounter;
     private MainUI userInterface;
+    private ChapterSpecs specs;
 
     public Drive(int maxScripts, int maxScenarios, int maxAnimations, int maxVoices,
-            int maxPlotTwists, MainUI userInterface) {
-        this.chapterElements = new int[] { 0, 0, 0, 0, 0, 0 };
-        this.maxChapterElements = new int[] { maxScripts, maxScenarios, maxAnimations, maxVoices, maxPlotTwists };
+            int maxPlotTwists, ChapterSpecs specs, MainUI userInterface) {
+        this.chapterElements = new int[]{0, 0, 0, 0, 0};
+        this.maxChapterElements = new int[]{maxScripts, maxScenarios, maxAnimations, maxVoices, maxPlotTwists};
         this.standardChaptersCounter = 0;
         this.plotTwistChaptersCounter = 0;
         this.userInterface = userInterface;
+        this.specs= specs;
     }
 
     public void addElement(int typeInt) {
-        if (this.isNotFull(typeInt)) {
+        if (typeInt == 5) {
+            
+        } else if (this.isNotFull(typeInt)) {
             this.increaseChapterElement(typeInt);
         }
     }
+    
+    
 
     private int getAmountByWorkerTypeIndex(int index) {
-        return this.chapterElements[index];
+        return this.getChapterElements()[index];
     }
 
     private int getMaxByWorkerTypeIndex(int index) {
@@ -42,7 +48,21 @@ public class Drive {
     }
 
     private void increaseChapterElement(int index) {
-        this.chapterElements[index]++;
+        this.getChapterElements()[index]++;
+    }
+
+    /**
+     * @return the chapterElements
+     */
+    public int[] getChapterElements() {
+        return chapterElements;
+    }
+
+    /**
+     * @param chapterElements the chapterElements to set
+     */
+    public void setChapterElements(int[] chapterElements) {
+        this.chapterElements = chapterElements;
     }
 
 }
