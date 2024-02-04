@@ -1,5 +1,6 @@
 package Config;
 
+import Classes.ChapterSpecs;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -97,6 +98,10 @@ public class ReadFile {
                 config.getNickParameters().setVoiceActors(Integer.parseInt(studioParameters[8]));
                 config.getNickParameters().setPlotTwistWriters(Integer.parseInt(studioParameters[10]));
                 config.getNickParameters().setAssemblers(Integer.parseInt(studioParameters[12]));
+
+                ChapterSpecs NickelodeonSpecs = new ChapterSpecs(0);
+
+                config.getNickParameters().setChapterSpecs(NickelodeonSpecs);
             }
 
             case 1 -> {
@@ -106,6 +111,10 @@ public class ReadFile {
                 config.getCNParameters().setVoiceActors(Integer.parseInt(studioParameters[8]));
                 config.getCNParameters().setPlotTwistWriters(Integer.parseInt(studioParameters[10]));
                 config.getCNParameters().setAssemblers(Integer.parseInt(studioParameters[12]));
+
+                ChapterSpecs CartoonNetworkSpecs = new ChapterSpecs(1);
+
+                config.getCNParameters().setChapterSpecs(CartoonNetworkSpecs);
             }
 
             default -> {
