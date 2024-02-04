@@ -1,5 +1,7 @@
 package Config;
 
+import Classes.ChapterSpecs;
+
 /**
  *
  * @author Rolando
@@ -12,6 +14,7 @@ public class Parameters {
     private int voiceActors;
     private int plotTwistWriters;
     private int assemblers;
+    private ChapterSpecs chapterSpecs;
 
     //Constructor without parameters
     public Parameters() {
@@ -24,13 +27,14 @@ public class Parameters {
     }
 
     //Constructor with parameters
-    public Parameters(int screenwriters, int scenarioDesigners, int animators, int voiceActors, int plotTwistWriters, int assemblers) {
+    public Parameters(int screenwriters, int scenarioDesigners, int animators, int voiceActors, int plotTwistWriters, int assemblers, ChapterSpecs specs) {
         this.screenwriters = screenwriters;
         this.scenarioDesigners = scenarioDesigners;
         this.animators = animators;
         this.voiceActors = voiceActors;
         this.plotTwistWriters = plotTwistWriters;
         this.assemblers = assemblers;
+        this.chapterSpecs = specs;
     }
 
     //Getters and Setters
@@ -80,6 +84,14 @@ public class Parameters {
 
     public void setAssemblers(int assemblers) {
         this.assemblers = assemblers;
+    }
+
+    public ChapterSpecs getChapterSpecs() {
+        return chapterSpecs;
+    }
+
+    public void setChapterSpecs(ChapterSpecs specs) {
+        this.chapterSpecs = specs;
     }
 
 }

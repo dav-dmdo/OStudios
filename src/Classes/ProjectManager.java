@@ -61,6 +61,10 @@ public class ProjectManager extends Thread {
         }
     }
 
+    public void resetDaysLeft() {
+        setDaysLeft(getDefaultDeliveryDays());
+    }
+
     public void switchToChangingDaysLeft() throws InterruptedException {
         String changingDaysLeftStatus = "Changing days";
         getUserInterface().changeDaysLeftCounter(getStudio(), changingDaysLeftStatus);

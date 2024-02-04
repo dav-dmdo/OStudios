@@ -11,7 +11,8 @@ import java.util.logging.Logger;
 public class Worker extends Thread {
 
     private String typeString;
-    private int typeInt;
+    private int typeInt; // Screenwriter = 0, Scenario Designer = 1, Animator = 2, Voice Actor = 3, Plot
+                         // Twist Writer = 4, Assembler = 5;
     private int salaryPerHour;
     private float productionPerDay;
     private int dayDuration;
@@ -19,7 +20,7 @@ public class Worker extends Thread {
     private int accumulatedSalary;
     private Semaphore mutex;
     private Drive drive;
-    private int studio;  // Nickelodeon = 0, Cartoon Network = 1
+    private int studio; // Nickelodeon = 0, Cartoon Network = 1
 
     public Worker(String typeString, int typeInt, int salaryPerHour, int productionPerDay, int dayDuration,
             int productionAccount, int salaryAccount, Semaphore mutex, Drive drive) {
