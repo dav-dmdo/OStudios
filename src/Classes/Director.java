@@ -58,44 +58,30 @@ public class Director extends Thread {
                     // TODO - Code when the manager has to restart days and sell chapters
                 } else {
                     Random random = new Random();
+
+                    // Random hour to make the manager status checking
+                    int randomHour = random.nextInt(24);
+                    // Number of hours passed throughout a day
+                    int hoursPassed = 0;
+                    String workingStatus = "Working";
+
+                    setTrapped(false);
                     setAccumulatedTime(0);
 
-                    int randomHour = random.nextInt(24);
-                    int hoursPassed = 0;
-                    setTrapped(false);
-
+                    // Loop that executes each hour of a day
                     while (getAccumulatedTime() < getDayDurationInMs()) {
                         hoursPassed++;
 
-                        switch (studioInt) {
-                            case 0:
-                                if (hoursPassed == randomHour) {
-                                    int accumulatedTimeForWatchingInterval = 0;
-                                    while (!trapped
-                                            || (accumulatedTimeForWatchingInterval < (getThirtyFiveMinutesTimeLapse()))) {
-                                        String directorWatchingStatus = "Watching Manager";
-                                        getUserInterface().changeDirectorStatusText(getStudioInt(),
-                                                directorWatchingStatus);
+                        // Conditional for when the hour of the day matches with the random hour to
+                        // begin the manager status checking
+                        if (hoursPassed == randomHour) {
+                            int accumulatedTimeForWatchingInterval = 0;
+                            checkManagerStatus(accumulatedTimeForWatchingInterval);
 
-                                        if (getManager().isIdle()) {
-                                            addManagerFault();
-                                            getUserInterface().changeManagerFaultsQtyText(getStudioInt(),
-                                                    Integer.toString(getManagerFaultsQty()));
-                                            getUserInterface().changeManagerDiscountedText(getStudioInt(),
-                                                    "$" + Integer.toString(getDiscountedSalary()));
-                                        }
-
-                                        accumulatedTimeForWatchingInterval += getOneMinuteTimeLapse();
-                                    }
-
-                                }
-                                break;
-                            case 1:
-
-                                break;
-                            default:
-                                break;
+                        } else {
+                            sleep((long) getOneHourTimeLapse());
                         }
+                        getUserInterface().changeDirectorStatusText(getStudioInt(), workingStatus);
                     }
 
                 }
@@ -106,10 +92,58 @@ public class Director extends Thread {
 
     }
 
+    /**
+     * Checks the status of the manager, if he's watching anime puts him a fault
+     * 
+     * @param accumulatedTimeForWatchingInterval - Time that has passed since
+     *                                           entered in the 35-minute watching
+     *                                           manager interval
+     * @throws InterruptedException
+     */
+    public void checkManagerStatus(int accumulatedTimeForWatchingInterval) throws InterruptedException {
+
+        // Loop that executes if the Manager hasn't been trapped or when the Time passed
+        // since the beginning of the interval is less than 35 minutes
+        while (!isTrapped()
+                && (accumulatedTimeForWatchingInterval < (getThirtyFiveMinutesTimeLapse()))) {
+            String directorWatchingStatus = "Watching Manager";
+            getUserInterface().changeDirectorStatusText(getStudioInt(),
+                    directorWatchingStatus);
+
+            // Conditional for when the Manager is watching anime
+            if (getManager().isIdle()) {
+                addManagerFault();
+                updateManagerFaultsUI();
+            }
+
+            // Sums one minute to the Time passed since the beginning of the interval
+            // because it checks the Manager every minute in the interval
+            accumulatedTimeForWatchingInterval += getOneMinuteTimeLapse();
+            setAccumulatedTime(getAccumulatedTime() + getOneMinuteTimeLapse());
+            sleep((long) getOneMinuteTimeLapse());
+        }
+
+        // 25 minutes left of the hour after the 35-minute checking interval
+        sleep((long) (getOneHourTimeLapse() - getThirtyFiveMinutesTimeLapse()));
+        setAccumulatedTime(getAccumulatedTime()
+                + (getOneHourTimeLapse() - getThirtyFiveMinutesTimeLapse()));
+    }
+
+    /**
+     * Adds a fault to the manager and sums to the Discounted Salary
+     */
     public void addManagerFault() {
         setManagerFaultsQty(getManagerFaultsQty() + 1);
         setDiscountedSalary(getDiscountedSalary() + getFaultDiscount());
         setTrapped(true);
+    }
+
+    public void updateManagerFaultsUI() {
+        getUserInterface().changeManagerFaultsQtyText(getStudioInt(),
+                Integer.toString(getManagerFaultsQty()));
+
+        getUserInterface().changeManagerDiscountedText(getStudioInt(),
+                "$" + Integer.toString(getDiscountedSalary()));
     }
 
     public void getPaid() {

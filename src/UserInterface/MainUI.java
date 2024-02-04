@@ -1558,10 +1558,6 @@ public class MainUI extends javax.swing.JFrame {
 
     }// GEN-LAST:event_setConfigurationActionPerformed
 
-    private void startLActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_startLActionPerformed
-
-    }// GEN-LAST:event_startLActionPerformed
-
     private void screenwritersPlusNickActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_screenwritersPlusNickActionPerformed
 
     }// GEN-LAST:event_screenwritersPlusNickActionPerformed
