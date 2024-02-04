@@ -27,13 +27,11 @@ public class Drive {
 
     public void addElement(int typeInt) {
         if (typeInt == 5) {
-            
+            z
         } else if (this.isNotFull(typeInt)) {
             this.increaseChapterElement(typeInt);
         }
-    }
-    
-    
+    }    
 
     private int getAmountByWorkerTypeIndex(int index) {
         return this.getChapterElements()[index];

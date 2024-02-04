@@ -24,7 +24,7 @@ public class AnimationStudio {
     // private Director director;
     // private ProjectManager manager;
     private MainUI userInterface;
-
+    
     // Constructor with parameters
     public AnimationStudio(int studioInt, String studioString, int maxWorkersQty, Parameters studioParams, int dayDurationInMs,
             MainUI userInterface, ChapterSpecs specs) {
