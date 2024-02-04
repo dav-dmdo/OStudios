@@ -19,6 +19,7 @@ public class Worker extends Thread {
     private int accumulatedSalary;
     private Semaphore mutex;
     private Drive drive;
+    private int studio;  // Nickelodeon = 0, Cartoon Network = 1
 
     public Worker(String typeString, int typeInt, int salaryPerHour, int productionPerDay, int dayDuration,
             int productionAccount, int salaryAccount, Semaphore mutex, Drive drive) {

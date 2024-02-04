@@ -11,7 +11,8 @@ import java.util.concurrent.Semaphore;
  */
 public class AnimationStudio {
 
-    private int plant;
+    private int studioInt;
+    private String studioString;
     private int maxWorkersQty;
     private int dayDurationInMs;
     private int totalCosts;
@@ -19,31 +20,33 @@ public class AnimationStudio {
     private Semaphore mutex;
     private Worker[] workers;
     private Drive drive;
+    private ChapterSpecs specs;
     // private Director director;
     // private ProjectManager manager;
     private MainUI userInterface;
 
     // Constructor with parameters
-    public AnimationStudio(int plant, int maxWorkersQty, Parameters studioParams, int dayDurationInMs,
-            MainUI userInterface) {
-        this.plant = plant;
+    public AnimationStudio(int studioInt, String studioString, int maxWorkersQty, Parameters studioParams, int dayDurationInMs,
+            MainUI userInterface, ChapterSpecs specs) {
+        this.studioInt = studioInt;
+        this.studioString = studioString;
         this.maxWorkersQty = maxWorkersQty;
         this.studioParams = studioParams;
         this.dayDurationInMs = dayDurationInMs;
         this.mutex = new Semaphore(1);
-        this.drive = new Drive(25, 20, 55, 35, 10, userInterface);
+        this.drive = new Drive(25, 20, 55, 35, 10, specs, userInterface);
         this.totalCosts = 0;
         this.userInterface = userInterface;
         this.workers = new Worker[maxWorkersQty];
     }
 
     // Getters and Setters
-    public int getPlant() {
-        return plant;
+    public int getStudioInt() {
+        return studioInt;
     }
 
-    public void setPlant(int plant) {
-        this.plant = plant;
+    public void setStudioInt(int studioInt) {
+        this.studioInt = studioInt;
     }
 
     public int getMaxWorkersQty() {
