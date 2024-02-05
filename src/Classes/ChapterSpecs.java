@@ -10,11 +10,11 @@ package Classes;
  */
 public class ChapterSpecs {
 
-    public int[] plotTwistChaptersSpecs;
-    public int plotTwistChaptersPrice;
-    public int[] standardChaptersSpecs;
-    public int standardChaptersPrice;
-    public int policyForPlotTwist;
+    private int[] plotTwistChaptersSpecs;
+    private int plotTwistChaptersPrice;
+    private int[] standardChaptersSpecs;
+    private int standardChaptersPrice;
+    private int policyForPlotTwist;
 
     public ChapterSpecs(int[] plotTwistChaptersSpecs, int plotTwistChaptersPrice, int[] standardChaptersSpecs, int standardChaptersPrice, int policyForPlotTwist) {
         this.plotTwistChaptersSpecs = plotTwistChaptersSpecs;
@@ -38,20 +38,91 @@ public class ChapterSpecs {
     }
 
     public boolean checkStandardChapterSpecs(int[] chapterElements) {
-        return this.checkChapterSpecs(chapterElements, this.standardChaptersSpecs);
+        return this.checkChapterSpecs(chapterElements, this.getStandardChaptersSpecs());
     }
 
     public boolean checkPlotTwistChapterSpecs(int[] chapterElements) {
-        return this.checkChapterSpecs(chapterElements, this.plotTwistChaptersSpecs);
-    } 
+        return this.checkChapterSpecs(chapterElements, this.getPlotTwistChaptersSpecs());
+    }
 
     private void setChapterSpecs(int studioInt) {
         boolean isNick = (studioInt == 0);
-        
-        this.plotTwistChaptersSpecs = (isNick) ? new int[]{2, 1, 4, 4, 2} : new int[]{1, 2, 6, 5, 1};
-        this.plotTwistChaptersPrice = (isNick) ? 500000 : 650000;
-        this.standardChaptersSpecs = (isNick) ? new int[]{2, 1, 4, 4, 0} : new int[]{1, 2, 6, 5, 0};
-        this.standardChaptersPrice = (isNick) ? 450000 : 300000;
-        this.policyForPlotTwist = (isNick) ? 5 : 3;
+
+        this.setPlotTwistChaptersSpecs((isNick) ? new int[]{2, 1, 4, 4, 2} : new int[]{1, 2, 6, 5, 1});
+        this.setPlotTwistChaptersPrice((isNick) ? 500000 : 650000);
+        this.setStandardChaptersSpecs((isNick) ? new int[]{2, 1, 4, 4, 0} : new int[]{1, 2, 6, 5, 0});
+        this.setStandardChaptersPrice((isNick) ? 450000 : 300000);
+        this.setPolicyForPlotTwist((isNick) ? 5 : 3);
     }
+
+    /**
+     * @return the plotTwistChaptersSpecs
+     */
+    public int[] getPlotTwistChaptersSpecs() {
+        return plotTwistChaptersSpecs;
+    }
+
+    /**
+     * @param plotTwistChaptersSpecs the plotTwistChaptersSpecs to set
+     */
+    public void setPlotTwistChaptersSpecs(int[] plotTwistChaptersSpecs) {
+        this.plotTwistChaptersSpecs = plotTwistChaptersSpecs;
+    }
+
+    /**
+     * @return the plotTwistChaptersPrice
+     */
+    public int getPlotTwistChaptersPrice() {
+        return plotTwistChaptersPrice;
+    }
+
+    /**
+     * @param plotTwistChaptersPrice the plotTwistChaptersPrice to set
+     */
+    public void setPlotTwistChaptersPrice(int plotTwistChaptersPrice) {
+        this.plotTwistChaptersPrice = plotTwistChaptersPrice;
+    }
+
+    /**
+     * @return the standardChaptersSpecs
+     */
+    public int[] getStandardChaptersSpecs() {
+        return standardChaptersSpecs;
+    }
+
+    /**
+     * @param standardChaptersSpecs the standardChaptersSpecs to set
+     */
+    public void setStandardChaptersSpecs(int[] standardChaptersSpecs) {
+        this.standardChaptersSpecs = standardChaptersSpecs;
+    }
+
+    /**
+     * @return the standardChaptersPrice
+     */
+    public int getStandardChaptersPrice() {
+        return standardChaptersPrice;
+    }
+
+    /**
+     * @param standardChaptersPrice the standardChaptersPrice to set
+     */
+    public void setStandardChaptersPrice(int standardChaptersPrice) {
+        this.standardChaptersPrice = standardChaptersPrice;
+    }
+
+    /**
+     * @return the policyForPlotTwist
+     */
+    public int getPolicyForPlotTwist() {
+        return policyForPlotTwist;
+    }
+
+    /**
+     * @param policyForPlotTwist the policyForPlotTwist to set
+     */
+    public void setPolicyForPlotTwist(int policyForPlotTwist) {
+        this.policyForPlotTwist = policyForPlotTwist;
+    }
+
 }

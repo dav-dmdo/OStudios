@@ -40,8 +40,8 @@ public class Worker extends Thread {
     public void run() {
         while (true) {
             try {
-                if (typeInt == 5) {
-                    assemble();
+                if (getTypeInt() == 5) {
+                    assemble2();
                 } else {
                     work();
                 }
@@ -60,7 +60,7 @@ public class Worker extends Thread {
         if (getProductionAccount() >= 1) {
             try {
                 getMutex().acquire();
-                getDrive().addElement(typeInt, (int) getProductionAccount());
+                getDrive().addElement(getTypeInt(), (int) getProductionAccount());
                 getMutex().release();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
@@ -87,7 +87,7 @@ public class Worker extends Thread {
             if (getProductionAccount() >= 1) {
                 try {
                     getMutex().acquire();
-                    getDrive().addElement(typeInt);
+                    getDrive().addElement(getTypeInt());
                     getMutex().release();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
@@ -104,7 +104,7 @@ public class Worker extends Thread {
         int typeOfChapterToAssemble = -1;
         getPaid();
 
-        if (this.chapterTypeOnTheGo == -1) {
+        if (this.getChapterTypeOnTheGo() == -1) {
             try {
                 getMutex().acquire();
                 typeOfChapterToAssemble = getDrive().decideWhichChapterToAssemble();
@@ -118,21 +118,21 @@ public class Worker extends Thread {
 
         }
 
-        this.chapterTypeOnTheGo = typeOfChapterToAssemble;
+        this.setChapterTypeOnTheGo(typeOfChapterToAssemble);
 
-        if (this.chapterTypeOnTheGo != -1) {
+        if (this.getChapterTypeOnTheGo() != -1) {
             produce();
             if (getProductionAccount() >= 1) {
                 try {
                     getMutex().acquire();
-                    getDrive().addChapterByType(this.chapterTypeOnTheGo);
+                    getDrive().addChapterByType(this.getChapterTypeOnTheGo());
                     getMutex().release();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 resetProductionAccount();
-                this.chapterTypeOnTheGo = -1;
+                this.setChapterTypeOnTheGo(-1);
             }
 
         }
@@ -275,6 +275,34 @@ public class Worker extends Thread {
      */
     public void setDrive(Drive drive) {
         this.drive = drive;
+    }
+
+    /**
+     * @return the studio
+     */
+    public int getStudio() {
+        return studio;
+    }
+
+    /**
+     * @param studio the studio to set
+     */
+    public void setStudio(int studio) {
+        this.studio = studio;
+    }
+
+    /**
+     * @return the chapterTypeOnTheGo
+     */
+    public int getChapterTypeOnTheGo() {
+        return chapterTypeOnTheGo;
+    }
+
+    /**
+     * @param chapterTypeOnTheGo the chapterTypeOnTheGo to set
+     */
+    public void setChapterTypeOnTheGo(int chapterTypeOnTheGo) {
+        this.chapterTypeOnTheGo = chapterTypeOnTheGo;
     }
 
 }

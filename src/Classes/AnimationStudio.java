@@ -25,7 +25,7 @@ public class AnimationStudio {
     // private Director director;
     // private ProjectManager manager;
     private MainUI userInterface;
-    
+
     // Constructor with parameters
     public AnimationStudio(int studioInt, String studioString, int maxWorkersQty, Parameters studioParams,
             int dayDurationInMs,
@@ -36,7 +36,7 @@ public class AnimationStudio {
         this.studioParams = studioParams;
         this.dayDurationInMs = dayDurationInMs;
         this.mutex = new Semaphore(1);
-        this.drive = new Drive(studioInt, 25, 20, 55, 35, 10, chapterSpecs, userInterface);
+        this.drive = new Drive(studioInt, 25, 20, 55, 35, 10, studioParams.getChapterSpecs(), userInterface);
         this.userInterface = userInterface;
         this.workers = new Worker[maxWorkersQty];
         this.totalCosts = 0;
