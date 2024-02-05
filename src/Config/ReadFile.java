@@ -18,7 +18,7 @@ public class ReadFile {
      * Overwrite the text file inside the project
      *
      * @param txt (String containing the information of the read text file)
-     * read)
+     *            read)
      */
     public void printTxt(String txt) {
         try {
@@ -68,7 +68,8 @@ public class ReadFile {
 
                 while ((line = br.readLine()) != null) {
                     if (!line.isEmpty()) {
-                        if (line.contains("General") || line.contains("Nickelodeon") || line.contains("CartoonNetwork")) {
+                        if (line.contains("General") || line.contains("Nickelodeon")
+                                || line.contains("CartoonNetwork")) {
                             txt += "~\n";
 
                         } else {
@@ -92,36 +93,31 @@ public class ReadFile {
 
         switch (studio) {
             case 0 -> {
-                config.getNickParameters().setScreenwriters(Integer.parseInt(studioParameters[2]));
-                config.getNickParameters().setScenarioDesigners(Integer.parseInt(studioParameters[4]));
-                config.getNickParameters().setAnimators(Integer.parseInt(studioParameters[6]));
-                config.getNickParameters().setVoiceActors(Integer.parseInt(studioParameters[8]));
-                config.getNickParameters().setPlotTwistWriters(Integer.parseInt(studioParameters[10]));
-                config.getNickParameters().setAssemblers(Integer.parseInt(studioParameters[12]));
-
                 ChapterSpecs NickelodeonSpecs = new ChapterSpecs(0);
 
-                config.getNickParameters().setChapterSpecs(NickelodeonSpecs);
+                Parameters nickParameters = new Parameters(Integer.parseInt(studioParameters[2]),
+                        Integer.parseInt(studioParameters[4]), Integer.parseInt(studioParameters[6]),
+                        Integer.parseInt(studioParameters[8]), Integer.parseInt(studioParameters[10]),
+                        Integer.parseInt(studioParameters[12]), NickelodeonSpecs);
+
+                config.setNickParameters(nickParameters);
             }
 
             case 1 -> {
-                config.getCNParameters().setScreenwriters(Integer.parseInt(studioParameters[2]));
-                config.getCNParameters().setScenarioDesigners(Integer.parseInt(studioParameters[4]));
-                config.getCNParameters().setAnimators(Integer.parseInt(studioParameters[6]));
-                config.getCNParameters().setVoiceActors(Integer.parseInt(studioParameters[8]));
-                config.getCNParameters().setPlotTwistWriters(Integer.parseInt(studioParameters[10]));
-                config.getCNParameters().setAssemblers(Integer.parseInt(studioParameters[12]));
-
                 ChapterSpecs CartoonNetworkSpecs = new ChapterSpecs(1);
 
-                config.getCNParameters().setChapterSpecs(CartoonNetworkSpecs);
+                Parameters cartoonNetworkParameters = new Parameters(Integer.parseInt(studioParameters[2]),
+                        Integer.parseInt(studioParameters[4]), Integer.parseInt(studioParameters[6]),
+                        Integer.parseInt(studioParameters[8]), Integer.parseInt(studioParameters[10]),
+                        Integer.parseInt(studioParameters[12]), CartoonNetworkSpecs);
+
+                config.setCNParameters(cartoonNetworkParameters);
+
             }
 
             default -> {
             }
-
         }
-
     }
 
     public void readConfig(String txt, Config config) {
@@ -129,15 +125,15 @@ public class ReadFile {
         String[] configs = txt.split("~");
         String[] general = configs[1].split("\n");
 
-        //General config
+        // General config
         config.setDayDuration(Integer.parseInt(general[2]));
         config.setDeliveryDays(Integer.parseInt(general[4]));
 
-        //Nickelodeon config
+        // Nickelodeon config
         String[] nickParameters = configs[2].split("\n");
         setStudioConfig(nickParameters, config, 0);
 
-        //Cartoon Network config
+        // Cartoon Network config
         String[] cnParameters = configs[3].split("\n");
         setStudioConfig(cnParameters, config, 1);
 

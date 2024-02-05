@@ -11,13 +11,6 @@ public class Config {
     private int dayDuration;
     private int deliveryDays;
 
-    public Config(Parameters NickParameters, Parameters CNParameters, int dayDuration, int deliveryDays) {
-        this.NickParameters = NickParameters;
-        this.CNParameters = CNParameters;
-        this.dayDuration = dayDuration;
-        this.deliveryDays = deliveryDays;
-    }
-
     public Config() {
         this.NickParameters = new Parameters();
         this.CNParameters = new Parameters();
@@ -47,7 +40,7 @@ public class Config {
         System.out.println("Initial Assemblers: " + parameters.getAssemblers());
     }
 
-    //Getters and Setters
+    // Getters and Setters
     public Parameters getNickParameters() {
         return NickParameters;
     }

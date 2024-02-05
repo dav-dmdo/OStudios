@@ -21,9 +21,8 @@ public class AnimationStudio {
     private Worker[] workers;
     private int totalCosts;
     private Drive drive;
-    private ChapterSpecs chapterSpecs;
-    // private Director director;
-    // private ProjectManager manager;
+    private Director director;
+    private ProjectManager manager;
     private MainUI userInterface;
 
     // Constructor with parameters
@@ -36,13 +35,16 @@ public class AnimationStudio {
         this.studioParams = studioParams;
         this.dayDurationInMs = dayDurationInMs;
         this.mutex = new Semaphore(1);
-        this.drive = new Drive(studioInt, 25, 20, 55, 35, 10, chapterSpecs, userInterface);
+        this.drive = new Drive(studioInt, 25, 20, 55, 35, 10, studioParams.getChapterSpecs(), userInterface);
         this.userInterface = userInterface;
         this.workers = new Worker[maxWorkersQty];
         this.totalCosts = 0;
-        this.chapterSpecs = studioParams.getChapterSpecs();
         this.deliveryDays = deliveryDays;
 
+    }
+
+    public void start() {
+        // TODO - Initialize workers
     }
 
     // Getters and Setters
@@ -118,14 +120,6 @@ public class AnimationStudio {
         this.drive = drive;
     }
 
-    public ChapterSpecs getSpecs() {
-        return chapterSpecs;
-    }
-
-    public void setSpecs(ChapterSpecs specs) {
-        this.chapterSpecs = specs;
-    }
-
     public MainUI getUserInterface() {
         return userInterface;
     }
@@ -142,4 +136,19 @@ public class AnimationStudio {
         this.deliveryDays = deliveryDays;
     }
 
+    public Director getDirector() {
+        return director;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    public ProjectManager getManager() {
+        return manager;
+    }
+
+    public void setManager(ProjectManager manager) {
+        this.manager = manager;
+    }
 }
