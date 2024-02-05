@@ -166,6 +166,22 @@ public class MainUI extends javax.swing.JFrame {
         this.functions = functions;
     }
 
+    public AnimationStudio getNickelodeon() {
+        return Nickelodeon;
+    }
+
+    public void setNickelodeon(AnimationStudio Nickelodeon) {
+        this.Nickelodeon = Nickelodeon;
+    }
+
+    public AnimationStudio getCartoonNetwork() {
+        return CartoonNetwork;
+    }
+
+    public void setCartoonNetwork(AnimationStudio CartoonNetwork) {
+        this.CartoonNetwork = CartoonNetwork;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1501,7 +1517,8 @@ public class MainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startSimulationActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_startSimulationActionPerformed
-
+        getNickelodeon().start();
+        getCartoonNetwork().start();
     }// GEN-LAST:event_startSimulationActionPerformed
 
     private void setConfigurationActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_setConfigurationActionPerformed

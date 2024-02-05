@@ -67,10 +67,12 @@ public class ProjectManager extends Thread {
 
     public void switchToChangingDaysLeft() throws InterruptedException {
         String changingDaysLeftStatus = "Changing days";
-        getUserInterface().changeDaysLeftCounter(getStudio(), changingDaysLeftStatus);
+        getUserInterface().changeManagerTextStatus(getStudio(), changingDaysLeftStatus);
 
         setAccumulatedTime(0);
+
         sleep((long) getEightHoursTimeLapse());
+        getUserInterface().changeDaysLeftCounter(getStudio(), Integer.toString(getDaysLeft()));
     }
 
     public void switchBetweenIdleAndWorking() throws InterruptedException {

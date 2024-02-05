@@ -61,6 +61,7 @@ public class Director extends Thread {
 
                     // Random hour to make the manager status checking
                     int randomHour = random.nextInt(24);
+                    // System.out.println(randomHour + ", Studio: " + getStudioInt());
                     // Number of hours passed throughout a day
                     int hoursPassed = 0;
                     String workingStatus = "Working";
@@ -69,21 +70,20 @@ public class Director extends Thread {
                     setAccumulatedTime(0);
 
                     // Loop that executes each hour of a day
-                    while (getAccumulatedTime() < getDayDurationInMs()) {
+                    while (hoursPassed < 24) {
                         hoursPassed++;
-
+                        // System.out.println(hoursPassed + ", Studio: " + getStudioInt());
                         // Conditional for when the hour of the day matches with the random hour to
                         // begin the manager status checking
                         if (hoursPassed == randomHour) {
                             int accumulatedTimeForWatchingInterval = 0;
                             checkManagerStatus(accumulatedTimeForWatchingInterval);
-
                         } else {
+                            setAccumulatedTime(getAccumulatedTime() + getOneHourTimeLapse());
                             sleep((long) getOneHourTimeLapse());
                         }
                         getUserInterface().changeDirectorStatusText(getStudioInt(), workingStatus);
                     }
-
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "There's been an error with the Director Thread: " + e);
@@ -94,7 +94,7 @@ public class Director extends Thread {
 
     /**
      * Checks the status of the manager, if he's watching anime puts him a fault
-     * 
+     *
      * @param accumulatedTimeForWatchingInterval - Time that has passed since
      *                                           entered in the 35-minute watching
      *                                           manager interval
@@ -104,7 +104,7 @@ public class Director extends Thread {
 
         // Loop that executes if the Manager hasn't been trapped or when the Time passed
         // since the beginning of the interval is less than 35 minutes
-        while (!isTrapped()
+        while (isTrapped() == false
                 && (accumulatedTimeForWatchingInterval < (getThirtyFiveMinutesTimeLapse()))) {
             String directorWatchingStatus = "Watching Manager";
             getUserInterface().changeDirectorStatusText(getStudioInt(),
@@ -124,9 +124,10 @@ public class Director extends Thread {
         }
 
         // 25 minutes left of the hour after the 35-minute checking interval
-        sleep((long) (getOneHourTimeLapse() - getThirtyFiveMinutesTimeLapse()));
+        float twentyFiveMinutesTimeLapse = getOneHourTimeLapse() - getThirtyFiveMinutesTimeLapse();
+        sleep((long) twentyFiveMinutesTimeLapse);
         setAccumulatedTime(getAccumulatedTime()
-                + (getOneHourTimeLapse() - getThirtyFiveMinutesTimeLapse()));
+                + twentyFiveMinutesTimeLapse);
     }
 
     /**
