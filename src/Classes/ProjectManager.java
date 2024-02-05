@@ -23,11 +23,11 @@ public class ProjectManager extends Thread {
     private float thirtyMinutesTimeLapse; // Variable for determining the 30-minute timelapse between idle and working
     private boolean idle; // Determines if the Manager is working or watching anime
 
-    public ProjectManager(int studio, int salaryPerHour, int daysLeft, int defaultDeliveryDays,
+    public ProjectManager(int studio, int salaryPerHour, int defaultDeliveryDays,
             int dayDurationInMs, MainUI userInterface) {
         this.salaryPerHour = salaryPerHour;
         this.studio = studio;
-        this.daysLeft = daysLeft;
+        this.daysLeft = defaultDeliveryDays;
         this.defaultDeliveryDays = defaultDeliveryDays;
         this.dayDurationInMs = dayDurationInMs;
         this.userInterface = userInterface;

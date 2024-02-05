@@ -45,6 +45,22 @@ public class AnimationStudio {
 
     public void start() {
         // TODO - Initialize workers
+        initializeManagerAndDirector(getStudioInt());
+
+    }
+
+    public void initializeManagerAndDirector(int studioInt) {
+        ProjectManager manager = new ProjectManager(studioInt, 40, getDeliveryDays(), getDayDurationInMs(),
+                getUserInterface());
+
+        Director director = new Director(studioInt, 60, getUserInterface(), manager, getDrive(), getDayDurationInMs());
+
+        manager.start();
+        director.start();
+    }
+
+    public void initializeWorkers(int studioInt) {
+
     }
 
     // Getters and Setters

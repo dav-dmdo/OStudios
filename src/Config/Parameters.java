@@ -8,82 +8,84 @@ import Classes.ChapterSpecs;
  */
 public class Parameters {
 
-    private int screenwriters;
-    private int scenarioDesigners;
-    private int animators;
-    private int voiceActors;
-    private int plotTwistWriters;
-    private int assemblers;
+    private WorkerParams screenwritersParams;
+    private WorkerParams scenarioDesignersParams;
+    private WorkerParams animatorsParams;
+    private WorkerParams voiceActorsParams;
+    private WorkerParams plotTwistsWritersParams;
+    private WorkerParams assemblersParams;
     private ChapterSpecs chapterSpecs;
 
-    //Constructor without parameters
+    // Constructor with parameters
     public Parameters() {
-        this.screenwriters = 1;
-        this.scenarioDesigners = 1;
-        this.animators = 1;
-        this.voiceActors = 1;
-        this.plotTwistWriters = 1;
-        this.assemblers = 1;
+        this.screenwritersParams = new WorkerParams(1, 0);
+        this.scenarioDesignersParams = new WorkerParams(1, 0);
+        this.animatorsParams = new WorkerParams(1, 0);
+        this.voiceActorsParams = new WorkerParams(1, 0);
+        this.plotTwistsWritersParams = new WorkerParams(1, 0);
+        this.assemblersParams = new WorkerParams(1, 0);
     }
 
-    //Constructor with parameters
-    public Parameters(int screenwriters, int scenarioDesigners, int animators, int voiceActors, int plotTwistWriters, int assemblers, ChapterSpecs specs) {
-        this.screenwriters = screenwriters;
-        this.scenarioDesigners = scenarioDesigners;
-        this.animators = animators;
-        this.voiceActors = voiceActors;
-        this.plotTwistWriters = plotTwistWriters;
-        this.assemblers = assemblers;
+    // Constructor with parameters
+    public Parameters(WorkerParams screenwriters, WorkerParams scenarioDesigners, WorkerParams animators,
+            WorkerParams voiceActors, WorkerParams plotTwistWriters,
+            WorkerParams assemblers, ChapterSpecs specs) {
+        this.screenwritersParams = screenwriters;
+        this.scenarioDesignersParams = scenarioDesigners;
+        this.animatorsParams = animators;
+        this.voiceActorsParams = voiceActors;
+        this.plotTwistsWritersParams = plotTwistWriters;
+        this.assemblersParams = assemblers;
         this.chapterSpecs = specs;
     }
 
-    //Getters and Setters
-    public int getScreenwriters() {
-        return screenwriters;
+    // Getters and Setters
+    public WorkerParams getScreenwritersParams() {
+        return screenwritersParams;
     }
 
-    public void setScreenwriters(int screenwriters) {
-        this.screenwriters = screenwriters;
+    public void setScreenwritersParams(WorkerParams screenwritersParams) {
+        this.screenwritersParams = screenwritersParams;
     }
 
-    public int getScenarioDesigners() {
-        return scenarioDesigners;
+    public WorkerParams getScenarioDesignersParams() {
+        return scenarioDesignersParams;
     }
 
-    public void setScenarioDesigners(int scenarioDesigners) {
-        this.scenarioDesigners = scenarioDesigners;
+    public void setScenarioDesignersParams(WorkerParams scenarioDesignersParams) {
+        this.scenarioDesignersParams = scenarioDesignersParams;
     }
 
-    public int getAnimators() {
-        return animators;
+    public WorkerParams getAnimatorsParams() {
+        return animatorsParams;
     }
 
-    public void setAnimators(int animators) {
-        this.animators = animators;
+    public void setAnimatorsParams(WorkerParams animatorsParams) {
+        this.animatorsParams = animatorsParams;
     }
 
-    public int getVoiceActors() {
-        return voiceActors;
+    public WorkerParams getVoiceActorsParams() {
+        return voiceActorsParams;
     }
 
-    public void setVoiceActors(int voiceActors) {
-        this.voiceActors = voiceActors;
+    public void setVoiceActorsParams(WorkerParams voiceActorsParams) {
+        this.voiceActorsParams = voiceActorsParams;
     }
 
-    public int getPlotTwistWriters() {
-        return plotTwistWriters;
+    public WorkerParams getPlotTwistsWritersParams() {
+        return plotTwistsWritersParams;
     }
 
-    public void setPlotTwistWriters(int plotTwistWriters) {
-        this.plotTwistWriters = plotTwistWriters;
+    public void setPlotTwistsWritersParams(WorkerParams plotTwistsWritersParams) {
+        this.plotTwistsWritersParams = plotTwistsWritersParams;
     }
 
-    public int getAssemblers() {
-        return assemblers;
+    public WorkerParams getAssemblersParams() {
+        return assemblersParams;
     }
 
-    public void setAssemblers(int assemblers) {
-        this.assemblers = assemblers;
+    public void setAssemblersParams(WorkerParams assemblersParams) {
+        this.assemblersParams = assemblersParams;
     }
 
     public ChapterSpecs getChapterSpecs() {

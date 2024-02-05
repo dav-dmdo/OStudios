@@ -18,7 +18,7 @@ public class ReadFile {
      * Overwrite the text file inside the project
      *
      * @param txt (String containing the information of the read text file)
-     *            read)
+     * read)
      */
     public void printTxt(String txt) {
         try {
@@ -93,23 +93,33 @@ public class ReadFile {
 
         switch (studio) {
             case 0 -> {
-                ChapterSpecs NickelodeonSpecs = new ChapterSpecs(0);
+                ChapterSpecs nickelodeonSpecs = new ChapterSpecs(0);
 
-                Parameters nickParameters = new Parameters(Integer.parseInt(studioParameters[2]),
-                        Integer.parseInt(studioParameters[4]), Integer.parseInt(studioParameters[6]),
-                        Integer.parseInt(studioParameters[8]), Integer.parseInt(studioParameters[10]),
-                        Integer.parseInt(studioParameters[12]), NickelodeonSpecs);
+                WorkerParams screenwriters = new WorkerParams(Integer.parseInt(studioParameters[2]), 0.25f);
+                WorkerParams scenarioDesigners = new WorkerParams(Integer.parseInt(studioParameters[4]), 0.25f);
+                WorkerParams animators = new WorkerParams(Integer.parseInt(studioParameters[6]), 1);
+                WorkerParams voiceActors = new WorkerParams(Integer.parseInt(studioParameters[8]), 5);
+                WorkerParams plotTwistWriters = new WorkerParams(Integer.parseInt(studioParameters[10]), 0.5f);
+                WorkerParams assemblers = new WorkerParams(Integer.parseInt(studioParameters[12]), 0.5f);
+
+                Parameters nickParameters = new Parameters(screenwriters, scenarioDesigners, animators, voiceActors,
+                        plotTwistWriters, assemblers, nickelodeonSpecs);
 
                 config.setNickParameters(nickParameters);
             }
 
             case 1 -> {
-                ChapterSpecs CartoonNetworkSpecs = new ChapterSpecs(1);
+                ChapterSpecs cartoonNetworkSpecs = new ChapterSpecs(1);
 
-                Parameters cartoonNetworkParameters = new Parameters(Integer.parseInt(studioParameters[2]),
-                        Integer.parseInt(studioParameters[4]), Integer.parseInt(studioParameters[6]),
-                        Integer.parseInt(studioParameters[8]), Integer.parseInt(studioParameters[10]),
-                        Integer.parseInt(studioParameters[12]), CartoonNetworkSpecs);
+                WorkerParams screenwriters = new WorkerParams(Integer.parseInt(studioParameters[2]), 0.5f);
+                WorkerParams scenarioDesigners = new WorkerParams(Integer.parseInt(studioParameters[4]), 0.5f);
+                WorkerParams animators = new WorkerParams(Integer.parseInt(studioParameters[6]), 3);
+                WorkerParams voiceActors = new WorkerParams(Integer.parseInt(studioParameters[8]), 3);
+                WorkerParams plotTwistWriters = new WorkerParams(Integer.parseInt(studioParameters[10]), 0.34f);
+                WorkerParams assemblers = new WorkerParams(Integer.parseInt(studioParameters[12]), 0.5f);
+
+                Parameters cartoonNetworkParameters = new Parameters(screenwriters, scenarioDesigners, animators,
+                        voiceActors, plotTwistWriters, assemblers, cartoonNetworkSpecs);
 
                 config.setCNParameters(cartoonNetworkParameters);
 

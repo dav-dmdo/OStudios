@@ -65,22 +65,22 @@ public class UIFunctions {
 
         switch (studio) {
             case 0 -> {
-                screenwriters.setValue(config.getNickParameters().getScreenwriters());
-                scenarioDesigners.setValue(config.getNickParameters().getScenarioDesigners());
-                animators.setValue(config.getNickParameters().getAnimators());
-                voiceActors.setValue(config.getNickParameters().getVoiceActors());
-                plotTwistWriters.setValue(config.getNickParameters().getPlotTwistWriters());
-                assemblers.setValue(config.getNickParameters().getAssemblers());
+                screenwriters.setValue(config.getNickParameters().getScreenwritersParams().getQuantity());
+                scenarioDesigners.setValue(config.getNickParameters().getScenarioDesignersParams().getQuantity());
+                animators.setValue(config.getNickParameters().getAnimatorsParams().getQuantity());
+                voiceActors.setValue(config.getNickParameters().getVoiceActorsParams().getQuantity());
+                plotTwistWriters.setValue(config.getNickParameters().getPlotTwistsWritersParams().getQuantity());
+                assemblers.setValue(config.getNickParameters().getAssemblersParams().getQuantity());
 
             }
 
             case 1 -> {
-                screenwriters.setValue(config.getCNParameters().getScreenwriters());
-                scenarioDesigners.setValue(config.getCNParameters().getScenarioDesigners());
-                animators.setValue(config.getCNParameters().getAnimators());
-                voiceActors.setValue(config.getCNParameters().getVoiceActors());
-                plotTwistWriters.setValue(config.getCNParameters().getPlotTwistWriters());
-                assemblers.setValue(config.getCNParameters().getAssemblers());
+                screenwriters.setValue(config.getCNParameters().getScreenwritersParams().getQuantity());
+                scenarioDesigners.setValue(config.getCNParameters().getScenarioDesignersParams().getQuantity());
+                animators.setValue(config.getCNParameters().getAnimatorsParams().getQuantity());
+                voiceActors.setValue(config.getCNParameters().getVoiceActorsParams().getQuantity());
+                plotTwistWriters.setValue(config.getCNParameters().getPlotTwistsWritersParams().getQuantity());
+                assemblers.setValue(config.getCNParameters().getAssemblersParams().getQuantity());
             }
 
             default -> {

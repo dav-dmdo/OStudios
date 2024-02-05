@@ -32,12 +32,12 @@ public class Config {
             return;
         }
 
-        System.out.println("Initial Screenwriters: " + parameters.getScreenwriters());
-        System.out.println("Initial Scenario Designers: " + parameters.getScenarioDesigners());
-        System.out.println("Initial Animators: " + parameters.getAnimators());
-        System.out.println("Initial Voice Actors: " + parameters.getVoiceActors());
-        System.out.println("Initial Plot Twist Writers: " + parameters.getPlotTwistWriters());
-        System.out.println("Initial Assemblers: " + parameters.getAssemblers());
+        System.out.println("Initial Screenwriters: " + parameters.getScreenwritersParams().getQuantity());
+        System.out.println("Initial Scenario Designers: " + parameters.getScenarioDesignersParams().getQuantity());
+        System.out.println("Initial Animators: " + parameters.getAnimatorsParams().getQuantity());
+        System.out.println("Initial Voice Actors: " + parameters.getVoiceActorsParams().getQuantity());
+        System.out.println("Initial Plot Twist Writers: " + parameters.getPlotTwistsWritersParams().getQuantity());
+        System.out.println("Initial Assemblers: " + parameters.getAssemblersParams().getQuantity());
     }
 
     // Getters and Setters
