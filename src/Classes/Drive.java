@@ -26,7 +26,7 @@ public class Drive {
         this.plotTwistChaptersCounter = 0;
         this.userInterface = userInterface;
         this.specs = specs;
-        this.nextPlotTwistChapter = this.specs.policyForPlotTwist;
+        this.nextPlotTwistChapter = specs.policyForPlotTwist;
 
         // nextPlotTwistChapter
         // iniciara siendo igual a la cantidad de la politica e ira disminuyendo hasta llegar a 0.
@@ -58,8 +58,8 @@ public class Drive {
     private boolean isTimeToPlotTwistChapter() {
         return this.nextPlotTwistChapter == 0;
     }
-    
-    private boolean isTimeToStandadrChapter(){
+
+    private boolean isTimeToStandadrChapter() {
         return !this.isTimeToPlotTwistChapter();
     }
 
@@ -81,21 +81,20 @@ public class Drive {
         this.resetNextPlotTwistChapter();
     }
 
-    public boolean canAssembleStandardChapter(){
+    public boolean canAssembleStandardChapter() {
         return this.specs.checkStandardChapterSpecs(chapterElements);
     }
-    
-    public boolean canAssemblePlotTwistChapter(){
+
+    public boolean canAssemblePlotTwistChapter() {
         return this.specs.checkStandardChapterSpecs(chapterElements);
     }
-    
-    public boolean canAssembleChapter(){
+
+    public boolean canAssembleChapter() {
         boolean isTimeToStandardAndEnoughElements = ((this.isTimeToStandadrChapter()) && (this.canAssembleStandardChapter()));
         boolean isTimeToPlotTwistAndEnoughElements = ((this.isTimeToPlotTwistChapter()) && (this.canAssemblePlotTwistChapter()));
         return (isTimeToStandardAndEnoughElements || isTimeToPlotTwistAndEnoughElements);
     }
-    
-    
+
     private int getAmountByWorkerTypeIndex(int index) {
         return this.getChapterElements()[index];
     }
