@@ -51,35 +51,39 @@ public class Drive {
         }
     }
 
-    private void resetNextPlotTwistChapter() {
-        this.nextPlotTwistChapter = this.specs.policyForPlotTwist;
-    }
-
     private boolean isTimeToPlotTwistChapter() {
         return this.nextPlotTwistChapter == 0;
     }
     
-    private boolean isTimeToStandadrChapter(){
-        return !this.isTimeToPlotTwistChapter();
-    }
-
-    private void subtractChapterElements(int[] specificChapterSpecs) {
-        for (int i = 0; i < chapterElements.length; i++) {
-            chapterElements[i] = chapterElements[i] - specificChapterSpecs[i];
-        }
-    }
-
     private void addStandardChapter() {
         this.subtractChapterElements(this.specs.standardChaptersSpecs);
-        this.standardChaptersCounter++;
+        //this.standardChaptersCounter++; // creo debo sumar desde worker
         this.nextPlotTwistChapter--;
     }
 
     private void addPlotTwistChapter() {
         this.subtractChapterElements(this.specs.plotTwistChaptersSpecs);
-        this.plotTwistChaptersCounter++;
+        //this.plotTwistChaptersCounter++; // creo debo sumar desde worker
         this.resetNextPlotTwistChapter();
     }
+    
+    private void subtractChapterElements(int[] specificChapterSpecs) {
+        for (int i = 0; i < chapterElements.length; i++) {
+            chapterElements[i] = chapterElements[i] - specificChapterSpecs[i];
+        }
+    }
+    
+    
+    private void resetNextPlotTwistChapter() {
+        this.nextPlotTwistChapter = this.specs.policyForPlotTwist;
+    }
+
+    
+    private boolean isTimeToStandardChapter(){
+        return !this.isTimeToPlotTwistChapter();
+    }
+
+
 
     public boolean canAssembleStandardChapter(){
         return this.specs.checkStandardChapterSpecs(chapterElements);
@@ -90,8 +94,8 @@ public class Drive {
     }
     
     public boolean canAssembleChapter(){
-        boolean isTimeToStandardAndEnoughElements = ((this.isTimeToStandadrChapter()) && (this.canAssembleStandardChapter()));
-        boolean isTimeToPlotTwistAndEnoughElements = ((this.isTimeToPlotTwistChapter()) && (this.canAssemblePlotTwistChapter()));
+        boolean isTimeToStandardAndEnoughElements = this.isTimeToStandardChapter() && this.canAssembleStandardChapter();
+        boolean isTimeToPlotTwistAndEnoughElements = this.isTimeToPlotTwistChapter() && this.canAssemblePlotTwistChapter();
         return (isTimeToStandardAndEnoughElements || isTimeToPlotTwistAndEnoughElements);
     }
     

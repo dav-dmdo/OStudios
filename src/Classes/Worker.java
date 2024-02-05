@@ -21,6 +21,7 @@ public class Worker extends Thread {
     private Semaphore mutex;
     private Drive drive;
     private int studio; // Nickelodeon = 0, Cartoon Network = 1
+    private int chapterTypeOnTheGo = -1; // -1: ninguno, 0: standard, 1: plottwist. 
 
     public Worker(String typeString, int typeInt, int salaryPerHour, int productionPerDay, int dayDuration,
             int productionAccount, int salaryAccount, Semaphore mutex, Drive drive) {
@@ -70,12 +71,63 @@ public class Worker extends Thread {
     }
 
     public void assemble() {
-        
+        boolean canAssemble = false;
+        getPaid();
+
         try {
             getMutex().acquire();
+            canAssemble = getDrive().canAssembleChapter();
             getMutex().release();
         } catch (InterruptedException ex) {
             Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (canAssemble || getProductionAccount() != 0) {
+            produce();
+            if (getProductionAccount() >= 1) {
+                try {
+                    getMutex().acquire();
+                    getDrive().addElement(typeInt);
+                    getMutex().release();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                resetProductionAccount();
+            }
+
+        }
+
+    }
+
+    public void assemble2() {
+        int typeOfChapterToAssemble = -1;
+        getPaid();
+
+        try {
+            getMutex().acquire();
+            typeOfChapterToAssemble = getDrive().canAssembleChapter();
+            getDrive().subtractElements(typeOfChapterToAssemble);
+            getMutex().release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.chapterTypeOnTheGo = typeOfChapterToAssemble;
+
+        if (canAssemble || getProductionAccount() != 0) {
+            produce();
+            if (getProductionAccount() >= 1) {
+                try {
+                    getMutex().acquire();
+                    getDrive().addElement(typeInt);
+                    getMutex().release();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                resetProductionAccount();
+            }
+
         }
 
     }
