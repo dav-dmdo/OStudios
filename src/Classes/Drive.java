@@ -58,6 +58,10 @@ public class Drive {
     private boolean isTimeToPlotTwistChapter() {
         return this.nextPlotTwistChapter == 0;
     }
+    
+    private boolean isTimeToStandadrChapter(){
+        return !this.isTimeToPlotTwistChapter();
+    }
 
     private void subtractChapterElements(int[] specificChapterSpecs) {
         for (int i = 0; i < chapterElements.length; i++) {
@@ -81,13 +85,14 @@ public class Drive {
         return this.specs.checkStandardChapterSpecs(chapterElements);
     }
     
-    public boolean canAssemblePlotTwisteChapter(){
+    public boolean canAssemblePlotTwistChapter(){
         return this.specs.checkStandardChapterSpecs(chapterElements);
     }
     
     public boolean canAssembleChapter(){
-        boolean assemblerCanAssemble = false;
-        assemblerCanAssemble = ((this.))
+        boolean isTimeToStandardAndEnoughElements = ((this.isTimeToStandadrChapter()) && (this.canAssembleStandardChapter()));
+        boolean isTimeToPlotTwistAndEnoughElements = ((this.isTimeToPlotTwistChapter()) && (this.canAssemblePlotTwistChapter()));
+        return (isTimeToStandardAndEnoughElements || isTimeToPlotTwistAndEnoughElements);
     }
     
     
