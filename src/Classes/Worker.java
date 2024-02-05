@@ -60,7 +60,7 @@ public class Worker extends Thread {
         if (getProductionAccount() >= 1) {
             try {
                 getMutex().acquire();
-                getDrive().addElement(typeInt);
+                getDrive().addElement(typeInt, (int) getProductionAccount());
                 getMutex().release();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
@@ -104,28 +104,35 @@ public class Worker extends Thread {
         int typeOfChapterToAssemble = -1;
         getPaid();
 
-        try {
-            getMutex().acquire();
-            typeOfChapterToAssemble = getDrive().canAssembleChapter();
-            getDrive().subtractElements(typeOfChapterToAssemble);
-            getMutex().release();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+        if (this.chapterTypeOnTheGo == -1) {
+            try {
+                getMutex().acquire();
+                typeOfChapterToAssemble = getDrive().decideWhichChapterToAssemble();
+                if (typeOfChapterToAssemble != -1) {
+                    getDrive().subtractChapterElements(typeOfChapterToAssemble);
+                }
+                getMutex().release();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
+
         this.chapterTypeOnTheGo = typeOfChapterToAssemble;
 
-        if (canAssemble || getProductionAccount() != 0) {
+        if (this.chapterTypeOnTheGo != -1) {
             produce();
             if (getProductionAccount() >= 1) {
                 try {
                     getMutex().acquire();
-                    getDrive().addElement(typeInt);
+                    getDrive().addChapterByType(this.chapterTypeOnTheGo);
                     getMutex().release();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 resetProductionAccount();
+                this.chapterTypeOnTheGo = -1;
             }
 
         }
