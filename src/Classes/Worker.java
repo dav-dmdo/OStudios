@@ -12,7 +12,7 @@ public class Worker extends Thread {
 
     private String typeString;
     private int typeInt; // Screenwriter = 0, Scenario Designer = 1, Animator = 2, Voice Actor = 3, Plot
-                         // Twist Writer = 4, Assembler = 5;
+    // Twist Writer = 4, Assembler = 5;
     private int salaryPerHour;
     private float productionPerDay;
     private int dayDuration;
@@ -39,7 +39,11 @@ public class Worker extends Thread {
     public void run() {
         while (true) {
             try {
-                work();
+                if (typeInt == 5) {
+                    assemble();
+                } else {
+                    work();
+                }
                 sleep(getDayDuration());
             } catch (InterruptedException ex) {
                 Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,6 +67,17 @@ public class Worker extends Thread {
 
             resetProductionAccount();
         }
+    }
+
+    public void assemble() {
+        
+        try {
+            getMutex().acquire();
+            getMutex().release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     public void getPaid() {
