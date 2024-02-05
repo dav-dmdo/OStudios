@@ -18,7 +18,7 @@ public class ReadFile {
      * Overwrite the text file inside the project
      *
      * @param txt (String containing the information of the read text file)
-     * read)
+     *            read)
      */
     public void printTxt(String txt) {
         try {
@@ -91,16 +91,28 @@ public class ReadFile {
 
     public void setStudioConfig(String[] studioParameters, Config config, int studio) {
 
+        String[] workerTypeStrings = { "Screenwriter", "Scenario Designer", "Animator", "Voice Actor",
+                "PlotTwist Writer",
+                "Assembler" };
+
+        int[] workerSalariesPerHour = { 20, 26, 40, 16, 34, 50 };
+
         switch (studio) {
             case 0 -> {
                 ChapterSpecs nickelodeonSpecs = new ChapterSpecs(0);
 
-                WorkerParams screenwriters = new WorkerParams(Integer.parseInt(studioParameters[2]), 0.25f);
-                WorkerParams scenarioDesigners = new WorkerParams(Integer.parseInt(studioParameters[4]), 0.25f);
-                WorkerParams animators = new WorkerParams(Integer.parseInt(studioParameters[6]), 1);
-                WorkerParams voiceActors = new WorkerParams(Integer.parseInt(studioParameters[8]), 5);
-                WorkerParams plotTwistWriters = new WorkerParams(Integer.parseInt(studioParameters[10]), 0.5f);
-                WorkerParams assemblers = new WorkerParams(Integer.parseInt(studioParameters[12]), 0.5f);
+                WorkerParams screenwriters = new WorkerParams(Integer.parseInt(studioParameters[2]), 0.25f,
+                        workerTypeStrings[0], workerSalariesPerHour[0]);
+                WorkerParams scenarioDesigners = new WorkerParams(Integer.parseInt(studioParameters[4]), 0.25f,
+                        workerTypeStrings[1], workerSalariesPerHour[1]);
+                WorkerParams animators = new WorkerParams(Integer.parseInt(studioParameters[6]), 1,
+                        workerTypeStrings[2], workerSalariesPerHour[2]);
+                WorkerParams voiceActors = new WorkerParams(Integer.parseInt(studioParameters[8]), 5,
+                        workerTypeStrings[3], workerSalariesPerHour[3]);
+                WorkerParams plotTwistWriters = new WorkerParams(Integer.parseInt(studioParameters[10]), 0.5f,
+                        workerTypeStrings[4], workerSalariesPerHour[4]);
+                WorkerParams assemblers = new WorkerParams(Integer.parseInt(studioParameters[12]), 0.5f,
+                        workerTypeStrings[5], workerSalariesPerHour[5]);
 
                 Parameters nickParameters = new Parameters(screenwriters, scenarioDesigners, animators, voiceActors,
                         plotTwistWriters, assemblers, nickelodeonSpecs);
@@ -111,12 +123,18 @@ public class ReadFile {
             case 1 -> {
                 ChapterSpecs cartoonNetworkSpecs = new ChapterSpecs(1);
 
-                WorkerParams screenwriters = new WorkerParams(Integer.parseInt(studioParameters[2]), 0.5f);
-                WorkerParams scenarioDesigners = new WorkerParams(Integer.parseInt(studioParameters[4]), 0.5f);
-                WorkerParams animators = new WorkerParams(Integer.parseInt(studioParameters[6]), 3);
-                WorkerParams voiceActors = new WorkerParams(Integer.parseInt(studioParameters[8]), 3);
-                WorkerParams plotTwistWriters = new WorkerParams(Integer.parseInt(studioParameters[10]), 0.34f);
-                WorkerParams assemblers = new WorkerParams(Integer.parseInt(studioParameters[12]), 0.5f);
+                WorkerParams screenwriters = new WorkerParams(Integer.parseInt(studioParameters[2]), 0.5f,
+                        workerTypeStrings[0], workerSalariesPerHour[0]);
+                WorkerParams scenarioDesigners = new WorkerParams(Integer.parseInt(studioParameters[4]), 0.5f,
+                        workerTypeStrings[1], workerSalariesPerHour[1]);
+                WorkerParams animators = new WorkerParams(Integer.parseInt(studioParameters[6]), 3,
+                        workerTypeStrings[2], workerSalariesPerHour[2]);
+                WorkerParams voiceActors = new WorkerParams(Integer.parseInt(studioParameters[8]), 3,
+                        workerTypeStrings[3], workerSalariesPerHour[3]);
+                WorkerParams plotTwistWriters = new WorkerParams(Integer.parseInt(studioParameters[10]), 0.34f,
+                        workerTypeStrings[4], workerSalariesPerHour[4]);
+                WorkerParams assemblers = new WorkerParams(Integer.parseInt(studioParameters[12]), 0.5f,
+                        workerTypeStrings[5], workerSalariesPerHour[5]);
 
                 Parameters cartoonNetworkParameters = new Parameters(screenwriters, scenarioDesigners, animators,
                         voiceActors, plotTwistWriters, assemblers, cartoonNetworkSpecs);

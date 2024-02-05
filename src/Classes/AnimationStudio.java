@@ -44,23 +44,58 @@ public class AnimationStudio {
     }
 
     public void start() {
-        // TODO - Initialize workers
-        initializeManagerAndDirector(getStudioInt());
-
+        initializeManagerAndDirector();
+        initializeWorkers();
     }
 
-    public void initializeManagerAndDirector(int studioInt) {
-        ProjectManager manager = new ProjectManager(studioInt, 40, getDeliveryDays(), getDayDurationInMs(),
+    public void initializeManagerAndDirector() {
+        ProjectManager manager = new ProjectManager(getStudioInt(), 40, getDeliveryDays(), getDayDurationInMs(),
                 getUserInterface());
 
-        Director director = new Director(studioInt, 60, getUserInterface(), manager, getDrive(), getDayDurationInMs());
+        Director director = new Director(getStudioInt(), 60, getUserInterface(), manager, getDrive(),
+                getDayDurationInMs());
 
         manager.start();
         director.start();
     }
 
-    public void initializeWorkers(int studioInt) {
+    public void initializeWorkers() {
+        int arrayIndex = 0;
 
+        for (int i = 0; i <= 5; i++) {
+            initializeWorkersByType(i, arrayIndex);
+        }
+
+        if ((arrayIndex + 1) < getMaxWorkersQty()) {
+            initializeUnassignedWorkers(-1, arrayIndex);
+        }
+
+    }
+
+    public void initializeWorkersByType(int workerType, int arrayIndex) {
+        for (int i = 0; i < getStudioParams().getWorkerParamsByType(workerType).getQuantity(); i++) {
+            Worker worker = new Worker(getStudioParams().getWorkerParamsByType(workerType).getTypeString(), workerType,
+                    getStudioParams().getWorkerParamsByType(workerType).getSalaryPerHour(),
+                    getStudioParams().getWorkerParamsByType(workerType).getProductionRate(), getDayDurationInMs(),
+                    getMutex(), getDrive(), getStudioInt());
+
+            worker.start();
+
+            workers[arrayIndex] = worker;
+            arrayIndex++;
+        }
+    }
+
+    public void initializeUnassignedWorkers(int unassignedType, int arrayIndex) {
+        for (int index = arrayIndex; index < getMaxWorkersQty(); index++) {
+            Worker worker = new Worker("Unassigned", -1, 0, 0, getDayDurationInMs(), getMutex(), getDrive(),
+                    getStudioInt());
+
+            worker.start();
+
+            workers[arrayIndex] = worker;
+            arrayIndex++;
+        }
     }
 
     // Getters and Setters

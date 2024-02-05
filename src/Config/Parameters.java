@@ -18,12 +18,12 @@ public class Parameters {
 
     // Constructor with parameters
     public Parameters() {
-        this.screenwritersParams = new WorkerParams(1, 0);
-        this.scenarioDesignersParams = new WorkerParams(1, 0);
-        this.animatorsParams = new WorkerParams(1, 0);
-        this.voiceActorsParams = new WorkerParams(1, 0);
-        this.plotTwistsWritersParams = new WorkerParams(1, 0);
-        this.assemblersParams = new WorkerParams(1, 0);
+        this.screenwritersParams = new WorkerParams(1, 0, "", 0);
+        this.scenarioDesignersParams = new WorkerParams(1, 0, "", 0);
+        this.animatorsParams = new WorkerParams(1, 0, "", 0);
+        this.voiceActorsParams = new WorkerParams(1, 0, "", 0);
+        this.plotTwistsWritersParams = new WorkerParams(1, 0, "", 0);
+        this.assemblersParams = new WorkerParams(1, 0, "", 0);
     }
 
     // Constructor with parameters
@@ -37,6 +37,25 @@ public class Parameters {
         this.plotTwistsWritersParams = plotTwistWriters;
         this.assemblersParams = assemblers;
         this.chapterSpecs = specs;
+    }
+
+    public WorkerParams getWorkerParamsByType(int workerType) {
+        return switch (workerType) {
+            case 0 ->
+                getScreenwritersParams();
+            case 1 ->
+                getScenarioDesignersParams();
+            case 2 ->
+                getAnimatorsParams();
+            case 3 ->
+                getVoiceActorsParams();
+            case 4 ->
+                getPlotTwistsWritersParams();
+            case 5 ->
+                getAssemblersParams();
+            default ->
+                null;
+        };
     }
 
     // Getters and Setters

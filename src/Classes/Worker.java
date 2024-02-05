@@ -20,19 +20,20 @@ public class Worker extends Thread {
     private int accumulatedSalary;
     private Semaphore mutex;
     private Drive drive;
-    private int studio; // Nickelodeon = 0, Cartoon Network = 1
+    private int studioInt; // Nickelodeon = 0, Cartoon Network = 1
 
-    public Worker(String typeString, int typeInt, int salaryPerHour, int productionPerDay, int dayDuration,
-            int productionAccount, int salaryAccount, Semaphore mutex, Drive drive) {
+    public Worker(String typeString, int typeInt, int salaryPerHour, float productionPerDay, int dayDuration,
+            Semaphore mutex, Drive drive, int studioInt) {
         this.typeString = typeString;
         this.typeInt = typeInt;
         this.salaryPerHour = salaryPerHour;
         this.productionPerDay = productionPerDay;
         this.dayDuration = dayDuration;
-        this.productionAccount = productionAccount;
-        this.accumulatedSalary = salaryAccount;
         this.mutex = mutex;
         this.drive = drive;
+        this.studioInt = studioInt;
+        this.productionAccount = 0;
+        this.accumulatedSalary = 0;
     }
 
     @Override
@@ -70,7 +71,7 @@ public class Worker extends Thread {
     }
 
     public void assemble() {
-        
+
         try {
             getMutex().acquire();
             getMutex().release();
@@ -218,4 +219,11 @@ public class Worker extends Thread {
         this.drive = drive;
     }
 
+    public int getStudioInt() {
+        return studioInt;
+    }
+
+    public void setStudioInt(int studioInt) {
+        this.studioInt = studioInt;
+    }
 }
