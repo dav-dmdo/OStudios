@@ -1,6 +1,6 @@
 General
 dayDuration
-2000
+5000
 deliveryDays
 30
 

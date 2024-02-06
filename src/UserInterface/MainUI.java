@@ -62,6 +62,52 @@ public class MainUI extends javax.swing.JFrame {
             }
         }
     }
+    
+    public void changeChapterQuantity(int studioInt, int chapterType, int chapterQuantity){
+        
+        
+        if(studioInt==0){
+            
+            switch (chapterType){
+                
+                case 0 ->{
+                    
+                    this.standarEpisodesNick.setText(Integer.toString(chapterQuantity));
+                    
+                }
+                
+                case 1 ->{
+                    
+                    this.plotTwistEpisodesNick.setText(Integer.toString(chapterQuantity));
+                    
+                }
+                
+            }
+            
+        }
+        else
+        {
+            
+            switch (chapterType){
+                
+                case 0 ->{
+                    
+                    this.standarEpisodesCN.setText(Integer.toString(chapterQuantity));
+                    
+                }
+                
+                case 1 ->{
+                    
+                    this.plotTwistEpisodesCN.setText(Integer.toString(chapterQuantity));
+                    
+                }
+                
+            }
+            
+        }
+        
+        
+    }
 
     public void changeDriveElements(int studioInt, int workerType, int[] chapterElements) {
 
