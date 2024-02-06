@@ -42,7 +42,7 @@ public class Worker extends Thread {
         while (true) {
             try {
                 if (getTypeInt() == 5) {
-                    assemble2();
+                    assemble();
                 } else {
                     work();
                 }
@@ -71,7 +71,10 @@ public class Worker extends Thread {
         }
     }
 
-    public void assemble() {
+    /**
+     *@deprecated 
+     */
+    public void assemble2() {
         boolean canAssemble = false;
         getPaid();
 
@@ -101,7 +104,7 @@ public class Worker extends Thread {
 
     }
 
-    public void assemble2() {
+    public void assemble() {
         int typeOfChapterToAssemble = -1;
         getPaid();
 
@@ -111,6 +114,7 @@ public class Worker extends Thread {
                 typeOfChapterToAssemble = getDrive().decideWhichChapterToAssemble();
                 if (typeOfChapterToAssemble != -1) {
                     getDrive().subtractChapterElements(typeOfChapterToAssemble);
+                    this.setChapterTypeOnTheGo(typeOfChapterToAssemble);
                 }
                 getMutex().release();
             } catch (InterruptedException ex) {
@@ -119,7 +123,6 @@ public class Worker extends Thread {
 
         }
 
-        this.setChapterTypeOnTheGo(typeOfChapterToAssemble);
 
         if (this.getChapterTypeOnTheGo() != -1) {
             produce();
