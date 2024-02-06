@@ -18,7 +18,7 @@ public class ReadFile {
      * Overwrite the text file inside the project
      *
      * @param txt (String containing the information of the read text file)
-     *            read)
+     * read)
      */
     public void printTxt(String txt) {
         try {
@@ -91,11 +91,11 @@ public class ReadFile {
 
     public void setStudioConfig(String[] studioParameters, Config config, int studio) {
 
-        String[] workerTypeStrings = { "Screenwriter", "Scenario Designer", "Animator", "Voice Actor",
-                "PlotTwist Writer",
-                "Assembler" };
+        String[] workerTypeStrings = {"Screenwriter", "Scenario Designer", "Animator", "Voice Actor",
+            "PlotTwist Writer",
+            "Assembler"};
 
-        int[] workerSalariesPerHour = { 20, 26, 40, 16, 34, 50 };
+        int[] workerSalariesPerHour = {20, 26, 40, 16, 34, 50};
 
         switch (studio) {
             case 0 -> {

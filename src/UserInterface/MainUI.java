@@ -33,8 +33,6 @@ public class MainUI extends javax.swing.JFrame {
         this.Nickelodeon = new AnimationStudio(0, "Nickelodeon", 20, getConfig().getNickParameters(), getConfig().getDayDuration(), this, getConfig().getDeliveryDays());
         this.CartoonNetwork = new AnimationStudio(1, "CartoonNetwork", 20, getConfig().getCNParameters(), getConfig().getDayDuration(), this, getConfig().getDeliveryDays());
 
-        getConfig().printStudioParameters();
-
     }
 
     public void changeDirectorStatusText(int studioInt, String directorStatus) {

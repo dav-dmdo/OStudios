@@ -16,7 +16,8 @@ public class ChapterSpecs {
     private int standardChaptersPrice;
     private int policyForPlotTwist;
 
-    public ChapterSpecs(int[] plotTwistChaptersSpecs, int plotTwistChaptersPrice, int[] standardChaptersSpecs, int standardChaptersPrice, int policyForPlotTwist) {
+    public ChapterSpecs(int[] plotTwistChaptersSpecs, int plotTwistChaptersPrice, int[] standardChaptersSpecs,
+            int standardChaptersPrice, int policyForPlotTwist) {
         this.plotTwistChaptersSpecs = plotTwistChaptersSpecs;
         this.plotTwistChaptersPrice = plotTwistChaptersPrice;
         this.standardChaptersSpecs = standardChaptersSpecs;
@@ -48,11 +49,11 @@ public class ChapterSpecs {
     private void setChapterSpecs(int studioInt) {
         boolean isNick = (studioInt == 0);
 
-        this.setPlotTwistChaptersSpecs((isNick) ? new int[]{2, 1, 4, 4, 2} : new int[]{1, 2, 6, 5, 1});
-        this.setPlotTwistChaptersPrice((isNick) ? 500000 : 650000);
-        this.setStandardChaptersSpecs((isNick) ? new int[]{2, 1, 4, 4, 0} : new int[]{1, 2, 6, 5, 0});
-        this.setStandardChaptersPrice((isNick) ? 450000 : 300000);
-        this.setPolicyForPlotTwist((isNick) ? 5 : 3);
+        setPlotTwistChaptersSpecs((isNick) ? new int[] { 2, 1, 4, 4, 2 } : new int[] { 1, 2, 6, 5, 1 });
+        setPlotTwistChaptersPrice((isNick) ? 500000 : 650000);
+        setStandardChaptersSpecs((isNick) ? new int[] { 2, 1, 4, 4, 0 } : new int[] { 1, 2, 6, 5, 0 });
+        setStandardChaptersPrice((isNick) ? 450000 : 300000);
+        setPolicyForPlotTwist((isNick) ? 5 : 3);
     }
 
     /**
