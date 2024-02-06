@@ -21,7 +21,7 @@ public class Worker extends Thread {
     private Semaphore mutex;
     private Drive drive;
     private int studioInt; // Nickelodeon = 0, Cartoon Network = 1
-    private int chapterTypeOnTheGo = -1; // -1: ninguno, 0: standard, 1: plottwist.
+    private int chapterTypeOnGoing = -1; // -1: ninguno, 0: standard, 1: plottwist.
 
     public Worker(String typeString, int typeInt, int salaryPerHour, float productionPerDay, int dayDuration,
             Semaphore mutex, Drive drive, int studioInt) {
@@ -42,7 +42,7 @@ public class Worker extends Thread {
         while (true) {
             try {
                 if (getTypeInt() == 5) {
-                    assemble2();
+                    assemble();
                 } else {
                     work();
                 }
@@ -71,46 +71,18 @@ public class Worker extends Thread {
         }
     }
 
+
     public void assemble() {
-        boolean canAssemble = false;
+        int typeOfChapterToAssemble;
         getPaid();
 
-        try {
-            getMutex().acquire();
-            canAssemble = getDrive().canAssembleChapter();
-            getMutex().release();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        if (canAssemble || getProductionAccount() != 0) {
-            produce();
-            if (getProductionAccount() >= 1) {
-                try {
-                    getMutex().acquire();
-                    getDrive().addElement(getTypeInt());
-                    getMutex().release();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                resetProductionAccount();
-            }
-
-        }
-
-    }
-
-    public void assemble2() {
-        int typeOfChapterToAssemble = -1;
-        getPaid();
-
-        if (this.getChapterTypeOnTheGo() == -1) {
+        if (this.getChapterTypeOnGoing() == -1) {
             try {
                 getMutex().acquire();
                 typeOfChapterToAssemble = getDrive().decideWhichChapterToAssemble();
                 if (typeOfChapterToAssemble != -1) {
                     getDrive().subtractChapterElements(typeOfChapterToAssemble);
+                    this.setChapterTypeOnGoing(typeOfChapterToAssemble);
                 }
                 getMutex().release();
             } catch (InterruptedException ex) {
@@ -119,21 +91,20 @@ public class Worker extends Thread {
 
         }
 
-        this.setChapterTypeOnTheGo(typeOfChapterToAssemble);
 
-        if (this.getChapterTypeOnTheGo() != -1) {
+        if (this.getChapterTypeOnGoing() != -1) {
             produce();
             if (getProductionAccount() >= 1) {
                 try {
                     getMutex().acquire();
-                    getDrive().addChapterByType(this.getChapterTypeOnTheGo());
+                    getDrive().addChapterByType(this.getChapterTypeOnGoing());
                     getMutex().release();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 resetProductionAccount();
-                this.setChapterTypeOnTheGo(-1);
+                this.setChapterTypeOnGoing(-1);
             }
 
         }
@@ -287,17 +258,52 @@ public class Worker extends Thread {
     }
 
     /**
-     * @return the chapterTypeOnTheGo
+     * @return the chapterTypeOnGoing
      */
-    public int getChapterTypeOnTheGo() {
-        return chapterTypeOnTheGo;
+    public int getChapterTypeOnGoing() {
+        return chapterTypeOnGoing;
     }
 
     /**
-     * @param chapterTypeOnTheGo the chapterTypeOnTheGo to set
+     * @param chapterTypeOnGoing the chapterTypeOnGoing to set
      */
-    public void setChapterTypeOnTheGo(int chapterTypeOnTheGo) {
-        this.chapterTypeOnTheGo = chapterTypeOnTheGo;
+    public void setChapterTypeOnGoing(int chapterTypeOnGoing) {
+        this.chapterTypeOnGoing = chapterTypeOnGoing;
     }
 
+    
+    
+    /**
+     *@deprecated 
+     */
+    public void assemble2() {
+        boolean canAssemble = false;
+        getPaid();
+
+        try {
+            getMutex().acquire();
+            canAssemble = getDrive().canAssembleChapter();
+            getMutex().release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (canAssemble || getProductionAccount() != 0) {
+            produce();
+            if (getProductionAccount() >= 1) {
+                try {
+                    getMutex().acquire();
+                    getDrive().addElement(getTypeInt());
+                    getMutex().release();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                resetProductionAccount();
+            }
+
+        }
+
+    }
+   
 }
