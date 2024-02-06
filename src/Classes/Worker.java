@@ -21,6 +21,7 @@ public class Worker extends Thread {
     private Semaphore mutex;
     private Drive drive;
     private int studio; // Nickelodeon = 0, Cartoon Network = 1
+    private int chapterTypeOnTheGo = -1; // -1: ninguno, 0: standard, 1: plottwist. 
 
     public Worker(String typeString, int typeInt, int salaryPerHour, int productionPerDay, int dayDuration,
             int productionAccount, int salaryAccount, Semaphore mutex, Drive drive) {
@@ -39,8 +40,8 @@ public class Worker extends Thread {
     public void run() {
         while (true) {
             try {
-                if (typeInt == 5) {
-                    assemble();
+                if (getTypeInt() == 5) {
+                    assemble2();
                 } else {
                     work();
                 }
@@ -59,7 +60,7 @@ public class Worker extends Thread {
         if (getProductionAccount() >= 1) {
             try {
                 getMutex().acquire();
-                getDrive().addElement(typeInt);
+                getDrive().addElement(getTypeInt(), (int) getProductionAccount());
                 getMutex().release();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,12 +71,70 @@ public class Worker extends Thread {
     }
 
     public void assemble() {
-        
+        boolean canAssemble = false;
+        getPaid();
+
         try {
             getMutex().acquire();
+            canAssemble = getDrive().canAssembleChapter();
             getMutex().release();
         } catch (InterruptedException ex) {
             Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (canAssemble || getProductionAccount() != 0) {
+            produce();
+            if (getProductionAccount() >= 1) {
+                try {
+                    getMutex().acquire();
+                    getDrive().addElement(getTypeInt());
+                    getMutex().release();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                resetProductionAccount();
+            }
+
+        }
+
+    }
+
+    public void assemble2() {
+        int typeOfChapterToAssemble = -1;
+        getPaid();
+
+        if (this.getChapterTypeOnTheGo() == -1) {
+            try {
+                getMutex().acquire();
+                typeOfChapterToAssemble = getDrive().decideWhichChapterToAssemble();
+                if (typeOfChapterToAssemble != -1) {
+                    getDrive().subtractChapterElements(typeOfChapterToAssemble);
+                }
+                getMutex().release();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
+        this.setChapterTypeOnTheGo(typeOfChapterToAssemble);
+
+        if (this.getChapterTypeOnTheGo() != -1) {
+            produce();
+            if (getProductionAccount() >= 1) {
+                try {
+                    getMutex().acquire();
+                    getDrive().addChapterByType(this.getChapterTypeOnTheGo());
+                    getMutex().release();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                resetProductionAccount();
+                this.setChapterTypeOnTheGo(-1);
+            }
+
         }
 
     }
@@ -216,6 +275,34 @@ public class Worker extends Thread {
      */
     public void setDrive(Drive drive) {
         this.drive = drive;
+    }
+
+    /**
+     * @return the studio
+     */
+    public int getStudio() {
+        return studio;
+    }
+
+    /**
+     * @param studio the studio to set
+     */
+    public void setStudio(int studio) {
+        this.studio = studio;
+    }
+
+    /**
+     * @return the chapterTypeOnTheGo
+     */
+    public int getChapterTypeOnTheGo() {
+        return chapterTypeOnTheGo;
+    }
+
+    /**
+     * @param chapterTypeOnTheGo the chapterTypeOnTheGo to set
+     */
+    public void setChapterTypeOnTheGo(int chapterTypeOnTheGo) {
+        this.chapterTypeOnTheGo = chapterTypeOnTheGo;
     }
 
 }
