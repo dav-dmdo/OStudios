@@ -103,6 +103,7 @@ public class Worker extends Thread {
         }
 
     }
+   
 
     public void assemble() {
         int typeOfChapterToAssemble = -1;

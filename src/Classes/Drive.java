@@ -7,7 +7,7 @@ import UserInterface.MainUI;
  * @author David
  */
 public class Drive {
-    
+
     private int studioInt;
     private int[] chapterElements;
     private int[] maxChapterElements;
@@ -16,7 +16,7 @@ public class Drive {
     private int nextPlotTwistChapter;
     private MainUI userInterface;
     private ChapterSpecs specs;
-    
+
     public Drive(int studioInt, int maxScripts, int maxScenarios, int maxAnimations, int maxVoices,
             int maxPlotTwists, ChapterSpecs specs, MainUI userInterface) {
         this.studioInt = studioInt;
@@ -32,7 +32,12 @@ public class Drive {
         // iniciara siendo igual a la cantidad de la politica e ira disminuyendo hasta llegar a 0.
         // cuando llegue a cero, se debe crear capPlotTwist y resetear la cuenta.
     }
+
     
+    /**
+     * @deprecated 
+     * @param typeInt 
+     */
     public void addElement(int typeInt) {
         if (typeInt == 5) {
             this.addChapter();
@@ -40,19 +45,26 @@ public class Drive {
             this.increaseChapterElement(typeInt);
         }
         this.getUserInterface().changeDriveElements(getStudioInt(), typeInt, getChapterElements());
-        
+
     }
     
+    /**
+     * This is the actual addElement function.
+     * @param typeInt
+     * @param elementQuantity 
+     */
+
     public void addElement(int typeInt, int elementQuantity) {
-        if (typeInt == 5) {
-            this.addChapter();
-        } else if (this.isNotFull(typeInt)) {
+        if (this.isNotFull(typeInt)) {
             this.increaseChapterElement(typeInt, elementQuantity);
         }
         this.getUserInterface().changeDriveElements(getStudioInt(), typeInt, getChapterElements());
-        
+
     }
-    
+
+    /**
+     * @deprecated
+     */
     private void addChapter() {
         if (this.isTimeToPlotTwistChapter()) {
             this.addPlotTwistChapter();
@@ -60,51 +72,53 @@ public class Drive {
             this.addStandardChapter();
         }
     }
-    
+
     public void addChapterByType(int chapterType) {
         switch (chapterType) {
             case 0:
-                this.addStandardChapter();
                 this.setStandardChaptersCounter(this.getStandardChaptersCounter() + 1);
+                this.setNextPlotTwistChapter(this.getNextPlotTwistChapter() - 1);
                 break;
             case 1:
-                this.addStandardChapter();
                 this.setPlotTwistChaptersCounter(this.getPlotTwistChaptersCounter() + 1);
                 this.resetNextPlotTwistChapter();
                 break;
             default:
                 break;
-            
+
         }
     }
-    
+
     private boolean isTimeToPlotTwistChapter() {
         return this.getNextPlotTwistChapter() == 0;
     }
-    
+
+    /**
+     * @deprecated
+     */
     private void addStandardChapter() {
         this.subtractChapterElements(this.getSpecs().getStandardChaptersSpecs());
         //this.standardChaptersCounter++; // creo debo sumar desde worker
         this.setNextPlotTwistChapter(this.getNextPlotTwistChapter() - 1);
     }
-    
+
     private void addPlotTwistChapter() {
         this.subtractChapterElements(this.getSpecs().getPlotTwistChaptersSpecs());
         //this.plotTwistChaptersCounter++; // creo debo sumar desde worker
         this.resetNextPlotTwistChapter();
     }
-    
+
     private boolean isTimeToStandadrChapter() {
         return !this.isTimeToPlotTwistChapter();
-        
+
     }
-    
+
     private void subtractChapterElements(int[] specificChapterSpecs) {
         for (int i = 0; i < getChapterElements().length; i++) {
             getChapterElements()[i] = getChapterElements()[i] - specificChapterSpecs[i];
         }
     }
-    
+
     public void subtractChapterElements(int chapterType) {
         switch (chapterType) {
             case 0:
@@ -115,33 +129,33 @@ public class Drive {
                 break;
             default:
                 break;
-            
+
         }
-        
+
     }
-    
+
     private void resetNextPlotTwistChapter() {
         this.setNextPlotTwistChapter(this.getSpecs().getPolicyForPlotTwist());
     }
-    
+
     private boolean isTimeToStandardChapter() {
         return !this.isTimeToPlotTwistChapter();
     }
-    
+
     public boolean canAssembleStandardChapter() {
         return this.getSpecs().checkStandardChapterSpecs(getChapterElements());
     }
-    
+
     public boolean canAssemblePlotTwistChapter() {
         return this.getSpecs().checkStandardChapterSpecs(getChapterElements());
     }
-    
+
     public boolean canAssembleChapter() {
         boolean isTimeToStandardAndEnoughElements = this.isTimeToStandardChapter() && this.canAssembleStandardChapter();
         boolean isTimeToPlotTwistAndEnoughElements = this.isTimeToPlotTwistChapter() && this.canAssemblePlotTwistChapter();
         return (isTimeToStandardAndEnoughElements || isTimeToPlotTwistAndEnoughElements);
     }
-    
+
     public int decideWhichChapterToAssemble() {
         int chapterType = -1;
         if (this.canAssembleStandardAndEnoughElements()) {
@@ -151,33 +165,40 @@ public class Drive {
         }
         return chapterType;
     }
-    
+
     public boolean canAssembleStandardAndEnoughElements() {
         return this.isTimeToStandardChapter() && this.canAssembleStandardChapter();
     }
-    
+
     public boolean canAssemblePlotTwistAndEnoughElements() {
         return this.isTimeToPlotTwistChapter() && this.canAssemblePlotTwistChapter();
     }
-    
+
     private int getAmountByWorkerTypeIndex(int index) {
         return this.getChapterElements()[index];
     }
-    
+
     private int getMaxByWorkerTypeIndex(int index) {
         return this.getMaxChapterElements()[index];
     }
-    
+
     private boolean isNotFull(int index) {
         return this.getAmountByWorkerTypeIndex(index) < this.getMaxByWorkerTypeIndex(index);
     }
-    
+
     private void increaseChapterElement(int workerType) {
         this.getChapterElements()[workerType]++;
     }
-    
+
     private void increaseChapterElement(int workerType, int elementQuantity) {
         this.getChapterElements()[workerType] += elementQuantity;
+        int currentElementQuantity = this.getChapterElements()[workerType];
+        int maxChapterElement = this.getMaxChapterElements()[workerType];
+        if(currentElementQuantity>maxChapterElement){
+            this.getChapterElements()[workerType] = maxChapterElement;
+        }
+        
+        
     }
 
     //Getters and Setters
@@ -194,11 +215,11 @@ public class Drive {
     public void setChapterElements(int[] chapterElements) {
         this.setChapterElements(chapterElements);
     }
-    
+
     public int getStudioInt() {
         return studioInt;
     }
-    
+
     public void setStudioInt(int studioInt) {
         this.studioInt = studioInt;
     }
@@ -286,5 +307,5 @@ public class Drive {
     public void setSpecs(ChapterSpecs specs) {
         this.specs = specs;
     }
-    
+
 }
