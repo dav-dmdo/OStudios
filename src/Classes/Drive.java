@@ -91,9 +91,11 @@ public class Drive {
         switch (chapterType) {
             case 0:
                 this.subtractChapterElements(this.getSpecs().getStandardChaptersSpecs());
+                this.getUserInterface().changeDriveElements(getStudioInt(), 5, getChapterElements());
                 break;
             case 1:
                 this.subtractChapterElements(this.getSpecs().getPlotTwistChaptersSpecs());
+                this.getUserInterface().changeDriveElements(getStudioInt(), 5, getChapterElements());
                 break;
             default:
                 break;
