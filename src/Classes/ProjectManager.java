@@ -51,6 +51,7 @@ public class ProjectManager extends Thread {
                 while (getAccumulatedTime() < getSixteenHoursTimeLapse()) {
                     switchBetweenIdleAndWorking();
                 }
+                setIdle(false);
 
                 // NOTE - When the day is in the last 8-hour block
                 switchToChangingDaysLeft();

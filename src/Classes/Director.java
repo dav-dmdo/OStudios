@@ -56,6 +56,8 @@ public class Director extends Thread {
             try {
                 if (getManager().getDaysLeft() == 0) {
                     // TODO - Code when the manager has to restart days and sell chapters
+                    getManager().resetDaysLeft();
+
                 } else {
                     Random random = new Random();
 
@@ -96,8 +98,7 @@ public class Director extends Thread {
      * Checks the status of the manager, if he's watching anime puts him a fault
      *
      * @param accumulatedTimeForWatchingInterval - Time that has passed since
-     *                                           entered in the 35-minute watching
-     *                                           manager interval
+     * entered in the 35-minute watching manager interval
      * @throws InterruptedException
      */
     public void checkManagerStatus(int accumulatedTimeForWatchingInterval) throws InterruptedException {
