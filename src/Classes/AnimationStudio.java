@@ -5,8 +5,6 @@ import UserInterface.MainUI;
 
 import java.util.concurrent.Semaphore;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Rolando
@@ -59,35 +57,34 @@ public class AnimationStudio {
     }
 
     public void changeWorkerType(int workerType, int newWorkerType) {
-        if (sumWorkers() < getMaxWorkersQty()) {
-            for (int i = 0; i < getWorkers().length; i++) {
-                if (getWorkers()[i].getTypeInt() == workerType) {
-                    getWorkers()[i].changeParams(newWorkerType, getStudioParams().getParamsByWorkerType(newWorkerType));
+        for (int i = 0; i < getWorkers().length; i++) {
+            if (getWorkers()[i].getTypeInt() == workerType) {
+                getWorkers()[i].changeParams(newWorkerType, getStudioParams().getParamsByWorkerType(newWorkerType));
 
-                    // Sets workerType quantitys and interface values
-                    if (getStudioParams().getParamsByWorkerType(workerType) != null) {
-                        getStudioParams().setParamsQuantityByWorkerType(workerType,
-                                (getStudioParams().getParamsByWorkerType(workerType).getQuantity() - 1));
+                // Sets workerType quantitys and interface values
+                if (getStudioParams().getParamsByWorkerType(workerType) != null) {
+                    getStudioParams().setParamsQuantityByWorkerType(workerType,
+                            (getStudioParams().getParamsByWorkerType(workerType).getQuantity() - 1));
 
-                        getUserInterface().changeWorkersQtyTextByType(getStudioInt(), workerType,
-                                Integer.toString(getStudioParams().getParamsByWorkerType(workerType).getQuantity()));
-                    }
-
-                    // Sets new workerType quantitys and interface values
-                    if (getStudioParams().getParamsByWorkerType(newWorkerType) != null) {
-                        getStudioParams().setParamsQuantityByWorkerType(newWorkerType,
-                                (getStudioParams().getParamsByWorkerType(newWorkerType).getQuantity() + 1));
-
-                        getUserInterface().changeWorkersQtyTextByType(getStudioInt(), newWorkerType,
-                                Integer.toString(getStudioParams().getParamsByWorkerType(newWorkerType).getQuantity()));
-                    }
-                    break;
+                    getUserInterface().changeWorkersQtyTextByType(getStudioInt(), workerType,
+                            Integer.toString(getStudioParams().getParamsByWorkerType(workerType).getQuantity()));
                 }
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "You have reached maximum capacity");
-        }
 
+                // Sets new workerType quantitys and interface values
+                if (getStudioParams().getParamsByWorkerType(newWorkerType) != null) {
+                    getStudioParams().setParamsQuantityByWorkerType(newWorkerType,
+                            (getStudioParams().getParamsByWorkerType(newWorkerType).getQuantity() + 1));
+
+                    getUserInterface().changeWorkersQtyTextByType(getStudioInt(), newWorkerType,
+                            Integer.toString(getStudioParams().getParamsByWorkerType(newWorkerType).getQuantity()));
+                }
+                break;
+            }
+        }
+    }
+
+    public boolean isFull() {
+        return sumWorkers() == getMaxWorkersQty();
     }
 
     public int sumWorkers() {
@@ -104,10 +101,10 @@ public class AnimationStudio {
 
     public void initializeManagerAndDirector() {
         ProjectManager manager = new ProjectManager(getStudioInt(), 40, getDeliveryDays(), getDayDurationInMs(),
-                getUserInterface());
+                getUserInterface(), getMutex());
 
         Director director = new Director(getStudioInt(), 60, getUserInterface(), manager, getDrive(),
-                getDayDurationInMs());
+                getDayDurationInMs(), getMutex());
 
         manager.start();
         director.start();

@@ -3,6 +3,7 @@ package Classes;
 import javax.swing.JOptionPane;
 
 import UserInterface.MainUI;
+import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -22,9 +23,10 @@ public class ProjectManager extends Thread {
     private float eightHoursTimeLapse; // Variable for determining the 8-hour block of the dat
     private float thirtyMinutesTimeLapse; // Variable for determining the 30-minute timelapse between idle and working
     private boolean idle; // Determines if the Manager is working or watching anime
+    private Semaphore mutex;
 
     public ProjectManager(int studio, int salaryPerHour, int defaultDeliveryDays,
-            int dayDurationInMs, MainUI userInterface) {
+            int dayDurationInMs, MainUI userInterface, Semaphore mutex) {
         this.salaryPerHour = salaryPerHour;
         this.studio = studio;
         this.daysLeft = defaultDeliveryDays;
@@ -37,6 +39,7 @@ public class ProjectManager extends Thread {
         this.eightHoursTimeLapse = (float) dayDurationInMs - this.sixteenHoursTimeLapse;
         this.thirtyMinutesTimeLapse = (float) (dayDurationInMs * 0.0208);
         this.idle = false;
+        this.mutex = mutex;
     }
 
     @Override
@@ -70,12 +73,18 @@ public class ProjectManager extends Thread {
 
     public void switchToChangingDaysLeft() throws InterruptedException {
         String changingDaysLeftStatus = "Changing days";
+
         getUserInterface().changeManagerTextStatus(getStudio(), changingDaysLeftStatus);
 
         setAccumulatedTime(0);
 
         sleep((long) getEightHoursTimeLapse());
-        getUserInterface().changeDaysLeftCounter(getStudio(), Integer.toString(getDaysLeft()));
+
+        if (getDaysLeft() >= 0) {
+            getMutex().acquire();
+            getUserInterface().changeDaysLeftCounter(getStudio(), Integer.toString(getDaysLeft()));
+            getMutex().release();
+        }
     }
 
     public void switchBetweenIdleAndWorking() throws InterruptedException {
@@ -182,6 +191,14 @@ public class ProjectManager extends Thread {
 
     public void setIdle(boolean idle) {
         this.idle = idle;
+    }
+
+    public Semaphore getMutex() {
+        return mutex;
+    }
+
+    public void setMutex(Semaphore mutex) {
+        this.mutex = mutex;
     }
 
 }
