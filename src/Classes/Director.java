@@ -9,6 +9,7 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 
 import UserInterface.MainUI;
+import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -31,9 +32,10 @@ public class Director extends Thread {
     private float thirtyFiveMinutesTimeLapse;
     private float oneHourTimeLapse;
     private float oneMinuteTimeLapse;
+    private Semaphore mutex;
 
     public Director(int studioInt, int salaryPerHour, MainUI userInterface, ProjectManager manager, Drive drive,
-            int dayDurationInMs) {
+            int dayDurationInMs, Semaphore mutex) {
         this.studioInt = studioInt;
         this.salaryPerHour = salaryPerHour;
         this.dayDurationInMs = dayDurationInMs;
@@ -48,6 +50,7 @@ public class Director extends Thread {
         this.thirtyFiveMinutesTimeLapse = (float) (dayDurationInMs * 0.02431);
         this.oneHourTimeLapse = (float) (dayDurationInMs * 0.04167);
         this.oneMinuteTimeLapse = (float) (dayDurationInMs * 0.000694);
+        this.mutex = mutex;
     }
 
     @Override
@@ -58,7 +61,9 @@ public class Director extends Thread {
                     // TODO - Code when the manager has to sell chapters
 
                     sleep(getDayDurationInMs());
+                    getMutex().acquire();
                     getManager().resetDaysLeft();
+                    getMutex().release();
 
                 } else {
                     Random random = new Random();
@@ -99,8 +104,7 @@ public class Director extends Thread {
      * Checks the status of the manager, if he's watching anime puts him a fault
      *
      * @param accumulatedTimeForWatchingInterval - Time that has passed since
-     *                                           entered in the 35-minute watching
-     *                                           manager interval
+     * entered in the 35-minute watching manager interval
      * @throws InterruptedException
      */
     public void checkManagerStatus(float accumulatedTimeForWatchingInterval) throws InterruptedException {
@@ -273,6 +277,14 @@ public class Director extends Thread {
 
     public void setOneMinuteTimeLapse(float oneMinuteTimeLapse) {
         this.oneMinuteTimeLapse = oneMinuteTimeLapse;
+    }
+
+    public Semaphore getMutex() {
+        return mutex;
+    }
+
+    public void setMutex(Semaphore mutex) {
+        this.mutex = mutex;
     }
 
 }

@@ -99,10 +99,10 @@ public class AnimationStudio {
 
     public void initializeManagerAndDirector() {
         ProjectManager manager = new ProjectManager(getStudioInt(), 40, getDeliveryDays(), getDayDurationInMs(),
-                getUserInterface());
+                getUserInterface(), getMutex());
 
         Director director = new Director(getStudioInt(), 60, getUserInterface(), manager, getDrive(),
-                getDayDurationInMs());
+                getDayDurationInMs(), getMutex());
 
         manager.start();
         director.start();
