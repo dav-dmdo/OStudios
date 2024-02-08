@@ -1,5 +1,6 @@
 package UserInterface;
 
+import Classes.AnimationStudio;
 import Config.Config;
 import Config.ReadFile;
 import javax.swing.JOptionPane;
@@ -11,6 +12,22 @@ import javax.swing.JTextPane;
  * @author Rolando
  */
 public class UIFunctions {
+
+    public void reduceWorkersByType(AnimationStudio studio, int workerType) {
+        if (studio.getStudioParams().getParamsByWorkerType(workerType).getQuantity() > 1) {
+            studio.changeWorkerType(workerType, -1);
+        } else {
+            JOptionPane.showMessageDialog(null, "You have reached minimum capacity for " + studio.getStudioParams().getParamsByWorkerType(workerType).getTypeString() + "s");
+        }
+    }
+
+    public void increaseWorkersByType(AnimationStudio studio, int workerType) {
+        if (!studio.isFull()) {
+            studio.changeWorkerType(-1, workerType);
+        } else {
+            JOptionPane.showMessageDialog(null, "You have reached maximum capacity");
+        }
+    }
 
     public void setInitialSettings(Config config, JSpinner screenwritersNick, JSpinner scenarioDesignersNick,
             JSpinner animatorsNick, JSpinner voiceActorsNick, JSpinner plotTwistWritersNick, JSpinner assemblersNick,
