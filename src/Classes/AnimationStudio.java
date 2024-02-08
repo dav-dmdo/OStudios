@@ -5,6 +5,8 @@ import UserInterface.MainUI;
 
 import java.util.concurrent.Semaphore;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rolando
@@ -48,6 +50,56 @@ public class AnimationStudio {
         initializeWorkers();
     }
 
+    public void printWorkersArray() {
+        for (int i = 0; i < getWorkers().length; i++) {
+            System.out.println(getWorkers()[i].getTypeInt());
+        }
+    }
+
+    public void changeWorkerType(int workerType, int newWorkerType) {
+        if (sumWorkers() < getMaxWorkersQty()) {
+            for (int i = 0; i < getWorkers().length; i++) {
+                if (getWorkers()[i].getTypeInt() == workerType) {
+                    getWorkers()[i].changeParams(newWorkerType, getStudioParams().getParamsByWorkerType(newWorkerType));
+
+                    // Sets workerType quantitys and interface values
+                    if (getStudioParams().getParamsByWorkerType(workerType) != null) {
+                        getStudioParams().setParamsQuantityByWorkerType(workerType,
+                                (getStudioParams().getParamsByWorkerType(workerType).getQuantity() - 1));
+
+                        getUserInterface().changeWorkersQtyTextByType(getStudioInt(), workerType,
+                                Integer.toString(getStudioParams().getParamsByWorkerType(workerType).getQuantity()));
+                    }
+
+                    // Sets new workerType quantitys and interface values
+                    if (getStudioParams().getParamsByWorkerType(newWorkerType) != null) {
+                        getStudioParams().setParamsQuantityByWorkerType(newWorkerType,
+                                (getStudioParams().getParamsByWorkerType(newWorkerType).getQuantity() + 1));
+
+                        getUserInterface().changeWorkersQtyTextByType(getStudioInt(), newWorkerType,
+                                Integer.toString(getStudioParams().getParamsByWorkerType(newWorkerType).getQuantity()));
+                    }
+                    break;
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "You have reached maximum capacity");
+        }
+
+    }
+
+    public int sumWorkers() {
+        int sum = 0;
+
+        for (int i = 0; i < getWorkers().length; i++) {
+            if (getWorkers()[i].getTypeInt() != -1) {
+                sum++;
+            }
+        }
+
+        return sum;
+    }
+
     public void initializeManagerAndDirector() {
         ProjectManager manager = new ProjectManager(getStudioInt(), 40, getDeliveryDays(), getDayDurationInMs(),
                 getUserInterface());
@@ -63,16 +115,16 @@ public class AnimationStudio {
         int arrayIndex = 0;
 
         for (int i = 0; i <= 5; i++) {
-            initializeWorkersByType(i, arrayIndex);
+            arrayIndex = initializeWorkersByType(i, arrayIndex);
         }
 
         if ((arrayIndex + 1) < getMaxWorkersQty()) {
-            initializeUnassignedWorkers(-1, arrayIndex);
+            arrayIndex = initializeUnassignedWorkers(-1, arrayIndex);
         }
 
     }
 
-    public void initializeWorkersByType(int workerType, int arrayIndex) {
+    public int initializeWorkersByType(int workerType, int arrayIndex) {
         for (int i = 0; i < getStudioParams().getWorkerParamsByType(workerType).getQuantity(); i++) {
             Worker worker = new Worker(getStudioParams().getWorkerParamsByType(workerType).getTypeString(), workerType,
                     getStudioParams().getWorkerParamsByType(workerType).getSalaryPerHour(),
@@ -81,12 +133,13 @@ public class AnimationStudio {
 
             worker.start();
 
-            workers[arrayIndex] = worker;
-            arrayIndex++;
+            getWorkers()[arrayIndex] = worker;
+            arrayIndex += 1;
         }
+        return arrayIndex;
     }
 
-    public void initializeUnassignedWorkers(int unassignedType, int arrayIndex) {
+    public int initializeUnassignedWorkers(int unassignedType, int arrayIndex) {
         for (int index = arrayIndex; index < getMaxWorkersQty(); index++) {
             Worker worker = new Worker("Unassigned", -1, 0, 0, getDayDurationInMs(), getMutex(), getDrive(),
                     getStudioInt());
@@ -94,8 +147,10 @@ public class AnimationStudio {
             worker.start();
 
             workers[arrayIndex] = worker;
-            arrayIndex++;
+            arrayIndex += 1;
         }
+
+        return arrayIndex;
     }
 
     // Getters and Setters

@@ -45,7 +45,9 @@ public class ProjectManager extends Thread {
         while (true) {
             try {
                 getPaid();
-                setDaysLeft(getDaysLeft() - 1);
+                if (getDaysLeft() >= 1) {
+                    setDaysLeft(getDaysLeft() - 1);
+                }
 
                 // NOTE - While the day is in the first 16-hour block
                 while (getAccumulatedTime() < getSixteenHoursTimeLapse()) {
