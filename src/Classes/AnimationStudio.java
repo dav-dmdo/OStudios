@@ -43,7 +43,7 @@ public class AnimationStudio {
         this.workers = new Worker[maxWorkersQty];
         this.totalCosts = 0;
         this.deliveryDays = deliveryDays;
-        this.accountant = new Accountant(studioInt, this.getUserInterface());
+        this.accountant = new Accountant(studioInt, userInterface);
 
     }
 
@@ -131,7 +131,7 @@ public class AnimationStudio {
             Worker worker = new Worker(getStudioParams().getWorkerParamsByType(workerType).getTypeString(), workerType,
                     getStudioParams().getWorkerParamsByType(workerType).getSalaryPerHour(),
                     getStudioParams().getWorkerParamsByType(workerType).getProductionRate(), getDayDurationInMs(),
-                    getMutex(), getDrive(), getStudioInt());
+                    getMutex(), getDrive(), getStudioInt(), getAccountant());
 
             worker.start();
 
@@ -144,7 +144,7 @@ public class AnimationStudio {
     public int initializeUnassignedWorkers(int unassignedType, int arrayIndex) {
         for (int index = arrayIndex; index < getMaxWorkersQty(); index++) {
             Worker worker = new Worker("Unassigned", -1, 0, 0, getDayDurationInMs(), getMutex(), getDrive(),
-                    getStudioInt());
+                    getStudioInt(), getAccountant());
 
             worker.start();
 
@@ -154,6 +154,17 @@ public class AnimationStudio {
 
         return arrayIndex;
     }
+    
+    public int getWorkersCosts(){
+        int currentCosts = 0;
+        for (int i = 0; i < workers.length; i++) {
+            currentCosts += workers[i].getAccumulatedSalary();
+        }
+        return currentCosts;
+    }
+    
+    
+    
 
     // Getters and Setters
     public int getStudioInt() {
@@ -258,5 +269,19 @@ public class AnimationStudio {
 
     public void setManager(ProjectManager manager) {
         this.manager = manager;
+    }
+
+    /**
+     * @return the accountant
+     */
+    public Accountant getAccountant() {
+        return accountant;
+    }
+
+    /**
+     * @param accountant the accountant to set
+     */
+    public void setAccountant(Accountant accountant) {
+        this.accountant = accountant;
     }
 }

@@ -24,9 +24,10 @@ public class Worker extends Thread {
     private Drive drive;
     private int studioInt; // Nickelodeon = 0, Cartoon Network = 1
     private int chapterTypeOnGoing = -1; // -1: ninguno, 0: standard, 1: plottwist.
+    private Accountant accountant;
 
     public Worker(String typeString, int typeInt, int salaryPerHour, float productionPerDay, int dayDuration,
-            Semaphore mutex, Drive drive, int studioInt) {
+            Semaphore mutex, Drive drive, int studioInt, Accountant accountant) {
         this.typeString = typeString;
         this.typeInt = typeInt;
         this.salaryPerHour = salaryPerHour;
@@ -37,6 +38,7 @@ public class Worker extends Thread {
         this.studioInt = studioInt;
         this.productionAccount = 0;
         this.accumulatedSalary = 0;
+        this.accountant = accountant;
     }
 
     @Override
@@ -63,12 +65,13 @@ public class Worker extends Thread {
         if (getProductionAccount() >= 1) {
             try {
                 getMutex().acquire();
+                this.accountant.updateWorkerCosts(typeInt, this.getAccumulatedSalary());
+                this.setAccumulatedSalary(0);
                 getDrive().addElement(getTypeInt(), (int) getProductionAccount());
                 getMutex().release();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Worker.class.getName()).log(Level.SEVERE, null, ex);
             }
-
             resetProductionAccount();
         }
     }
@@ -80,6 +83,8 @@ public class Worker extends Thread {
         if (this.getChapterTypeOnGoing() == -1) {
             try {
                 getMutex().acquire();
+                this.accountant.updateWorkerCosts(typeInt, this.getAccumulatedSalary());
+                this.setAccumulatedSalary(0);
                 typeOfChapterToAssemble = getDrive().decideWhichChapterToAssemble();
                 if (typeOfChapterToAssemble != -1) {
                     getDrive().subtractChapterElements(typeOfChapterToAssemble);
@@ -190,6 +195,7 @@ public class Worker extends Thread {
 
     public void getPaid() {
         setAccumulatedSalary(getAccumulatedSalary() + (getSalaryPerHour() * 24));
+
     }
 
     private void produce() {

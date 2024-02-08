@@ -262,10 +262,12 @@ public class MainUI extends javax.swing.JFrame {
         
         switch (studioInt){
             case 0:
-                this.costsNick.setText(Integer.toString(totalCosts));
+                this.costsNick.setText("$"+Integer.toString(totalCosts));
+                System.out.println(totalCosts);
                 break;
             case 1:
-                this.costsCN.setText(Integer.toString(totalCosts));
+                this.costsCN.setText("$"+ Integer.toString(totalCosts));
+                System.out.println(totalCosts);
                 break;                
         }
         
@@ -274,10 +276,10 @@ public class MainUI extends javax.swing.JFrame {
     public void showEarnings(int studioInt, int totalEarnings){
         switch (studioInt){
             case 0:
-                this.earningsNick.setText(Integer.toString(totalEarnings));
+                this.earningsNick.setText("$"+Integer.toString(totalEarnings));
                 break;
             case 1:
-                this.earningsCN.setText(Integer.toString(totalEarnings));
+                this.earningsCN.setText("$"+Integer.toString(totalEarnings));
                 break;                
         }
         
@@ -286,10 +288,10 @@ public class MainUI extends javax.swing.JFrame {
     public void showProfit(int studioInt, int totalProfit){
         switch (studioInt){
             case 0:
-                this.utilityNick.setText(Integer.toString(totalProfit));
+                this.utilityNick.setText("$"+Integer.toString(totalProfit));
                 break;
             case 1:
-                this.utilityCN.setText(Integer.toString(totalProfit));
+                this.utilityCN.setText("$"+Integer.toString(totalProfit));
                 break;                
         }
     }

@@ -127,10 +127,15 @@ public class Accountant {
                 break;
 
         }
-        this.calculateTotalOperationalCosts();
+        int currentTotalCosts = this.calculateTotalOperationalCosts();
+        this.showCostsInUI(currentTotalCosts);
     }
 
-    public void calculateTotalOperationalCosts() {
+    /**
+     * @deprecated
+     * @return 
+     */
+    public int calculateTotalOperationalCosts() {
         this.setTotalOperationalCosts(
                 this.getScreenwritersCosts()
                 + this.getScenarioDesignersCosts()
@@ -141,6 +146,9 @@ public class Accountant {
                 + this.getProjectManagerCosts()
                 + this.getDirectorCosts()
         );
+        
+        System.out.println(this.getTotalOperationalCosts()+ " desde accountant");
+        return this.getTotalOperationalCosts();
 
     }
 
@@ -159,8 +167,8 @@ public class Accountant {
     }
 
     
-    public void showCostsInUI(){
-        this.getUserInterface().showCosts(studioInt);
+    public void showCostsInUI(int totalCosts){
+        this.getUserInterface().showCosts(studioInt, totalCosts);
     }
     
     public void showIncomeInUI(){
