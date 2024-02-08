@@ -19,15 +19,15 @@ public class Accountant {
     private int assemblersCosts;
     private int projectManagerCosts;
     private int directorCosts;
-    
+
     private int standardChaptersIncome;
     private int plotTwistChaptersIncome;
-    
+
     private int totalOperationalCosts;
     private int totalIncome;
-    
+
     private int totalProfit;
-    
+
     public Accountant(int studioInt, int screenwritersCosts, int scenarioDesignersCosts, int animatorsCosts, int voiceActorsCosts, int plotTwistWritersCosts, int assemblersCosts, int projectManagerCosts, int directorCosts, int standardChaptersIncome, int plotTwistChaptersIncome, int totalOperationalCosts, int totalIncome, int totalProfit) {
         this.studioInt = studioInt;
         this.screenwritersCosts = screenwritersCosts;
@@ -44,7 +44,7 @@ public class Accountant {
         this.totalIncome = totalIncome;
         this.totalProfit = totalProfit;
     }
-    
+
     public Accountant(int studioInt) {
         this.studioInt = studioInt;
         this.screenwritersCosts = 0;
@@ -61,7 +61,7 @@ public class Accountant {
         this.totalIncome = 0;
         this.totalProfit = 0;
     }
-    
+
     public void updateScreenwritersCosts(int cost) {
         this.setScreenwritersCosts(this.getScreenwritersCosts() + cost);
     }
@@ -90,8 +90,10 @@ public class Accountant {
         this.setDirectorCosts(this.getDirectorCosts() + cost);
     }
     
-    public void updateWorkerCosts(int typeInt, int cost){
-        switch(typeInt){
+    
+
+    public void updateWorkerCosts(int typeInt, int cost) {
+        switch (typeInt) {
             case -1:
                 break;
             case 0:
@@ -112,10 +114,27 @@ public class Accountant {
             case 5:
                 this.updateScenarioDesignersCosts(cost);
                 break;
-                
+
         }
     }
 
+    public void updateTotalOperationalCosts() {
+        this.setTotalOperationalCosts(
+                this.getScreenwritersCosts()
+                + this.getScenarioDesignersCosts()
+                + this.getAnimatorsCosts()
+                + this.getVoiceActorsCosts()
+                + this.getPlotTwistWritersCosts()
+                + this.getAssemblersCosts()
+                + this.getProjectManagerCosts()
+                + this.getDirectorCosts()
+        );
+
+    }
+
+   
+    
+    
     /**
      * @return the studioInt
      */
@@ -311,5 +330,5 @@ public class Accountant {
     public void setTotalProfit(int totalProfit) {
         this.totalProfit = totalProfit;
     }
-    
+
 }

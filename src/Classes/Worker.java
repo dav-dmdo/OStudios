@@ -4,6 +4,8 @@ import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import Config.WorkerParams;
+
 /**
  *
  * @author david
@@ -71,7 +73,6 @@ public class Worker extends Thread {
         }
     }
 
-
     public void assemble() {
         int typeOfChapterToAssemble;
         getPaid();
@@ -91,7 +92,6 @@ public class Worker extends Thread {
 
         }
 
-
         if (this.getChapterTypeOnGoing() != -1) {
             produce();
             if (getProductionAccount() >= 1) {
@@ -109,6 +109,83 @@ public class Worker extends Thread {
 
         }
 
+    }
+
+    public void changeParams(int workerType, WorkerParams params) {
+        switch (workerType) {
+            case -1 -> {
+                setProductionPerDay(0);
+                setProductionAccount(0);
+
+                setSalaryPerHour(0);
+
+                setTypeString("Unassigned");
+                setTypeInt(-1);
+
+            }
+            case 0 -> {
+                setProductionPerDay(params.getProductionRate());
+                setProductionAccount(0);
+
+                setSalaryPerHour(params.getSalaryPerHour());
+
+                setTypeString(params.getTypeString());
+                setTypeInt(0);
+            }
+
+            case 1 -> {
+                setProductionPerDay(params.getProductionRate());
+                setProductionAccount(0);
+
+                setSalaryPerHour(params.getSalaryPerHour());
+
+                setTypeString(params.getTypeString());
+                setTypeInt(1);
+            }
+
+            case 2 -> {
+                setProductionPerDay(params.getProductionRate());
+                setProductionAccount(0);
+
+                setSalaryPerHour(params.getSalaryPerHour());
+
+                setTypeString(params.getTypeString());
+                setTypeInt(2);
+            }
+
+            case 3 -> {
+                setProductionPerDay(params.getProductionRate());
+                setProductionAccount(0);
+
+                setSalaryPerHour(params.getSalaryPerHour());
+
+                setTypeString(params.getTypeString());
+                setTypeInt(3);
+            }
+
+            case 4 -> {
+                setProductionPerDay(params.getProductionRate());
+                setProductionAccount(0);
+
+                setSalaryPerHour(params.getSalaryPerHour());
+
+                setTypeString(params.getTypeString());
+                setTypeInt(4);
+            }
+
+            case 5 -> {
+                setProductionPerDay(params.getProductionRate());
+                setProductionAccount(0);
+
+                setSalaryPerHour(params.getSalaryPerHour());
+
+                setTypeString(params.getTypeString());
+                setTypeInt(5);
+            }
+
+            default -> {
+            }
+        }
     }
 
     public void getPaid() {
@@ -271,10 +348,8 @@ public class Worker extends Thread {
         this.chapterTypeOnGoing = chapterTypeOnGoing;
     }
 
-    
-    
     /**
-     *@deprecated 
+     * @deprecated
      */
     public void assemble2() {
         boolean canAssemble = false;
@@ -305,5 +380,5 @@ public class Worker extends Thread {
         }
 
     }
-   
+
 }

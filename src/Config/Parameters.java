@@ -58,6 +58,72 @@ public class Parameters {
         };
     }
 
+    public WorkerParams getParamsByWorkerType(int workerType) {
+        switch (workerType) {
+
+            case 0 -> {
+                return getScreenwritersParams();
+            }
+
+            case 1 -> {
+                return getScenarioDesignersParams();
+            }
+
+            case 2 -> {
+                return getAnimatorsParams();
+            }
+
+            case 3 -> {
+                return getVoiceActorsParams();
+            }
+
+            case 4 -> {
+                return getPlotTwistsWritersParams();
+            }
+
+            case 5 -> {
+                return getAssemblersParams();
+            }
+
+            default -> {
+                WorkerParams unassignedParams = new WorkerParams(0, 0, "Unassigned", 0);
+                return unassignedParams;
+            }
+        }
+    }
+
+    public void setParamsQuantityByWorkerType(int workerType, int newQuantity) {
+        switch (workerType) {
+
+            case 0 -> {
+                getScreenwritersParams().setQuantity(newQuantity);
+            }
+
+            case 1 -> {
+                getScenarioDesignersParams().setQuantity(newQuantity);
+            }
+
+            case 2 -> {
+                getAnimatorsParams().setQuantity(newQuantity);
+            }
+
+            case 3 -> {
+                getVoiceActorsParams().setQuantity(newQuantity);
+            }
+
+            case 4 -> {
+                getPlotTwistsWritersParams().setQuantity(newQuantity);
+            }
+
+            case 5 -> {
+                getAssemblersParams().setQuantity(newQuantity);
+            }
+
+            default -> {
+            }
+        }
+    }
+
     // Getters and Setters
     public WorkerParams getScreenwritersParams() {
         return screenwritersParams;

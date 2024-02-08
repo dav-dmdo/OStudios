@@ -54,8 +54,10 @@ public class Director extends Thread {
     public void run() {
         while (true) {
             try {
-                if (getManager().getDaysLeft() == 0) {
-                    // TODO - Code when the manager has to restart days and sell chapters
+                if (getManager().getDaysLeft() <= 0) {
+                    // TODO - Code when the manager has to sell chapters
+
+                    sleep(getDayDurationInMs());
                     getManager().resetDaysLeft();
 
                 } else {
@@ -63,7 +65,6 @@ public class Director extends Thread {
 
                     // Random hour to make the manager status checking
                     int randomHour = random.nextInt(24);
-                    // System.out.println(randomHour + ", Studio: " + getStudioInt());
                     // Number of hours passed throughout a day
                     int hoursPassed = 0;
                     String workingStatus = "Working";
@@ -78,7 +79,7 @@ public class Director extends Thread {
                         // Conditional for when the hour of the day matches with the random hour to
                         // begin the manager status checking
                         if (hoursPassed == randomHour) {
-                            int accumulatedTimeForWatchingInterval = 0;
+                            float accumulatedTimeForWatchingInterval = 0;
                             checkManagerStatus(accumulatedTimeForWatchingInterval);
                         } else {
                             setAccumulatedTime(getAccumulatedTime() + getOneHourTimeLapse());
@@ -98,10 +99,11 @@ public class Director extends Thread {
      * Checks the status of the manager, if he's watching anime puts him a fault
      *
      * @param accumulatedTimeForWatchingInterval - Time that has passed since
-     * entered in the 35-minute watching manager interval
+     *                                           entered in the 35-minute watching
+     *                                           manager interval
      * @throws InterruptedException
      */
-    public void checkManagerStatus(int accumulatedTimeForWatchingInterval) throws InterruptedException {
+    public void checkManagerStatus(float accumulatedTimeForWatchingInterval) throws InterruptedException {
 
         // Loop that executes if the Manager hasn't been trapped or when the Time passed
         // since the beginning of the interval is less than 35 minutes
