@@ -160,7 +160,7 @@ public class Accountant {
 
     
     public void showCostsInUI(){
-        
+        this.getUserInterface().showCosts(studioInt);
     }
     
     public void showIncomeInUI(){

@@ -257,6 +257,43 @@ public class MainUI extends javax.swing.JFrame {
             daysLeftCartoonNetwork.setText(daysLeft);
         }
     }
+    
+    public void showCosts(int studioInt, int totalCosts){
+        
+        switch (studioInt){
+            case 0:
+                this.costsNick.setText(Integer.toString(totalCosts));
+                break;
+            case 1:
+                this.costsCN.setText(Integer.toString(totalCosts));
+                break;                
+        }
+        
+    }
+    
+    public void showEarnings(int studioInt, int totalEarnings){
+        switch (studioInt){
+            case 0:
+                this.earningsNick.setText(Integer.toString(totalEarnings));
+                break;
+            case 1:
+                this.earningsCN.setText(Integer.toString(totalEarnings));
+                break;                
+        }
+        
+    }
+    
+    public void showProfit(int studioInt, int totalProfit){
+        switch (studioInt){
+            case 0:
+                this.utilityNick.setText(Integer.toString(totalProfit));
+                break;
+            case 1:
+                this.utilityCN.setText(Integer.toString(totalProfit));
+                break;                
+        }
+    }
+    
 
     // Getters and Setters
     public final Config getConfig() {
