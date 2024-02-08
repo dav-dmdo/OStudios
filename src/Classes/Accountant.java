@@ -9,6 +9,7 @@ package Classes;
  * @author david
  */
 public class Accountant {
+
     private int studioInt;
     private int screenwritersCosts;
     private int scenarioDesignersCosts;
@@ -26,7 +27,7 @@ public class Accountant {
     private int totalIncome;
     
     private int totalProfit;
-
+    
     public Accountant(int studioInt, int screenwritersCosts, int scenarioDesignersCosts, int animatorsCosts, int voiceActorsCosts, int plotTwistWritersCosts, int assemblersCosts, int projectManagerCosts, int directorCosts, int standardChaptersIncome, int plotTwistChaptersIncome, int totalOperationalCosts, int totalIncome, int totalProfit) {
         this.studioInt = studioInt;
         this.screenwritersCosts = screenwritersCosts;
@@ -61,8 +62,59 @@ public class Accountant {
         this.totalProfit = 0;
     }
     
+    public void updateScreenwritersCosts(int cost) {
+        this.setScreenwritersCosts(this.getScreenwritersCosts() + cost);
+    }
+
+    public void updateScenarioDesignersCosts(int cost) {
+        this.setScenarioDesignersCosts(this.getScenarioDesignersCosts() + cost);
+    }
+
+    public void updateAnimatorsCosts(int cost) {
+        this.setAnimatorsCosts(this.getAnimatorsCosts() + cost);
+    }
+
+    public void updateVoiceActorsCosts(int cost) {
+        this.setVoiceActorsCosts(this.getVoiceActorsCosts() + cost);
+    }
+
+    public void updateAssemblersCosts(int cost) {
+        this.setAssemblersCosts(this.getAssemblersCosts() + cost);
+    }
+
+    public void updateProjectManagerCosts(int cost) {
+        this.setProjectManagerCosts(this.getProjectManagerCosts() + cost);
+    }
+
+    public void updateDirectorCosts(int cost) {
+        this.setDirectorCosts(this.getDirectorCosts() + cost);
+    }
     
-    
+    public void updateWorkerCosts(int typeInt, int cost){
+        switch(typeInt){
+            case -1:
+                break;
+            case 0:
+                this.updateScreenwritersCosts(cost);
+                break;
+            case 1:
+                this.updateScenarioDesignersCosts(cost);
+                break;
+            case 2:
+                this.updateAnimatorsCosts(cost);
+                break;
+            case 3:
+                this.updateVoiceActorsCosts(cost);
+                break;
+            case 4:
+                this.updateScenarioDesignersCosts(cost);
+                break;
+            case 5:
+                this.updateScenarioDesignersCosts(cost);
+                break;
+                
+        }
+    }
 
     /**
      * @return the studioInt
@@ -259,7 +311,5 @@ public class Accountant {
     public void setTotalProfit(int totalProfit) {
         this.totalProfit = totalProfit;
     }
-    
-    
     
 }
