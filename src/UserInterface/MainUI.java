@@ -55,7 +55,7 @@ public class MainUI extends javax.swing.JFrame {
                     Integer.toString(getConfig().getNickParameters().getParamsByWorkerType(i).getQuantity()));
 
             changeWorkersQtyTextByType(1, i,
-                    Integer.toString(getConfig().getNickParameters().getParamsByWorkerType(i).getQuantity()));
+                    Integer.toString(getConfig().getCNParameters().getParamsByWorkerType(i).getQuantity()));
         }
     }
 
@@ -1689,23 +1689,23 @@ public class MainUI extends javax.swing.JFrame {
         getNickelodeon().changeWorkerType(-1, 0);
     }// GEN-LAST:event_screenwritersPlusNickActionPerformed
 
-    private void scenarioDesignersPlusNickActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_scenarioDesignersPlusNickActionPerformed
-        getNickelodeon().changeWorkerType(-1, 1);
-    }// GEN-LAST:event_scenarioDesignersPlusNickActionPerformed
-
-    private void animatorsPlusNickActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_animatorsPlusNickActionPerformed
-        getNickelodeon().changeWorkerType(-1, 2);
-
-    }// GEN-LAST:event_animatorsPlusNickActionPerformed
-
     private void screenwritersMinNickActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_screenwritersMinNickActionPerformed
         getNickelodeon().changeWorkerType(0, -1);
 
     }// GEN-LAST:event_screenwritersMinNickActionPerformed
+    
+    private void scenarioDesignersPlusNickActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_scenarioDesignersPlusNickActionPerformed
+        getNickelodeon().changeWorkerType(-1, 1);
+    }// GEN-LAST:event_scenarioDesignersPlusNickActionPerformed
 
     private void scenarioDesignersMinNickActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_scenarioDesignersMinNickActionPerformed
         getNickelodeon().changeWorkerType(1, -1);
     }// GEN-LAST:event_scenarioDesignersMinNickActionPerformed
+    
+    private void animatorsPlusNickActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_animatorsPlusNickActionPerformed
+        getNickelodeon().changeWorkerType(-1, 2);
+
+    }// GEN-LAST:event_animatorsPlusNickActionPerformed
 
     private void animatorsMinNickActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_animatorsMinNickActionPerformed
         getNickelodeon().changeWorkerType(2, -1);
@@ -1719,69 +1719,71 @@ public class MainUI extends javax.swing.JFrame {
         getNickelodeon().changeWorkerType(3, -1);
     }// GEN-LAST:event_voiceActorsMinNickActionPerformed
 
-    private void plotTwistWritersMinNickActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_plotTwistWritersMinNickActionPerformed
-        getNickelodeon().changeWorkerType(4, -1);
-    }// GEN-LAST:event_plotTwistWritersMinNickActionPerformed
-
     private void plotTwistWritersPlusNickActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_plotTwistWritersPlusNickActionPerformed
         getNickelodeon().changeWorkerType(-1, 4);
     }// GEN-LAST:event_plotTwistWritersPlusNickActionPerformed
 
-    private void assemblersMinNickActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_assemblersMinNickActionPerformed
-        getNickelodeon().changeWorkerType(5, -1);
-    }// GEN-LAST:event_assemblersMinNickActionPerformed
+    private void plotTwistWritersMinNickActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_plotTwistWritersMinNickActionPerformed
+        getNickelodeon().changeWorkerType(4, -1);
+    }// GEN-LAST:event_plotTwistWritersMinNickActionPerformed
 
     private void assemblerPlusNickActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_assemblerPlusNickActionPerformed
         getNickelodeon().changeWorkerType(-1, 5);
     }// GEN-LAST:event_assemblerPlusNickActionPerformed
+    
+    private void assemblersMinNickActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_assemblersMinNickActionPerformed
+        getNickelodeon().changeWorkerType(5, -1);
+    }// GEN-LAST:event_assemblersMinNickActionPerformed
+
 
     private void screenwritersPlusCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_screenwritersPlusCNActionPerformed
-        // TODO add your handling code here:
+        getCartoonNetwork().changeWorkerType(-1, 0);
     }// GEN-LAST:event_screenwritersPlusCNActionPerformed
 
-    private void scenarioDesignersPlusCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_scenarioDesignersPlusCNActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_scenarioDesignersPlusCNActionPerformed
-
-    private void animatorsPlusCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_animatorsPlusCNActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_animatorsPlusCNActionPerformed
-
     private void screenwritersMinCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_screenwritersMinCNActionPerformed
-        // TODO add your handling code here:
+        getCartoonNetwork().changeWorkerType(1, -1);
     }// GEN-LAST:event_screenwritersMinCNActionPerformed
 
+    private void scenarioDesignersPlusCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_scenarioDesignersPlusCNActionPerformed
+        getCartoonNetwork().changeWorkerType(-1, 1);
+    }// GEN-LAST:event_scenarioDesignersPlusCNActionPerformed
+
     private void scenarioDesignersMinCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_scenarioDesignersMinCNActionPerformed
-        // TODO add your handling code here:
+        getCartoonNetwork().changeWorkerType(1, -1);
     }// GEN-LAST:event_scenarioDesignersMinCNActionPerformed
+    
+    private void animatorsPlusCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_animatorsPlusCNActionPerformed
+        getCartoonNetwork().changeWorkerType(-1, 2);
+    }// GEN-LAST:event_animatorsPlusCNActionPerformed
 
     private void animatorsMinCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_animatorsMinCNActionPerformed
-        // TODO add your handling code here:
+        getCartoonNetwork().changeWorkerType(2, -1);
     }// GEN-LAST:event_animatorsMinCNActionPerformed
 
     private void voiceActorsPlusCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_voiceActorsPlusCNActionPerformed
-        // TODO add your handling code here:
+        getCartoonNetwork().changeWorkerType(-1, 3);
     }// GEN-LAST:event_voiceActorsPlusCNActionPerformed
 
     private void voiceActorsMinCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_voiceActorsMinCNActionPerformed
-        // TODO add your handling code here:
+        getCartoonNetwork().changeWorkerType(3, -1);
     }// GEN-LAST:event_voiceActorsMinCNActionPerformed
 
+    private void plotTwistWritersPlusCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_plotTwistWritersPlusCNActionPerformed
+        getCartoonNetwork().changeWorkerType(-1, 4);
+    }// GEN-LAST:event_plotTwistWritersPlusCNActionPerformed
+    
     private void plotTwistWritersMinCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_plotTwistWritersMinCNActionPerformed
-        // TODO add your handling code here:
+        getCartoonNetwork().changeWorkerType(4, -1);
     }// GEN-LAST:event_plotTwistWritersMinCNActionPerformed
 
-    private void plotTwistWritersPlusCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_plotTwistWritersPlusCNActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_plotTwistWritersPlusCNActionPerformed
+    private void assemblerPlusCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_assemblerPlusCNActionPerformed
+        getCartoonNetwork().changeWorkerType(-1, 5);
+    }// GEN-LAST:event_assemblerPlusCNActionPerformed
 
     private void assemblersMinCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_assemblersMinCNActionPerformed
-        // TODO add your handling code here:
+        getCartoonNetwork().changeWorkerType(5, -1);
     }// GEN-LAST:event_assemblersMinCNActionPerformed
 
-    private void assemblerPlusCNActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_assemblerPlusCNActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_assemblerPlusCNActionPerformed
 
     /**
      * @param args the command line arguments

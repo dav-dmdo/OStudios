@@ -4,6 +4,8 @@
  */
 package Classes;
 
+import UserInterface.MainUI;
+
 /**
  *
  * @author david
@@ -27,6 +29,8 @@ public class Accountant {
     private int totalIncome;
 
     private int totalProfit;
+    
+    private MainUI userInterface;
 
     public Accountant(int studioInt, int screenwritersCosts, int scenarioDesignersCosts, int animatorsCosts, int voiceActorsCosts, int plotTwistWritersCosts, int assemblersCosts, int projectManagerCosts, int directorCosts, int standardChaptersIncome, int plotTwistChaptersIncome, int totalOperationalCosts, int totalIncome, int totalProfit) {
         this.studioInt = studioInt;
@@ -45,7 +49,7 @@ public class Accountant {
         this.totalProfit = totalProfit;
     }
 
-    public Accountant(int studioInt) {
+    public Accountant(int studioInt, MainUI userInterface) {
         this.studioInt = studioInt;
         this.screenwritersCosts = 0;
         this.scenarioDesignersCosts = 0;
@@ -60,6 +64,7 @@ public class Accountant {
         this.totalOperationalCosts = 0;
         this.totalIncome = 0;
         this.totalProfit = 0;
+        this.userInterface = userInterface;
     }
 
     public void updateScreenwritersCosts(int cost) {
@@ -89,8 +94,14 @@ public class Accountant {
     public void updateDirectorCosts(int cost) {
         this.setDirectorCosts(this.getDirectorCosts() + cost);
     }
-    
-    
+
+    public void updateStandardChaptersIncome(int income) {
+        this.setStandardChaptersIncome(this.getStandardChaptersIncome() + income);
+    }
+
+    public void updatePlotTwistChaptersIncome(int income) {
+        this.setPlotTwistChaptersIncome(this.getPlotTwistChaptersIncome() + income);
+    }
 
     public void updateWorkerCosts(int typeInt, int cost) {
         switch (typeInt) {
@@ -112,13 +123,14 @@ public class Accountant {
                 this.updateScenarioDesignersCosts(cost);
                 break;
             case 5:
-                this.updateScenarioDesignersCosts(cost);
+                this.updateAssemblersCosts(cost);
                 break;
 
         }
+        this.calculateTotalOperationalCosts();
     }
 
-    public void updateTotalOperationalCosts() {
+    public void calculateTotalOperationalCosts() {
         this.setTotalOperationalCosts(
                 this.getScreenwritersCosts()
                 + this.getScenarioDesignersCosts()
@@ -132,9 +144,32 @@ public class Accountant {
 
     }
 
-   
+    public void calculateTotalIncome() {
+        this.setTotalIncome(
+                this.getStandardChaptersIncome()
+                + this.getPlotTwistChaptersIncome()
+        );
+    }
+
+    public void calculateTotalProfit() {
+        this.setTotalProfit(
+                this.getTotalIncome()
+                - this.getTotalOperationalCosts()
+        );
+    }
+
     
+    public void showCostsInUI(){
+        
+    }
     
+    public void showIncomeInUI(){
+        
+    }
+    
+    public void showProfitInUI(){
+        
+    }
     /**
      * @return the studioInt
      */
@@ -329,6 +364,20 @@ public class Accountant {
      */
     public void setTotalProfit(int totalProfit) {
         this.totalProfit = totalProfit;
+    }
+
+    /**
+     * @return the userInterface
+     */
+    public MainUI getUserInterface() {
+        return userInterface;
+    }
+
+    /**
+     * @param userInterface the userInterface to set
+     */
+    public void setUserInterface(MainUI userInterface) {
+        this.userInterface = userInterface;
     }
 
 }

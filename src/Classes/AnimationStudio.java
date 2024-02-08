@@ -26,6 +26,7 @@ public class AnimationStudio {
     private Director director;
     private ProjectManager manager;
     private MainUI userInterface;
+    private Accountant accountant;
 
     // Constructor with parameters
     public AnimationStudio(int studioInt, String studioString, int maxWorkersQty, Parameters studioParams,
@@ -42,6 +43,7 @@ public class AnimationStudio {
         this.workers = new Worker[maxWorkersQty];
         this.totalCosts = 0;
         this.deliveryDays = deliveryDays;
+        this.accountant = new Accountant(studioInt, this.getUserInterface());
 
     }
 
