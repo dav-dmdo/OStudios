@@ -3,6 +3,7 @@ package UserInterface;
 import Classes.AnimationStudio;
 import Config.Config;
 import Config.ReadFile;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,6 +16,10 @@ public class MainUI extends javax.swing.JFrame {
     private UIFunctions functions = new UIFunctions();
     private AnimationStudio Nickelodeon;
     private AnimationStudio CartoonNetwork;
+    private static final String pattern = "#,###.##";
+    private static final DecimalFormat formater = new DecimalFormat(pattern);
+    
+    
 
     /**
      * Creates new form MainUI
@@ -308,10 +313,10 @@ public class MainUI extends javax.swing.JFrame {
 
         switch (studioInt) {
             case 0:
-                this.costsNick.setText("$" + Integer.toString(totalCosts));
+                this.costsNick.setText("$" + formater.format(totalCosts));
                 break;
             case 1:
-                this.costsCN.setText("$" + Integer.toString(totalCosts));
+                this.costsCN.setText("$" + formater.format(totalCosts));
                 break;
         }
 
@@ -320,10 +325,10 @@ public class MainUI extends javax.swing.JFrame {
     public void showEarnings(int studioInt, int totalEarnings) {
         switch (studioInt) {
             case 0:
-                this.earningsNick.setText("$" + Integer.toString(totalEarnings));
+                this.earningsNick.setText("$" + formater.format(totalEarnings));
                 break;
             case 1:
-                this.earningsCN.setText("$" + Integer.toString(totalEarnings));
+                this.earningsCN.setText("$" + formater.format(totalEarnings));
                 break;
         }
 
@@ -332,10 +337,10 @@ public class MainUI extends javax.swing.JFrame {
     public void showProfit(int studioInt, int totalProfit) {
         switch (studioInt) {
             case 0:
-                this.utilityNick.setText("$" + Integer.toString(totalProfit));
+                this.utilityNick.setText("$" + formater.format(totalProfit));
                 break;
             case 1:
-                this.utilityCN.setText("$" + Integer.toString(totalProfit));
+                this.utilityCN.setText("$" + formater.format(totalProfit));
                 break;
         }
     }
