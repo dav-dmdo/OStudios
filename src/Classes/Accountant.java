@@ -29,6 +29,7 @@ public class Accountant {
     private int totalIncome;
 
     private int totalProfit;
+    private int totalProfitChart;
 
     private MainUI userInterface;
 
@@ -67,6 +68,7 @@ public class Accountant {
         this.totalOperationalCosts = 0;
         this.totalIncome = 0;
         this.totalProfit = 0;
+        this.totalProfitChart = 0;
         this.userInterface = userInterface;
     }
 
@@ -138,13 +140,13 @@ public class Accountant {
     public int calculateTotalOperationalCosts() {
         this.setTotalOperationalCosts(
                 this.getScreenwritersCosts()
-                        + this.getScenarioDesignersCosts()
-                        + this.getAnimatorsCosts()
-                        + this.getVoiceActorsCosts()
-                        + this.getPlotTwistWritersCosts()
-                        + this.getAssemblersCosts()
-                        + this.getProjectManagerCosts()
-                        + this.getDirectorCosts());
+                + this.getScenarioDesignersCosts()
+                + this.getAnimatorsCosts()
+                + this.getVoiceActorsCosts()
+                + this.getPlotTwistWritersCosts()
+                + this.getAssemblersCosts()
+                + this.getProjectManagerCosts()
+                + this.getDirectorCosts());
 
         return this.getTotalOperationalCosts();
 
@@ -153,13 +155,19 @@ public class Accountant {
     public void calculateTotalIncome() {
         this.setTotalIncome(
                 this.getStandardChaptersIncome()
-                        + this.getPlotTwistChaptersIncome());
+                + this.getPlotTwistChaptersIncome());
     }
 
     public void calculateTotalProfit() {
         this.setTotalProfit(
                 this.getTotalIncome()
-                        - this.getTotalOperationalCosts());
+                - this.getTotalOperationalCosts());
+    }
+
+    public void calculateTotalProfitChart() {
+        this.setTotalProfitChart(
+                this.getTotalIncome()
+                - this.getTotalOperationalCosts());
     }
 
     public void showCostsInUI(int totalCosts) {
@@ -384,4 +392,11 @@ public class Accountant {
         this.userInterface = userInterface;
     }
 
+    public int getTotalProfitChart() {
+        return totalProfitChart;
+    }
+
+    public void setTotalProfitChart(int totalProfitChart) {
+        this.totalProfitChart = totalProfitChart;
+    }
 }

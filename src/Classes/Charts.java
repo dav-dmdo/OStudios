@@ -22,13 +22,6 @@ import javax.swing.Timer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.plot.PlotOrientation;
 
-/**
- * La clase ChartManager maneja la creación y actualización de gráficos en
- * tiempo real para visualizar las ganancias de Nickelodeon y Cartoon Network.
- * Utiliza la biblioteca JFreeChart para crear un gráfico de líneas XY que se
- * actualiza periódicamente en función de la duración del día establecida en la
- * aplicación.
- */
 public class Charts {
 
     private Config config;
@@ -90,8 +83,8 @@ public class Charts {
      * Nickelodeon y Cartoon Network y las agrega al gráfico.
      */
     public void updateChartData() {
-        double nickelodeonProfit = getNickelodeon().getAccountant().getTotalProfit();
-        double cartoonNetworkProfit = getCartoonNetwork().getAccountant().getTotalProfit();
+        int nickelodeonProfit = getNickelodeon().getAccountant().getTotalProfit();
+        int cartoonNetworkProfit = getCartoonNetwork().getAccountant().getTotalProfit();
         int newTimestamp = getSeriesNickelodeon().getItemCount() + 1;
 
         getSeriesNickelodeon().addOrUpdate(newTimestamp, nickelodeonProfit);

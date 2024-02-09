@@ -47,10 +47,16 @@ public class MainUI extends javax.swing.JFrame {
 
     public void resetChaptersCountersUI(int studioInt) {
         switch (studioInt) {
-            case 0 ->
+            case 0 -> {
                 standardEpisodesNick.setText("0");
-            case 1 ->
+                plotTwistEpisodesNick.setText("0");
+            }
+
+            case 1 -> {
                 standarEpisodesCN.setText("0");
+                plotTwistEpisodesCN.setText("0");
+            }
+
             default -> {
             }
         }
