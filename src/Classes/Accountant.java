@@ -29,10 +29,13 @@ public class Accountant {
     private int totalIncome;
 
     private int totalProfit;
-    
+
     private MainUI userInterface;
 
-    public Accountant(int studioInt, int screenwritersCosts, int scenarioDesignersCosts, int animatorsCosts, int voiceActorsCosts, int plotTwistWritersCosts, int assemblersCosts, int projectManagerCosts, int directorCosts, int standardChaptersIncome, int plotTwistChaptersIncome, int totalOperationalCosts, int totalIncome, int totalProfit) {
+    public Accountant(int studioInt, int screenwritersCosts, int scenarioDesignersCosts, int animatorsCosts,
+            int voiceActorsCosts, int plotTwistWritersCosts, int assemblersCosts, int projectManagerCosts,
+            int directorCosts, int standardChaptersIncome, int plotTwistChaptersIncome, int totalOperationalCosts,
+            int totalIncome, int totalProfit) {
         this.studioInt = studioInt;
         this.screenwritersCosts = screenwritersCosts;
         this.scenarioDesignersCosts = scenarioDesignersCosts;
@@ -127,27 +130,22 @@ public class Accountant {
                 break;
 
         }
-        int currentTotalCosts = this.calculateTotalOperationalCosts();
-        this.showCostsInUI(currentTotalCosts);
     }
 
     /**
-     * @deprecated
-     * @return 
+     * @return
      */
     public int calculateTotalOperationalCosts() {
         this.setTotalOperationalCosts(
                 this.getScreenwritersCosts()
-                + this.getScenarioDesignersCosts()
-                + this.getAnimatorsCosts()
-                + this.getVoiceActorsCosts()
-                + this.getPlotTwistWritersCosts()
-                + this.getAssemblersCosts()
-                + this.getProjectManagerCosts()
-                + this.getDirectorCosts()
-        );
-        
-        System.out.println(this.getTotalOperationalCosts()+ " desde accountant");
+                        + this.getScenarioDesignersCosts()
+                        + this.getAnimatorsCosts()
+                        + this.getVoiceActorsCosts()
+                        + this.getPlotTwistWritersCosts()
+                        + this.getAssemblersCosts()
+                        + this.getProjectManagerCosts()
+                        + this.getDirectorCosts());
+
         return this.getTotalOperationalCosts();
 
     }
@@ -155,29 +153,27 @@ public class Accountant {
     public void calculateTotalIncome() {
         this.setTotalIncome(
                 this.getStandardChaptersIncome()
-                + this.getPlotTwistChaptersIncome()
-        );
+                        + this.getPlotTwistChaptersIncome());
     }
 
     public void calculateTotalProfit() {
         this.setTotalProfit(
                 this.getTotalIncome()
-                - this.getTotalOperationalCosts()
-        );
+                        - this.getTotalOperationalCosts());
     }
 
-    
-    public void showCostsInUI(int totalCosts){
+    public void showCostsInUI(int totalCosts) {
         this.getUserInterface().showCosts(studioInt, totalCosts);
     }
-    
-    public void showIncomeInUI(){
-        
+
+    public void showIncomeInUI() {
+
     }
-    
-    public void showProfitInUI(){
-        
+
+    public void showProfitInUI() {
+
     }
+
     /**
      * @return the studioInt
      */

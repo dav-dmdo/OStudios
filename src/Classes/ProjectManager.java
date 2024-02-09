@@ -24,9 +24,11 @@ public class ProjectManager extends Thread {
     private float thirtyMinutesTimeLapse; // Variable for determining the 30-minute timelapse between idle and working
     private boolean idle; // Determines if the Manager is working or watching anime
     private Semaphore mutex;
+    private Accountant accountant;
+    private int discountedSalary;
 
     public ProjectManager(int studio, int salaryPerHour, int defaultDeliveryDays,
-            int dayDurationInMs, MainUI userInterface, Semaphore mutex) {
+            int dayDurationInMs, MainUI userInterface, Semaphore mutex, Accountant accountant) {
         this.salaryPerHour = salaryPerHour;
         this.studio = studio;
         this.daysLeft = defaultDeliveryDays;
@@ -40,6 +42,8 @@ public class ProjectManager extends Thread {
         this.thirtyMinutesTimeLapse = (float) (dayDurationInMs * 0.0208);
         this.idle = false;
         this.mutex = mutex;
+        this.accountant = accountant;
+        this.discountedSalary = 0;
     }
 
     @Override
@@ -82,8 +86,16 @@ public class ProjectManager extends Thread {
 
         if (getDaysLeft() >= 0) {
             getMutex().acquire();
+
+            getAccountant().updateProjectManagerCosts(getSalaryPerHour() * 24);
+
+            getAccountant().calculateTotalOperationalCosts();
+
+            getUserInterface().showCosts(getStudio(), getAccountant().getTotalOperationalCosts());
+
             getUserInterface().changeDaysLeftCounter(getStudio(), Integer.toString(getDaysLeft()));
             getMutex().release();
+
         }
     }
 
@@ -199,6 +211,22 @@ public class ProjectManager extends Thread {
 
     public void setMutex(Semaphore mutex) {
         this.mutex = mutex;
+    }
+
+    public Accountant getAccountant() {
+        return accountant;
+    }
+
+    public void setAccountant(Accountant accountant) {
+        this.accountant = accountant;
+    }
+
+    public int getDiscountedSalary() {
+        return discountedSalary;
+    }
+
+    public void setDiscountedSalary(int discountedSalary) {
+        this.discountedSalary = discountedSalary;
     }
 
 }

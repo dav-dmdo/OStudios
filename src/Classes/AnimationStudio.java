@@ -101,10 +101,10 @@ public class AnimationStudio {
 
     public void initializeManagerAndDirector() {
         ProjectManager manager = new ProjectManager(getStudioInt(), 40, getDeliveryDays(), getDayDurationInMs(),
-                getUserInterface(), getMutex());
+                getUserInterface(), getMutex(), getAccountant());
 
         Director director = new Director(getStudioInt(), 60, getUserInterface(), manager, getDrive(),
-                getDayDurationInMs(), getMutex());
+                getDayDurationInMs(), getMutex(), getAccountant());
 
         manager.start();
         director.start();
@@ -151,17 +151,14 @@ public class AnimationStudio {
 
         return arrayIndex;
     }
-    
-    public int getWorkersCosts(){
+
+    public int getWorkersCosts() {
         int currentCosts = 0;
         for (int i = 0; i < workers.length; i++) {
             currentCosts += workers[i].getAccumulatedSalary();
         }
         return currentCosts;
     }
-    
-    
-    
 
     // Getters and Setters
     public int getStudioInt() {

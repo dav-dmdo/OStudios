@@ -33,9 +33,10 @@ public class Director extends Thread {
     private float oneHourTimeLapse;
     private float oneMinuteTimeLapse;
     private Semaphore mutex;
+    private Accountant accountant;
 
     public Director(int studioInt, int salaryPerHour, MainUI userInterface, ProjectManager manager, Drive drive,
-            int dayDurationInMs, Semaphore mutex) {
+            int dayDurationInMs, Semaphore mutex, Accountant accountant) {
         this.studioInt = studioInt;
         this.salaryPerHour = salaryPerHour;
         this.dayDurationInMs = dayDurationInMs;
@@ -51,6 +52,7 @@ public class Director extends Thread {
         this.oneHourTimeLapse = (float) (dayDurationInMs * 0.04167);
         this.oneMinuteTimeLapse = (float) (dayDurationInMs * 0.000694);
         this.mutex = mutex;
+        this.accountant = accountant;
     }
 
     @Override
@@ -59,11 +61,29 @@ public class Director extends Thread {
             try {
                 if (getManager().getDaysLeft() <= 0) {
                     // TODO - Code when the manager has to sell chapters
-
                     sleep(getDayDurationInMs());
+
+                    int standardChaptersIncome = getDrive().getStandardChaptersCounter()
+                            * getDrive().getSpecs().getStandardChaptersPrice();
+
+                    int plotTwistChaptersIncome = getDrive().getPlotTwistChaptersCounter()
+                            * getDrive().getSpecs().getPlotTwistChaptersPrice();
+
+                    // Semaphore
                     getMutex().acquire();
+                    getDrive().setPlotTwistChaptersCounter(0);
+                    getDrive().setStandardChaptersCounter(0);
                     getManager().resetDaysLeft();
                     getMutex().release();
+
+                    getAccountant().setTotalIncome(plotTwistChaptersIncome + standardChaptersIncome);
+                    getUserInterface().showEarnings(getStudioInt(), getAccountant().getTotalIncome());
+
+                    getUserInterface().resetChaptersCountersUI(getStudioInt());
+
+                    getAccountant().calculateTotalProfit();
+
+                    getUserInterface().showProfit(getStudioInt(), getAccountant().getTotalProfit());
 
                 } else {
                     Random random = new Random();
@@ -74,13 +94,14 @@ public class Director extends Thread {
                     int hoursPassed = 0;
                     String workingStatus = "Working";
 
+                    getAccountant().updateDirectorCosts(getSalaryPerHour() * 24);
+
                     setTrapped(false);
                     setAccumulatedTime(0);
 
                     // Loop that executes each hour of a day
                     while (hoursPassed < 24) {
                         hoursPassed++;
-                        // System.out.println(hoursPassed + ", Studio: " + getStudioInt());
                         // Conditional for when the hour of the day matches with the random hour to
                         // begin the manager status checking
                         if (hoursPassed == randomHour) {
@@ -104,7 +125,8 @@ public class Director extends Thread {
      * Checks the status of the manager, if he's watching anime puts him a fault
      *
      * @param accumulatedTimeForWatchingInterval - Time that has passed since
-     * entered in the 35-minute watching manager interval
+     *                                           entered in the 35-minute watching
+     *                                           manager interval
      * @throws InterruptedException
      */
     public void checkManagerStatus(float accumulatedTimeForWatchingInterval) throws InterruptedException {
@@ -143,6 +165,7 @@ public class Director extends Thread {
     public void addManagerFault() {
         setManagerFaultsQty(getManagerFaultsQty() + 1);
         setDiscountedSalary(getDiscountedSalary() + getFaultDiscount());
+        getAccountant().updateProjectManagerCosts(-getFaultDiscount());
         setTrapped(true);
     }
 
@@ -287,4 +310,11 @@ public class Director extends Thread {
         this.mutex = mutex;
     }
 
+    public Accountant getAccountant() {
+        return accountant;
+    }
+
+    public void setAccountant(Accountant accountant) {
+        this.accountant = accountant;
+    }
 }
