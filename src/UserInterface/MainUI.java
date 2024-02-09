@@ -1,6 +1,7 @@
 package UserInterface;
 
 import Classes.AnimationStudio;
+import Classes.Charts;
 import Config.Config;
 import Config.ReadFile;
 import javax.swing.JOptionPane;
@@ -15,6 +16,7 @@ public class MainUI extends javax.swing.JFrame {
     private UIFunctions functions = new UIFunctions();
     private AnimationStudio Nickelodeon;
     private AnimationStudio CartoonNetwork;
+    private Charts charts;
 
     /**
      * Creates new form MainUI
@@ -34,6 +36,10 @@ public class MainUI extends javax.swing.JFrame {
                 getConfig().getDayDuration(), this, getConfig().getDeliveryDays());
         this.CartoonNetwork = new AnimationStudio(1, "CartoonNetwork", 20, getConfig().getCNParameters(),
                 getConfig().getDayDuration(), this, getConfig().getDeliveryDays());
+
+        this.charts = new Charts(getNickelodeon(), getCartoonNetwork(), getConfig());
+
+        chartPanel.add(getCharts().getChartPanel());
 
         setInitialUIParameters();
         toggleWorkersQuantityButtons(false);
@@ -373,6 +379,14 @@ public class MainUI extends javax.swing.JFrame {
         this.CartoonNetwork = CartoonNetwork;
     }
 
+    public Charts getCharts() {
+        return charts;
+    }
+
+    public void setCharts(Charts charts) {
+        this.charts = charts;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -385,7 +399,7 @@ public class MainUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         Tabs = new javax.swing.JTabbedPane();
@@ -496,7 +510,6 @@ public class MainUI extends javax.swing.JFrame {
         assemblersPlusNick = new javax.swing.JButton();
         startSimulation = new javax.swing.JButton();
         CartoonNetworkTab = new javax.swing.JPanel();
-        CN_label = new javax.swing.JLabel();
         episodePartsCN_title = new javax.swing.JLabel();
         scriptsCN_label = new javax.swing.JLabel();
         CartoonScripts = new javax.swing.JLabel();
@@ -562,6 +575,9 @@ public class MainUI extends javax.swing.JFrame {
         earningsCN_label = new javax.swing.JLabel();
         costsCN_label = new javax.swing.JLabel();
         CN_label1 = new javax.swing.JLabel();
+        cartoonNetwork_Title2 = new javax.swing.JFormattedTextField();
+        statisticsTab = new javax.swing.JPanel();
+        chartPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -642,8 +658,7 @@ public class MainUI extends javax.swing.JFrame {
         NickMaximumWorkers_label.setForeground(new java.awt.Color(255, 255, 153));
         NickMaximumWorkers_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NickMaximumWorkers_label.setText("MAXIMUM 20 WORKERS");
-        ConfigurationTab.add(NickMaximumWorkers_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 180, 30));
+        ConfigurationTab.add(NickMaximumWorkers_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 180, 30));
 
         CNConfig_label.setBackground(new java.awt.Color(102, 102, 102));
         CNConfig_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
@@ -657,8 +672,7 @@ public class MainUI extends javax.swing.JFrame {
         CNMaximumWorkers_label.setForeground(new java.awt.Color(255, 255, 153));
         CNMaximumWorkers_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CNMaximumWorkers_label.setText("MAXIMUM 12 WORKERS");
-        ConfigurationTab.add(CNMaximumWorkers_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 150, 170, 30));
+        ConfigurationTab.add(CNMaximumWorkers_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 150, 170, 30));
 
         screenwriters_label.setBackground(new java.awt.Color(102, 102, 102));
         screenwriters_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
@@ -676,13 +690,11 @@ public class MainUI extends javax.swing.JFrame {
         scenarioDesigners_label.setForeground(new java.awt.Color(255, 255, 255));
         scenarioDesigners_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scenarioDesigners_label.setText("Scenario Designers");
-        ConfigurationTab.add(scenarioDesigners_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 120, 30));
+        ConfigurationTab.add(scenarioDesigners_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 120, 30));
 
         scenarioDesignersNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
         scenarioDesignersNick.setModel(new javax.swing.SpinnerNumberModel(1, 1, 13, 1));
-        ConfigurationTab.add(scenarioDesignersNick,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, -1, 30));
+        ConfigurationTab.add(scenarioDesignersNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, -1, 30));
 
         animators_label.setBackground(new java.awt.Color(102, 102, 102));
         animators_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
@@ -711,8 +723,7 @@ public class MainUI extends javax.swing.JFrame {
         plotTwistWriters_label.setForeground(new java.awt.Color(255, 255, 255));
         plotTwistWriters_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         plotTwistWriters_label.setText("PlotTwist Writers");
-        ConfigurationTab.add(plotTwistWriters_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 110, 30));
+        ConfigurationTab.add(plotTwistWriters_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 110, 30));
 
         plotTwistWritersNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
         plotTwistWritersNick.setModel(new javax.swing.SpinnerNumberModel(1, 1, 13, 1));
@@ -741,8 +752,7 @@ public class MainUI extends javax.swing.JFrame {
         scenarioDesigners_label1.setForeground(new java.awt.Color(255, 255, 255));
         scenarioDesigners_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scenarioDesigners_label1.setText("Scenario Designers");
-        ConfigurationTab.add(scenarioDesigners_label1,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 120, 30));
+        ConfigurationTab.add(scenarioDesigners_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 120, 30));
 
         animators_label1.setBackground(new java.awt.Color(102, 102, 102));
         animators_label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
@@ -763,8 +773,7 @@ public class MainUI extends javax.swing.JFrame {
         plotTwistWriters_label1.setForeground(new java.awt.Color(255, 255, 255));
         plotTwistWriters_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         plotTwistWriters_label1.setText("PlotTwist Writers");
-        ConfigurationTab.add(plotTwistWriters_label1,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 390, 110, 30));
+        ConfigurationTab.add(plotTwistWriters_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 390, 110, 30));
 
         assemblers_label2.setBackground(new java.awt.Color(102, 102, 102));
         assemblers_label2.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
@@ -803,7 +812,7 @@ public class MainUI extends javax.swing.JFrame {
         NickelodeonTab.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Nickelodeon_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
-        Nickelodeon_label.setForeground(new java.awt.Color(255, 255, 153));
+        Nickelodeon_label.setForeground(new java.awt.Color(255, 153, 0));
         Nickelodeon_label.setText("NICKELODEON");
         NickelodeonTab.add(Nickelodeon_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 290, 60));
 
@@ -856,7 +865,7 @@ public class MainUI extends javax.swing.JFrame {
         NickelodeonTab.add(scriptsN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 70, 40));
 
         episodePartsNick_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        episodePartsNick_title.setForeground(new java.awt.Color(255, 255, 153));
+        episodePartsNick_title.setForeground(new java.awt.Color(255, 153, 0));
         episodePartsNick_title.setText("EPISODE PARTS");
         NickelodeonTab.add(episodePartsNick_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 200, 40));
 
@@ -893,7 +902,7 @@ public class MainUI extends javax.swing.JFrame {
         NickelodeonTab.add(maxPlotTwistsN, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 40, 40));
 
         directorNick_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        directorNick_title.setForeground(new java.awt.Color(255, 255, 153));
+        directorNick_title.setForeground(new java.awt.Color(255, 153, 0));
         directorNick_title.setText("DIRECTOR");
         NickelodeonTab.add(directorNick_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 140, 40));
 
@@ -901,8 +910,7 @@ public class MainUI extends javax.swing.JFrame {
         directorStatusNick_label.setForeground(new java.awt.Color(255, 255, 255));
         directorStatusNick_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         directorStatusNick_label.setText("Status:");
-        NickelodeonTab.add(directorStatusNick_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 100, 40));
+        NickelodeonTab.add(directorStatusNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 100, 40));
 
         directorStatusNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         directorStatusNick.setForeground(new java.awt.Color(255, 255, 255));
@@ -911,17 +919,15 @@ public class MainUI extends javax.swing.JFrame {
         NickelodeonTab.add(directorStatusNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 210, 40));
 
         projectManagerNick_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        projectManagerNick_title.setForeground(new java.awt.Color(255, 255, 153));
+        projectManagerNick_title.setForeground(new java.awt.Color(255, 153, 0));
         projectManagerNick_title.setText("PROJECT MANAGER");
-        NickelodeonTab.add(projectManagerNick_title,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 260, 40));
+        NickelodeonTab.add(projectManagerNick_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 260, 40));
 
         managerStatusNickelodeon.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         managerStatusNickelodeon.setForeground(new java.awt.Color(255, 255, 255));
         managerStatusNickelodeon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         managerStatusNickelodeon.setText("Nothing");
-        NickelodeonTab.add(managerStatusNickelodeon,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 250, 40));
+        NickelodeonTab.add(managerStatusNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 250, 40));
 
         managerStatusN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         managerStatusN_label.setForeground(new java.awt.Color(255, 255, 255));
@@ -944,28 +950,24 @@ public class MainUI extends javax.swing.JFrame {
         managerDiscounted_label.setForeground(new java.awt.Color(255, 255, 255));
         managerDiscounted_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         managerDiscounted_label.setText("Discounted:");
-        NickelodeonTab.add(managerDiscounted_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 120, 40));
+        NickelodeonTab.add(managerDiscounted_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 120, 40));
 
         managerSalaryDiscountNickelodeon.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         managerSalaryDiscountNickelodeon.setForeground(new java.awt.Color(255, 255, 255));
         managerSalaryDiscountNickelodeon.setText("0");
-        NickelodeonTab.add(managerSalaryDiscountNickelodeon,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 120, 40));
+        NickelodeonTab.add(managerSalaryDiscountNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 120, 40));
 
         plotTwistEpisodesN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         plotTwistEpisodesN_label.setForeground(new java.awt.Color(255, 255, 255));
         plotTwistEpisodesN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         plotTwistEpisodesN_label.setText("With PlotTwists:");
-        NickelodeonTab.add(plotTwistEpisodesN_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 170, 40));
+        NickelodeonTab.add(plotTwistEpisodesN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 170, 40));
 
         standardEpisodesN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         standardEpisodesN_label.setForeground(new java.awt.Color(255, 255, 255));
         standardEpisodesN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         standardEpisodesN_label.setText("Standard:");
-        NickelodeonTab.add(standardEpisodesN_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 100, 40));
+        NickelodeonTab.add(standardEpisodesN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 100, 40));
 
         plotTwistEpisodesNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         plotTwistEpisodesNick.setForeground(new java.awt.Color(255, 255, 255));
@@ -978,49 +980,48 @@ public class MainUI extends javax.swing.JFrame {
         NickelodeonTab.add(standardEpisodesNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 40, 40));
 
         episodesProducedNick_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        episodesProducedNick_title.setForeground(new java.awt.Color(255, 255, 153));
+        episodesProducedNick_title.setForeground(new java.awt.Color(255, 153, 0));
         episodesProducedNick_title.setText("EPISODES PRODUCED");
-        NickelodeonTab.add(episodesProducedNick_title,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 270, 40));
+        NickelodeonTab.add(episodesProducedNick_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 270, 40));
 
         daysLeftNick_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        daysLeftNick_label.setForeground(new java.awt.Color(255, 255, 153));
+        daysLeftNick_label.setForeground(new java.awt.Color(255, 153, 0));
         daysLeftNick_label.setText("DAYS LEFT:");
         NickelodeonTab.add(daysLeftNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 150, 40));
 
         daysLeftNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        daysLeftNick.setForeground(new java.awt.Color(255, 255, 153));
+        daysLeftNick.setForeground(new java.awt.Color(255, 153, 0));
         daysLeftNick.setText("0");
         NickelodeonTab.add(daysLeftNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, 50, 40));
 
         earningsNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        earningsNick.setForeground(new java.awt.Color(255, 255, 153));
+        earningsNick.setForeground(new java.awt.Color(255, 153, 0));
         earningsNick.setText("0");
         NickelodeonTab.add(earningsNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 210, 40));
 
         earningsNick_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        earningsNick_label.setForeground(new java.awt.Color(255, 255, 153));
+        earningsNick_label.setForeground(new java.awt.Color(255, 153, 0));
         earningsNick_label.setText("EARNINGS: ");
         NickelodeonTab.add(earningsNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 150, 40));
 
         costsNick_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        costsNick_label.setForeground(new java.awt.Color(255, 255, 153));
+        costsNick_label.setForeground(new java.awt.Color(255, 153, 0));
         costsNick_label.setText("COSTS:");
         NickelodeonTab.add(costsNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 100, 40));
 
         costsNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        costsNick.setForeground(new java.awt.Color(255, 255, 153));
+        costsNick.setForeground(new java.awt.Color(255, 153, 0));
         costsNick.setText("0");
         NickelodeonTab.add(costsNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 510, 220, 40));
 
         utilityNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        utilityNick.setForeground(new java.awt.Color(255, 255, 153));
+        utilityNick.setForeground(new java.awt.Color(255, 153, 0));
         utilityNick.setText("0");
         NickelodeonTab.add(utilityNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 500, 220, 50));
 
         utilityNick_label.setEditable(false);
-        utilityNick_label.setBackground(new java.awt.Color(255, 255, 153));
-        utilityNick_label.setForeground(new java.awt.Color(51, 51, 51));
+        utilityNick_label.setBackground(new java.awt.Color(255, 153, 0));
+        utilityNick_label.setForeground(new java.awt.Color(255, 255, 255));
         utilityNick_label.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         utilityNick_label.setText("TOTAL PROFIT:");
         utilityNick_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
@@ -1029,8 +1030,7 @@ public class MainUI extends javax.swing.JFrame {
         scenarioDesignersNickelodeon.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         scenarioDesignersNickelodeon.setForeground(new java.awt.Color(255, 255, 255));
         scenarioDesignersNickelodeon.setText("0");
-        NickelodeonTab.add(scenarioDesignersNickelodeon,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 120, 40, 40));
+        NickelodeonTab.add(scenarioDesignersNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 120, 40, 40));
 
         chas13.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         chas13.setForeground(new java.awt.Color(255, 255, 255));
@@ -1058,14 +1058,12 @@ public class MainUI extends javax.swing.JFrame {
         plotTwistWritersNickelodeon.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         plotTwistWritersNickelodeon.setForeground(new java.awt.Color(255, 255, 255));
         plotTwistWritersNickelodeon.setText("0");
-        NickelodeonTab.add(plotTwistWritersNickelodeon,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 240, 40, 40));
+        NickelodeonTab.add(plotTwistWritersNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 240, 40, 40));
 
         screenwritersNickelodeon.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         screenwritersNickelodeon.setForeground(new java.awt.Color(255, 255, 255));
         screenwritersNickelodeon.setText("0");
-        NickelodeonTab.add(screenwritersNickelodeon,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 80, 40, 40));
+        NickelodeonTab.add(screenwritersNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 80, 40, 40));
 
         chas16.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         chas16.setForeground(new java.awt.Color(255, 255, 255));
@@ -1079,7 +1077,7 @@ public class MainUI extends javax.swing.JFrame {
         NickelodeonTab.add(assemblersNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 280, 40, 40));
 
         wm_label5.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        wm_label5.setForeground(new java.awt.Color(255, 255, 153));
+        wm_label5.setForeground(new java.awt.Color(255, 153, 0));
         wm_label5.setText("WORKERS");
         NickelodeonTab.add(wm_label5, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 140, 40));
 
@@ -1100,9 +1098,9 @@ public class MainUI extends javax.swing.JFrame {
         animatorsNickelodeon.setText("0");
         NickelodeonTab.add(animatorsNickelodeon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 160, 40, 40));
 
-        screenwritersPlusNick.setBackground(new java.awt.Color(255, 255, 153));
+        screenwritersPlusNick.setBackground(new java.awt.Color(255, 153, 0));
         screenwritersPlusNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        screenwritersPlusNick.setForeground(new java.awt.Color(51, 51, 51));
+        screenwritersPlusNick.setForeground(new java.awt.Color(255, 255, 255));
         screenwritersPlusNick.setText("+");
         screenwritersPlusNick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1111,21 +1109,20 @@ public class MainUI extends javax.swing.JFrame {
         });
         NickelodeonTab.add(screenwritersPlusNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 90, 50, 20));
 
-        scenarioDesignersPlusNick.setBackground(new java.awt.Color(255, 255, 153));
+        scenarioDesignersPlusNick.setBackground(new java.awt.Color(255, 153, 0));
         scenarioDesignersPlusNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        scenarioDesignersPlusNick.setForeground(new java.awt.Color(51, 51, 51));
+        scenarioDesignersPlusNick.setForeground(new java.awt.Color(255, 255, 255));
         scenarioDesignersPlusNick.setText("+");
         scenarioDesignersPlusNick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 scenarioDesignersPlusNickActionPerformed(evt);
             }
         });
-        NickelodeonTab.add(scenarioDesignersPlusNick,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 130, 50, 20));
+        NickelodeonTab.add(scenarioDesignersPlusNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 130, 50, 20));
 
-        animatorsPlusNick.setBackground(new java.awt.Color(255, 255, 153));
+        animatorsPlusNick.setBackground(new java.awt.Color(255, 153, 0));
         animatorsPlusNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        animatorsPlusNick.setForeground(new java.awt.Color(51, 51, 51));
+        animatorsPlusNick.setForeground(new java.awt.Color(255, 255, 255));
         animatorsPlusNick.setText("+");
         animatorsPlusNick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1134,9 +1131,9 @@ public class MainUI extends javax.swing.JFrame {
         });
         NickelodeonTab.add(animatorsPlusNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 170, 50, 20));
 
-        screenwritersMinNick.setBackground(new java.awt.Color(255, 255, 153));
+        screenwritersMinNick.setBackground(new java.awt.Color(255, 153, 0));
         screenwritersMinNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        screenwritersMinNick.setForeground(new java.awt.Color(51, 51, 51));
+        screenwritersMinNick.setForeground(new java.awt.Color(255, 255, 255));
         screenwritersMinNick.setText("-");
         screenwritersMinNick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1145,21 +1142,20 @@ public class MainUI extends javax.swing.JFrame {
         });
         NickelodeonTab.add(screenwritersMinNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 90, 50, 20));
 
-        scenarioDesignersMinNick.setBackground(new java.awt.Color(255, 255, 153));
+        scenarioDesignersMinNick.setBackground(new java.awt.Color(255, 153, 0));
         scenarioDesignersMinNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        scenarioDesignersMinNick.setForeground(new java.awt.Color(51, 51, 51));
+        scenarioDesignersMinNick.setForeground(new java.awt.Color(255, 255, 255));
         scenarioDesignersMinNick.setText("-");
         scenarioDesignersMinNick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 scenarioDesignersMinNickActionPerformed(evt);
             }
         });
-        NickelodeonTab.add(scenarioDesignersMinNick,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 130, 50, 20));
+        NickelodeonTab.add(scenarioDesignersMinNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 130, 50, 20));
 
-        animatorsMinNick.setBackground(new java.awt.Color(255, 255, 153));
+        animatorsMinNick.setBackground(new java.awt.Color(255, 153, 0));
         animatorsMinNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        animatorsMinNick.setForeground(new java.awt.Color(51, 51, 51));
+        animatorsMinNick.setForeground(new java.awt.Color(255, 255, 255));
         animatorsMinNick.setText("-");
         animatorsMinNick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1168,9 +1164,9 @@ public class MainUI extends javax.swing.JFrame {
         });
         NickelodeonTab.add(animatorsMinNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 170, 50, 20));
 
-        voiceActorsPlusNick.setBackground(new java.awt.Color(255, 255, 153));
+        voiceActorsPlusNick.setBackground(new java.awt.Color(255, 153, 0));
         voiceActorsPlusNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        voiceActorsPlusNick.setForeground(new java.awt.Color(51, 51, 51));
+        voiceActorsPlusNick.setForeground(new java.awt.Color(255, 255, 255));
         voiceActorsPlusNick.setText("+");
         voiceActorsPlusNick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1179,9 +1175,9 @@ public class MainUI extends javax.swing.JFrame {
         });
         NickelodeonTab.add(voiceActorsPlusNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 210, 50, 20));
 
-        voiceActorsMinNick.setBackground(new java.awt.Color(255, 255, 153));
+        voiceActorsMinNick.setBackground(new java.awt.Color(255, 153, 0));
         voiceActorsMinNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        voiceActorsMinNick.setForeground(new java.awt.Color(51, 51, 51));
+        voiceActorsMinNick.setForeground(new java.awt.Color(255, 255, 255));
         voiceActorsMinNick.setText("-");
         voiceActorsMinNick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1190,33 +1186,31 @@ public class MainUI extends javax.swing.JFrame {
         });
         NickelodeonTab.add(voiceActorsMinNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 210, 50, 20));
 
-        plotTwistWritersMinNick.setBackground(new java.awt.Color(255, 255, 153));
+        plotTwistWritersMinNick.setBackground(new java.awt.Color(255, 153, 0));
         plotTwistWritersMinNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        plotTwistWritersMinNick.setForeground(new java.awt.Color(51, 51, 51));
+        plotTwistWritersMinNick.setForeground(new java.awt.Color(255, 255, 255));
         plotTwistWritersMinNick.setText("-");
         plotTwistWritersMinNick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 plotTwistWritersMinNickActionPerformed(evt);
             }
         });
-        NickelodeonTab.add(plotTwistWritersMinNick,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 250, 50, 20));
+        NickelodeonTab.add(plotTwistWritersMinNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 250, 50, 20));
 
-        plotTwistWritersPlusNick.setBackground(new java.awt.Color(255, 255, 153));
+        plotTwistWritersPlusNick.setBackground(new java.awt.Color(255, 153, 0));
         plotTwistWritersPlusNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        plotTwistWritersPlusNick.setForeground(new java.awt.Color(51, 51, 51));
+        plotTwistWritersPlusNick.setForeground(new java.awt.Color(255, 255, 255));
         plotTwistWritersPlusNick.setText("+");
         plotTwistWritersPlusNick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 plotTwistWritersPlusNickActionPerformed(evt);
             }
         });
-        NickelodeonTab.add(plotTwistWritersPlusNick,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 250, 50, 20));
+        NickelodeonTab.add(plotTwistWritersPlusNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 250, 50, 20));
 
-        assemblersMinNick.setBackground(new java.awt.Color(255, 255, 153));
+        assemblersMinNick.setBackground(new java.awt.Color(255, 153, 0));
         assemblersMinNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        assemblersMinNick.setForeground(new java.awt.Color(51, 51, 51));
+        assemblersMinNick.setForeground(new java.awt.Color(255, 255, 255));
         assemblersMinNick.setText("-");
         assemblersMinNick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1225,9 +1219,9 @@ public class MainUI extends javax.swing.JFrame {
         });
         NickelodeonTab.add(assemblersMinNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 290, 50, 20));
 
-        assemblersPlusNick.setBackground(new java.awt.Color(255, 255, 153));
+        assemblersPlusNick.setBackground(new java.awt.Color(255, 153, 0));
         assemblersPlusNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        assemblersPlusNick.setForeground(new java.awt.Color(51, 51, 51));
+        assemblersPlusNick.setForeground(new java.awt.Color(255, 255, 255));
         assemblersPlusNick.setText("+");
         assemblersPlusNick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1236,9 +1230,9 @@ public class MainUI extends javax.swing.JFrame {
         });
         NickelodeonTab.add(assemblersPlusNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 290, 50, 20));
 
-        startSimulation.setBackground(new java.awt.Color(255, 255, 153));
+        startSimulation.setBackground(new java.awt.Color(255, 153, 0));
         startSimulation.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        startSimulation.setForeground(new java.awt.Color(51, 51, 51));
+        startSimulation.setForeground(new java.awt.Color(255, 255, 255));
         startSimulation.setText("Start");
         startSimulation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1252,16 +1246,10 @@ public class MainUI extends javax.swing.JFrame {
         CartoonNetworkTab.setBackground(new java.awt.Color(51, 51, 51));
         CartoonNetworkTab.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
-        CN_label.setForeground(new java.awt.Color(255, 255, 153));
-        CN_label.setText("NETWORK");
-        CartoonNetworkTab.add(CN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 220, 60));
-
         episodePartsCN_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        episodePartsCN_title.setForeground(new java.awt.Color(255, 255, 153));
+        episodePartsCN_title.setForeground(new java.awt.Color(255, 255, 255));
         episodePartsCN_title.setText("EPISODE PARTS");
-        CartoonNetworkTab.add(episodePartsCN_title,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 200, 40));
+        CartoonNetworkTab.add(episodePartsCN_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 200, 40));
 
         scriptsCN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         scriptsCN_label.setForeground(new java.awt.Color(255, 255, 255));
@@ -1344,7 +1332,7 @@ public class MainUI extends javax.swing.JFrame {
         CartoonNetworkTab.add(maxPlotTwistsCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 40, 40));
 
         directorCN_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        directorCN_title.setForeground(new java.awt.Color(255, 255, 153));
+        directorCN_title.setForeground(new java.awt.Color(255, 255, 255));
         directorCN_title.setText("DIRECTOR");
         CartoonNetworkTab.add(directorCN_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 140, 40));
 
@@ -1352,8 +1340,7 @@ public class MainUI extends javax.swing.JFrame {
         directorStatusCN_label.setForeground(new java.awt.Color(255, 255, 255));
         directorStatusCN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         directorStatusCN_label.setText("Status:");
-        CartoonNetworkTab.add(directorStatusCN_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 100, 40));
+        CartoonNetworkTab.add(directorStatusCN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 100, 40));
 
         directorStatusCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         directorStatusCN.setForeground(new java.awt.Color(255, 255, 255));
@@ -1362,31 +1349,27 @@ public class MainUI extends javax.swing.JFrame {
         CartoonNetworkTab.add(directorStatusCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 230, 40));
 
         projectManagerCN_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        projectManagerCN_title.setForeground(new java.awt.Color(255, 255, 153));
+        projectManagerCN_title.setForeground(new java.awt.Color(255, 255, 255));
         projectManagerCN_title.setText("PROJECT MANAGER");
-        CartoonNetworkTab.add(projectManagerCN_title,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 260, 40));
+        CartoonNetworkTab.add(projectManagerCN_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 260, 40));
 
         managerStatusCartoonN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         managerStatusCartoonN.setForeground(new java.awt.Color(255, 255, 255));
         managerStatusCartoonN.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         managerStatusCartoonN.setText("Nothing");
-        CartoonNetworkTab.add(managerStatusCartoonN,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 250, 40));
+        CartoonNetworkTab.add(managerStatusCartoonN, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 250, 40));
 
         managerStatusCN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         managerStatusCN_label.setForeground(new java.awt.Color(255, 255, 255));
         managerStatusCN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         managerStatusCN_label.setText("Status:");
-        CartoonNetworkTab.add(managerStatusCN_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 100, 40));
+        CartoonNetworkTab.add(managerStatusCN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 100, 40));
 
         managerFaultsCN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         managerFaultsCN_label.setForeground(new java.awt.Color(255, 255, 255));
         managerFaultsCN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         managerFaultsCN_label.setText("Faults:");
-        CartoonNetworkTab.add(managerFaultsCN_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 100, 40));
+        CartoonNetworkTab.add(managerFaultsCN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 100, 40));
 
         faultsQtyCartoonN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         faultsQtyCartoonN.setForeground(new java.awt.Color(255, 255, 255));
@@ -1397,28 +1380,24 @@ public class MainUI extends javax.swing.JFrame {
         managerDiscountedCN_label.setForeground(new java.awt.Color(255, 255, 255));
         managerDiscountedCN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         managerDiscountedCN_label.setText("Discounted:");
-        CartoonNetworkTab.add(managerDiscountedCN_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 120, 40));
+        CartoonNetworkTab.add(managerDiscountedCN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 120, 40));
 
         managerSalaryDiscountCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         managerSalaryDiscountCN.setForeground(new java.awt.Color(255, 255, 255));
         managerSalaryDiscountCN.setText("0");
-        CartoonNetworkTab.add(managerSalaryDiscountCN,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 120, 40));
+        CartoonNetworkTab.add(managerSalaryDiscountCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 120, 40));
 
         plotTwistEpisodesCN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         plotTwistEpisodesCN_label.setForeground(new java.awt.Color(255, 255, 255));
         plotTwistEpisodesCN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         plotTwistEpisodesCN_label.setText("With PlotTwists:");
-        CartoonNetworkTab.add(plotTwistEpisodesCN_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 170, 40));
+        CartoonNetworkTab.add(plotTwistEpisodesCN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 170, 40));
 
         standardEpisodesCN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         standardEpisodesCN_label.setForeground(new java.awt.Color(255, 255, 255));
         standardEpisodesCN_label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         standardEpisodesCN_label.setText("Standard:");
-        CartoonNetworkTab.add(standardEpisodesCN_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 100, 40));
+        CartoonNetworkTab.add(standardEpisodesCN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 100, 40));
 
         plotTwistEpisodesCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         plotTwistEpisodesCN.setForeground(new java.awt.Color(255, 255, 255));
@@ -1431,40 +1410,37 @@ public class MainUI extends javax.swing.JFrame {
         CartoonNetworkTab.add(standarEpisodesCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 40, 40));
 
         episodesProducedCN_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        episodesProducedCN_title.setForeground(new java.awt.Color(255, 255, 153));
+        episodesProducedCN_title.setForeground(new java.awt.Color(255, 255, 255));
         episodesProducedCN_title.setText("EPISODES PRODUCED");
-        CartoonNetworkTab.add(episodesProducedCN_title,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 270, 40));
+        CartoonNetworkTab.add(episodesProducedCN_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 270, 40));
 
         DaysLeftCartoonNetwork.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        DaysLeftCartoonNetwork.setForeground(new java.awt.Color(255, 255, 153));
+        DaysLeftCartoonNetwork.setForeground(new java.awt.Color(255, 255, 255));
         DaysLeftCartoonNetwork.setText("DAYS LEFT:");
-        CartoonNetworkTab.add(DaysLeftCartoonNetwork,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 150, 40));
+        CartoonNetworkTab.add(DaysLeftCartoonNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 150, 40));
 
         daysLeftCartoonNetwork.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        daysLeftCartoonNetwork.setForeground(new java.awt.Color(255, 255, 153));
+        daysLeftCartoonNetwork.setForeground(new java.awt.Color(255, 255, 255));
         daysLeftCartoonNetwork.setText("0");
-        CartoonNetworkTab.add(daysLeftCartoonNetwork,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, 50, 40));
+        CartoonNetworkTab.add(daysLeftCartoonNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, 50, 40));
 
         earningsCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        earningsCN.setForeground(new java.awt.Color(255, 255, 153));
+        earningsCN.setForeground(new java.awt.Color(255, 255, 255));
         earningsCN.setText("0");
         CartoonNetworkTab.add(earningsCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 210, 40));
 
         costsCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        costsCN.setForeground(new java.awt.Color(255, 255, 153));
+        costsCN.setForeground(new java.awt.Color(255, 255, 255));
         costsCN.setText("0");
         CartoonNetworkTab.add(costsCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 510, 220, 40));
 
         utilityCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        utilityCN.setForeground(new java.awt.Color(255, 255, 153));
+        utilityCN.setForeground(new java.awt.Color(255, 255, 255));
         utilityCN.setText("0");
         CartoonNetworkTab.add(utilityCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 500, 220, 50));
 
         utilityCN_label.setEditable(false);
-        utilityCN_label.setBackground(new java.awt.Color(255, 255, 153));
+        utilityCN_label.setBackground(new java.awt.Color(255, 255, 255));
         utilityCN_label.setForeground(new java.awt.Color(51, 51, 51));
         utilityCN_label.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         utilityCN_label.setText("TOTAL PROFIT:");
@@ -1474,8 +1450,7 @@ public class MainUI extends javax.swing.JFrame {
         qtyScenarioDesignersCartoonN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         qtyScenarioDesignersCartoonN.setForeground(new java.awt.Color(255, 255, 255));
         qtyScenarioDesignersCartoonN.setText("0");
-        CartoonNetworkTab.add(qtyScenarioDesignersCartoonN,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 120, 40, 40));
+        CartoonNetworkTab.add(qtyScenarioDesignersCartoonN, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 120, 40, 40));
 
         animatorsCN_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         animatorsCN_Label.setForeground(new java.awt.Color(255, 255, 255));
@@ -1487,33 +1462,28 @@ public class MainUI extends javax.swing.JFrame {
         voiceActorsCN_Label.setForeground(new java.awt.Color(255, 255, 255));
         voiceActorsCN_Label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         voiceActorsCN_Label.setText("Voice Actors:");
-        CartoonNetworkTab.add(voiceActorsCN_Label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 130, 40));
+        CartoonNetworkTab.add(voiceActorsCN_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 130, 40));
 
         qtyVoiceActorsCN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         qtyVoiceActorsCN_label.setForeground(new java.awt.Color(255, 255, 255));
         qtyVoiceActorsCN_label.setText("0");
-        CartoonNetworkTab.add(qtyVoiceActorsCN_label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 200, 40, 40));
+        CartoonNetworkTab.add(qtyVoiceActorsCN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 200, 40, 40));
 
         plottwistWriters_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         plottwistWriters_Label.setForeground(new java.awt.Color(255, 255, 255));
         plottwistWriters_Label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         plottwistWriters_Label.setText("PlotTwist Writers:");
-        CartoonNetworkTab.add(plottwistWriters_Label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, 170, 40));
+        CartoonNetworkTab.add(plottwistWriters_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, 170, 40));
 
         qtyPlotTwistWritersCN_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         qtyPlotTwistWritersCN_Label.setForeground(new java.awt.Color(255, 255, 255));
         qtyPlotTwistWritersCN_Label.setText("0");
-        CartoonNetworkTab.add(qtyPlotTwistWritersCN_Label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 240, 40, 40));
+        CartoonNetworkTab.add(qtyPlotTwistWritersCN_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 240, 40, 40));
 
         qtyScreenwritersCN_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         qtyScreenwritersCN_Label.setForeground(new java.awt.Color(255, 255, 255));
         qtyScreenwritersCN_Label.setText("0");
-        CartoonNetworkTab.add(qtyScreenwritersCN_Label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 80, 40, 40));
+        CartoonNetworkTab.add(qtyScreenwritersCN_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 80, 40, 40));
 
         assemblersCN_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         assemblersCN_Label.setForeground(new java.awt.Color(255, 255, 255));
@@ -1524,11 +1494,10 @@ public class MainUI extends javax.swing.JFrame {
         qtyAssemblersCN_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         qtyAssemblersCN_Label.setForeground(new java.awt.Color(255, 255, 255));
         qtyAssemblersCN_Label.setText("0");
-        CartoonNetworkTab.add(qtyAssemblersCN_Label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 280, 40, 40));
+        CartoonNetworkTab.add(qtyAssemblersCN_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 280, 40, 40));
 
         wm_label6.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        wm_label6.setForeground(new java.awt.Color(255, 255, 153));
+        wm_label6.setForeground(new java.awt.Color(255, 255, 255));
         wm_label6.setText("WORKERS");
         CartoonNetworkTab.add(wm_label6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 140, 40));
 
@@ -1536,23 +1505,20 @@ public class MainUI extends javax.swing.JFrame {
         screenWritersCN_Label.setForeground(new java.awt.Color(255, 255, 255));
         screenWritersCN_Label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         screenWritersCN_Label.setText("Screenwriters:");
-        CartoonNetworkTab.add(screenWritersCN_Label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 160, 40));
+        CartoonNetworkTab.add(screenWritersCN_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 160, 40));
 
         scenarioDesignersCN_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         scenarioDesignersCN_Label.setForeground(new java.awt.Color(255, 255, 255));
         scenarioDesignersCN_Label.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         scenarioDesignersCN_Label.setText("Scenario Designers:");
-        CartoonNetworkTab.add(scenarioDesignersCN_Label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 190, 40));
+        CartoonNetworkTab.add(scenarioDesignersCN_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 190, 40));
 
         qtyAnimatorsCN_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         qtyAnimatorsCN_Label.setForeground(new java.awt.Color(255, 255, 255));
         qtyAnimatorsCN_Label.setText("0");
-        CartoonNetworkTab.add(qtyAnimatorsCN_Label,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 160, 40, 40));
+        CartoonNetworkTab.add(qtyAnimatorsCN_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 160, 40, 40));
 
-        screenwritersPlusCN.setBackground(new java.awt.Color(255, 255, 153));
+        screenwritersPlusCN.setBackground(new java.awt.Color(255, 255, 255));
         screenwritersPlusCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         screenwritersPlusCN.setForeground(new java.awt.Color(51, 51, 51));
         screenwritersPlusCN.setText("+");
@@ -1563,7 +1529,7 @@ public class MainUI extends javax.swing.JFrame {
         });
         CartoonNetworkTab.add(screenwritersPlusCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 90, 50, 20));
 
-        screenwritersMinCN.setBackground(new java.awt.Color(255, 255, 153));
+        screenwritersMinCN.setBackground(new java.awt.Color(255, 255, 255));
         screenwritersMinCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         screenwritersMinCN.setForeground(new java.awt.Color(51, 51, 51));
         screenwritersMinCN.setText("-");
@@ -1574,7 +1540,7 @@ public class MainUI extends javax.swing.JFrame {
         });
         CartoonNetworkTab.add(screenwritersMinCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 90, 50, 20));
 
-        scenarioDesignersPlusCN.setBackground(new java.awt.Color(255, 255, 153));
+        scenarioDesignersPlusCN.setBackground(new java.awt.Color(255, 255, 255));
         scenarioDesignersPlusCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         scenarioDesignersPlusCN.setForeground(new java.awt.Color(51, 51, 51));
         scenarioDesignersPlusCN.setText("+");
@@ -1583,10 +1549,9 @@ public class MainUI extends javax.swing.JFrame {
                 scenarioDesignersPlusCNActionPerformed(evt);
             }
         });
-        CartoonNetworkTab.add(scenarioDesignersPlusCN,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 130, 50, 20));
+        CartoonNetworkTab.add(scenarioDesignersPlusCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 130, 50, 20));
 
-        animatorsPlusCN.setBackground(new java.awt.Color(255, 255, 153));
+        animatorsPlusCN.setBackground(new java.awt.Color(255, 255, 255));
         animatorsPlusCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         animatorsPlusCN.setForeground(new java.awt.Color(51, 51, 51));
         animatorsPlusCN.setText("+");
@@ -1597,7 +1562,7 @@ public class MainUI extends javax.swing.JFrame {
         });
         CartoonNetworkTab.add(animatorsPlusCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 170, 50, 20));
 
-        scenarioDesignersMinCN.setBackground(new java.awt.Color(255, 255, 153));
+        scenarioDesignersMinCN.setBackground(new java.awt.Color(255, 255, 255));
         scenarioDesignersMinCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         scenarioDesignersMinCN.setForeground(new java.awt.Color(51, 51, 51));
         scenarioDesignersMinCN.setText("-");
@@ -1606,10 +1571,9 @@ public class MainUI extends javax.swing.JFrame {
                 scenarioDesignersMinCNActionPerformed(evt);
             }
         });
-        CartoonNetworkTab.add(scenarioDesignersMinCN,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 130, 50, 20));
+        CartoonNetworkTab.add(scenarioDesignersMinCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 130, 50, 20));
 
-        animatorsMinCN.setBackground(new java.awt.Color(255, 255, 153));
+        animatorsMinCN.setBackground(new java.awt.Color(255, 255, 255));
         animatorsMinCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         animatorsMinCN.setForeground(new java.awt.Color(51, 51, 51));
         animatorsMinCN.setText("-");
@@ -1620,7 +1584,7 @@ public class MainUI extends javax.swing.JFrame {
         });
         CartoonNetworkTab.add(animatorsMinCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 170, 50, 20));
 
-        voiceActorsPlusCN.setBackground(new java.awt.Color(255, 255, 153));
+        voiceActorsPlusCN.setBackground(new java.awt.Color(255, 255, 255));
         voiceActorsPlusCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         voiceActorsPlusCN.setForeground(new java.awt.Color(51, 51, 51));
         voiceActorsPlusCN.setText("+");
@@ -1631,7 +1595,7 @@ public class MainUI extends javax.swing.JFrame {
         });
         CartoonNetworkTab.add(voiceActorsPlusCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 210, 50, 20));
 
-        voiceActorsMinCN.setBackground(new java.awt.Color(255, 255, 153));
+        voiceActorsMinCN.setBackground(new java.awt.Color(255, 255, 255));
         voiceActorsMinCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         voiceActorsMinCN.setForeground(new java.awt.Color(51, 51, 51));
         voiceActorsMinCN.setText("-");
@@ -1642,7 +1606,7 @@ public class MainUI extends javax.swing.JFrame {
         });
         CartoonNetworkTab.add(voiceActorsMinCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 210, 50, 20));
 
-        plotTwistWritersMinCN.setBackground(new java.awt.Color(255, 255, 153));
+        plotTwistWritersMinCN.setBackground(new java.awt.Color(255, 255, 255));
         plotTwistWritersMinCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         plotTwistWritersMinCN.setForeground(new java.awt.Color(51, 51, 51));
         plotTwistWritersMinCN.setText("-");
@@ -1651,10 +1615,9 @@ public class MainUI extends javax.swing.JFrame {
                 plotTwistWritersMinCNActionPerformed(evt);
             }
         });
-        CartoonNetworkTab.add(plotTwistWritersMinCN,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 250, 50, 20));
+        CartoonNetworkTab.add(plotTwistWritersMinCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 250, 50, 20));
 
-        plotTwistWritersPlusCN.setBackground(new java.awt.Color(255, 255, 153));
+        plotTwistWritersPlusCN.setBackground(new java.awt.Color(255, 255, 255));
         plotTwistWritersPlusCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         plotTwistWritersPlusCN.setForeground(new java.awt.Color(51, 51, 51));
         plotTwistWritersPlusCN.setText("+");
@@ -1663,10 +1626,9 @@ public class MainUI extends javax.swing.JFrame {
                 plotTwistWritersPlusCNActionPerformed(evt);
             }
         });
-        CartoonNetworkTab.add(plotTwistWritersPlusCN,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 250, 50, 20));
+        CartoonNetworkTab.add(plotTwistWritersPlusCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 250, 50, 20));
 
-        assemblersMinCN.setBackground(new java.awt.Color(255, 255, 153));
+        assemblersMinCN.setBackground(new java.awt.Color(255, 255, 255));
         assemblersMinCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         assemblersMinCN.setForeground(new java.awt.Color(51, 51, 51));
         assemblersMinCN.setText("-");
@@ -1677,7 +1639,7 @@ public class MainUI extends javax.swing.JFrame {
         });
         CartoonNetworkTab.add(assemblersMinCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 290, 50, 20));
 
-        assemblersPlusCN.setBackground(new java.awt.Color(255, 255, 153));
+        assemblersPlusCN.setBackground(new java.awt.Color(255, 255, 255));
         assemblersPlusCN.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         assemblersPlusCN.setForeground(new java.awt.Color(51, 51, 51));
         assemblersPlusCN.setText("+");
@@ -1689,21 +1651,37 @@ public class MainUI extends javax.swing.JFrame {
         CartoonNetworkTab.add(assemblersPlusCN, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 290, 50, 20));
 
         earningsCN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        earningsCN_label.setForeground(new java.awt.Color(255, 255, 153));
+        earningsCN_label.setForeground(new java.awt.Color(255, 255, 255));
         earningsCN_label.setText("EARNINGS: ");
         CartoonNetworkTab.add(earningsCN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 150, 40));
 
         costsCN_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        costsCN_label.setForeground(new java.awt.Color(255, 255, 153));
+        costsCN_label.setForeground(new java.awt.Color(255, 255, 255));
         costsCN_label.setText("COSTS:");
         CartoonNetworkTab.add(costsCN_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 100, 40));
 
         CN_label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
-        CN_label1.setForeground(new java.awt.Color(255, 255, 153));
+        CN_label1.setForeground(new java.awt.Color(255, 255, 255));
         CN_label1.setText("CARTOON ");
         CartoonNetworkTab.add(CN_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 60));
 
+        cartoonNetwork_Title2.setEditable(false);
+        cartoonNetwork_Title2.setBackground(new java.awt.Color(255, 255, 255));
+        cartoonNetwork_Title2.setForeground(new java.awt.Color(51, 51, 51));
+        cartoonNetwork_Title2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cartoonNetwork_Title2.setText("NETWORK");
+        cartoonNetwork_Title2.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
+        CartoonNetworkTab.add(cartoonNetwork_Title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 210, 50));
+
         Tabs.addTab("Cartoon Network", CartoonNetworkTab);
+
+        statisticsTab.setBackground(new java.awt.Color(51, 51, 51));
+        statisticsTab.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        chartPanel.setLayout(new java.awt.BorderLayout());
+        statisticsTab.add(chartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 820, 370));
+
+        Tabs.addTab("Statistics", statisticsTab);
 
         getContentPane().add(Tabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 640));
 
@@ -1932,7 +1910,6 @@ public class MainUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CNConfig_label;
     private javax.swing.JLabel CNMaximumWorkers_label;
-    private javax.swing.JLabel CN_label;
     private javax.swing.JLabel CN_label1;
     private javax.swing.JLabel CartoonNAnimations;
     private javax.swing.JLabel CartoonNDubbings;
@@ -1976,6 +1953,8 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JButton assemblersPlusNick;
     private javax.swing.JLabel assemblers_label;
     private javax.swing.JLabel assemblers_label2;
+    private javax.swing.JFormattedTextField cartoonNetwork_Title2;
+    private javax.swing.JPanel chartPanel;
     private javax.swing.JLabel chas13;
     private javax.swing.JLabel chas14;
     private javax.swing.JLabel chas15;
@@ -2088,6 +2067,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel standardEpisodesN_label;
     private javax.swing.JLabel standardEpisodesNick;
     private javax.swing.JButton startSimulation;
+    private javax.swing.JPanel statisticsTab;
     private javax.swing.JLabel utilityCN;
     private javax.swing.JFormattedTextField utilityCN_label;
     private javax.swing.JLabel utilityNick;
