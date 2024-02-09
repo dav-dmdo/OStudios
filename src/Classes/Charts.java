@@ -18,7 +18,6 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import javax.swing.Timer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.plot.PlotOrientation;
 
@@ -29,7 +28,6 @@ public class Charts {
     private XYSeries seriesCartoonNetwork;
     private XYSeriesCollection dataset;
     private JFreeChart lineChart;
-    private Timer timer;
     private AnimationStudio nickelodeon;
     private AnimationStudio cartoonNetwork;
 
@@ -52,7 +50,7 @@ public class Charts {
 
         lineChart = ChartFactory.createXYLineChart(
                 "Time vs Profit",
-                "Profit",
+                "Time",
                 "Profit",
                 dataset,
                 PlotOrientation.VERTICAL,
@@ -61,16 +59,12 @@ public class Charts {
                 false // URLs
         );
 
-        int delay = config.getDayDuration();
-        setTimer(new Timer(delay, e -> updateChartData()));
-        getTimer().start();
-
     }
 
     /**
      * Method to customize chart appearance
      */
-    private void customizeChartUI(Color color) {
+    public void customizeChartUI(Color color) {
         XYPlot plot = getLineChart().getXYPlot();
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
         renderer.setSeriesStroke(0, new BasicStroke(1.0f));
@@ -78,13 +72,10 @@ public class Charts {
         plot.setRenderer(renderer);
     }
 
-    /**
-     * Actualiza las series de datos con las ganancias más recientes de
-     * Nickelodeon y Cartoon Network y las agrega al gráfico.
-     */
     public void updateChartData() {
-        int nickelodeonProfit = getNickelodeon().getAccountant().getTotalProfit();
-        int cartoonNetworkProfit = getCartoonNetwork().getAccountant().getTotalProfit();
+        int nickelodeonProfit = getNickelodeon().getAccountant().getTotalProfitChart();
+        int cartoonNetworkProfit = getCartoonNetwork().getAccountant().getTotalProfitChart();
+
         int newTimestamp = getSeriesNickelodeon().getItemCount() + 1;
 
         getSeriesNickelodeon().addOrUpdate(newTimestamp, nickelodeonProfit);
@@ -125,14 +116,6 @@ public class Charts {
 
     public void setSeriesCartoonNetwork(XYSeries seriesCartoonNetwork) {
         this.seriesCartoonNetwork = seriesCartoonNetwork;
-    }
-
-    public Timer getTimer() {
-        return timer;
-    }
-
-    public void setTimer(Timer timer) {
-        this.timer = timer;
     }
 
     public Config getConfig() {

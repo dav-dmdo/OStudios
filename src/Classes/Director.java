@@ -59,6 +59,7 @@ public class Director extends Thread {
     public void run() {
         while (true) {
             try {
+
                 if (getManager().getDaysLeft() <= 0) {
                     // TODO - Code when the manager has to sell chapters
                     sleep(getDayDurationInMs());
@@ -99,6 +100,15 @@ public class Director extends Thread {
                     setTrapped(false);
                     setAccumulatedTime(0);
 
+                    if (getDrive().getStandardChaptersCounter() != 0) {
+                        int standardChaptersIncomeChart = getDrive().getStandardChaptersCounter()
+                                * getDrive().getSpecs().getStandardChaptersPrice();
+                        int plotTwistChaptersIncomeChart = getDrive().getPlotTwistChaptersCounter()
+                                * getDrive().getSpecs().getPlotTwistChaptersPrice();
+
+                        getManager().setTotalIncomeChart(plotTwistChaptersIncomeChart + standardChaptersIncomeChart);
+                    }
+
                     // Loop that executes each hour of a day
                     while (hoursPassed < 24) {
                         hoursPassed++;
@@ -125,8 +135,7 @@ public class Director extends Thread {
      * Checks the status of the manager, if he's watching anime puts him a fault
      *
      * @param accumulatedTimeForWatchingInterval - Time that has passed since
-     *                                           entered in the 35-minute watching
-     *                                           manager interval
+     * entered in the 35-minute watching manager interval
      * @throws InterruptedException
      */
     public void checkManagerStatus(float accumulatedTimeForWatchingInterval) throws InterruptedException {

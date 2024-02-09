@@ -4,6 +4,7 @@ import Classes.AnimationStudio;
 import Classes.Charts;
 import Config.Config;
 import Config.ReadFile;
+import java.awt.Color;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
@@ -41,6 +42,8 @@ public class MainUI extends javax.swing.JFrame {
                 getConfig().getDayDuration(), this, getConfig().getDeliveryDays());
 
         this.charts = new Charts(getNickelodeon(), getCartoonNetwork(), getConfig());
+
+        getCharts().customizeChartUI(Color.ORANGE);
 
         chartPanel.add(getCharts().getChartPanel());
 

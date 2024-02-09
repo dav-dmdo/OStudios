@@ -30,6 +30,7 @@ public class Accountant {
 
     private int totalProfit;
     private int totalProfitChart;
+    private int totalIncomeChart;
 
     private MainUI userInterface;
 
@@ -69,6 +70,7 @@ public class Accountant {
         this.totalIncome = 0;
         this.totalProfit = 0;
         this.totalProfitChart = 0;
+        this.totalIncomeChart = 0;
         this.userInterface = userInterface;
     }
 
@@ -166,7 +168,7 @@ public class Accountant {
 
     public void calculateTotalProfitChart() {
         this.setTotalProfitChart(
-                this.getTotalIncome()
+                this.getTotalIncomeChart()
                 - this.getTotalOperationalCosts());
     }
 
@@ -399,4 +401,13 @@ public class Accountant {
     public void setTotalProfitChart(int totalProfitChart) {
         this.totalProfitChart = totalProfitChart;
     }
+
+    public int getTotalIncomeChart() {
+        return totalIncomeChart;
+    }
+
+    public void setTotalIncomeChart(int totalIncomeChart) {
+        this.totalIncomeChart = totalIncomeChart;
+    }
+
 }

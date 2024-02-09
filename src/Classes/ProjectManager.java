@@ -26,6 +26,7 @@ public class ProjectManager extends Thread {
     private Semaphore mutex;
     private Accountant accountant;
     private int discountedSalary;
+    private int totalIncomeChart;
 
     public ProjectManager(int studio, int salaryPerHour, int defaultDeliveryDays,
             int dayDurationInMs, MainUI userInterface, Semaphore mutex, Accountant accountant) {
@@ -44,6 +45,7 @@ public class ProjectManager extends Thread {
         this.mutex = mutex;
         this.accountant = accountant;
         this.discountedSalary = 0;
+        this.totalIncomeChart = 0;
     }
 
     @Override
@@ -92,6 +94,12 @@ public class ProjectManager extends Thread {
             getAccountant().calculateTotalOperationalCosts();
 
             getUserInterface().showCosts(getStudio(), getAccountant().getTotalOperationalCosts());
+
+            getAccountant().setTotalIncomeChart(getTotalIncomeChart());
+
+            getAccountant().calculateTotalProfitChart();
+
+            getUserInterface().getCharts().updateChartData();
 
             getUserInterface().changeDaysLeftCounter(getStudio(), Integer.toString(getDaysLeft()));
             getMutex().release();
@@ -227,6 +235,14 @@ public class ProjectManager extends Thread {
 
     public void setDiscountedSalary(int discountedSalary) {
         this.discountedSalary = discountedSalary;
+    }
+
+    public int getTotalIncomeChart() {
+        return totalIncomeChart;
+    }
+
+    public void setTotalIncomeChart(int totalIncomeChart) {
+        this.totalIncomeChart = totalIncomeChart;
     }
 
 }
